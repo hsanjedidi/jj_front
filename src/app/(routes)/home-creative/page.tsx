@@ -18,10 +18,12 @@ import { ServiceCardListData } from "@/app/hooks/data-services";
 import { ctaData } from "@/app/hooks/data-cta";
 import { galleryData } from "@/app/hooks/data-gallery";
 import { teamBlockData } from "@/app/hooks/data-team";
+import { Landing } from "@/app/blocks/landing/Landing";
 
 const PageHomeCreative = () => {
     return (
 		<>
+			<Landing />
 			{/* Slider Hero - Block */}
 			<HeroCreativeSliderBlock {...sliderHeroData} />
 			{/* / Slider Hero - Block */}

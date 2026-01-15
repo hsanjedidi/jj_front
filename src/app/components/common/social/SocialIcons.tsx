@@ -9,7 +9,7 @@ const SocialIcons: React.FC<SocialIconsProps> = ({ socials }) => {
 	}
 
 	return (
-		<ul className="social_icons">
+		<ul className="social_icons text-white">
 			{socials.map((item) => {
 				const IconComponent = item.icon;
 				return (
@@ -19,7 +19,7 @@ const SocialIcons: React.FC<SocialIconsProps> = ({ socials }) => {
 							target="_blank"
 							aria-label={item.ariaLabel}
 						>
-							<IconComponent />
+							<IconComponent className="text-white" />
 						</Link>
 					</li>
 				);

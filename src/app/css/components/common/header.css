@@ -118,7 +118,6 @@
 
 	&__social {
 		@apply flex flex-wrap items-center pl-6;
-		border-left: 1px solid rgba(255, 255, 255, 0.2);
 		transition: opacity 0.3s ease;
 
 		svg {

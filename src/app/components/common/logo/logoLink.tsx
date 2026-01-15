@@ -12,8 +12,8 @@ interface LogoLinkProps {
 
 const LogoLink: React.FC<LogoLinkProps> = ({ href, src, alt, width, height }) => {
   return (
-    <Link className="link__logo_brand" href={href}>
-      <Image src={src} priority alt={alt} width={width} height={height} />
+    <Link className=" mx-auto w-fit" href={href}>
+      <Image src={src} priority alt={alt}  width={80} height={200}  className='mx-auto' />
     </Link>
   );
 };

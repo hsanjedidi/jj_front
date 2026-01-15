@@ -5,6 +5,8 @@ import { InfoGeneralData } from "./hooks/data-general";
 import Header from "./components/common/header/Header";
 import Topbar from "./components/common/topbar/Topbar";
 import Footer from "./components/common/footer/Footer";
+import Topbar2 from './components/common/topbar/Topbar2';
+import Header2 from './components/common/header/Header2';
 
 export default function LayoutProvider({
   children,
@@ -19,16 +21,8 @@ export default function LayoutProvider({
     <>
       {!shouldHideHeaderFooter && (
         <>
-          <Topbar 
-           // address={InfoGeneralData.address}
-           // city={InfoGeneralData.city}
-           // zip={InfoGeneralData.zip}
-            //country={InfoGeneralData.country}
-           // mapUrl={InfoGeneralData.urlMap}
-            phone={InfoGeneralData.phone}
-            email={InfoGeneralData.emailReservations}
-          />
-          <Header />
+
+          <Header2 />
         </>
       )}
       <main>{children}</main>

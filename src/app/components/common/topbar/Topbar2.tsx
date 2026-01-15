@@ -10,7 +10,7 @@ import { InfoGeneralData } from "@/app/hooks/data-general";
  * @param {TopbarProps} props The props for the component, containing contact details.
  * @returns {React.ReactElement | null} The rendered top bar or null if essential data is missing.
  */
-const Topbar: React.FC<TopbarProps> = ({
+const Topbar2: React.FC<TopbarProps> = ({
   address,
   city,
   zip,
@@ -68,4 +68,4 @@ const Topbar: React.FC<TopbarProps> = ({
   );
 };
 
-export default Topbar;
+export default Topbar2;
