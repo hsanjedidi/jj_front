@@ -9,6 +9,8 @@ import MenuMobile from "@/app/components/common/menuMobile/menuMobile";
 import MenuToggleButton from "./MenuToggleButton";
 import { cn } from "@/lib/utils";
 import throttle from "lodash.throttle";
+import { useWindowScroll } from "@uidotdev/usehooks";
+import { Separator } from "@/components/ui/separator";
 
 const STICKY_THRESHOLD = 100; // Define scroll threshold (adjust as needed)
 const SCROLL_THROTTLE_LIMIT = 200; // Throttle limit in ms
@@ -22,7 +24,8 @@ const SCROLL_THROTTLE_LIMIT = 200; // Throttle limit in ms
 const Header2: React.FC = () => {
   const [isSticky, setIsSticky] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-
+  const [{ x, y: scrollY }, scrollTo] = useWindowScroll();
+  const [previousYRef, setPreviousYRef] = useState(scrollY);
   /**
    * Effect to handle the sticky header functionality.
    * It adds a throttled scroll event listener to track the page's scroll position
@@ -52,75 +55,135 @@ const Header2: React.FC = () => {
   const handleToggleMobileMenu = () => {
     setIsMobile(!isMobile);
   };
+  const [headerHidden, setHeaderHidden] = useState(false);
+  useEffect(() => {
+    if (!previousYRef) setHeaderHidden(true);
+    else if (scrollY && previousYRef < scrollY) {
+      // Scrolling down
+      setHeaderHidden(true);
+    } else {
+      // Scrolling up
+      setHeaderHidden(false);
+    }
+
+    console.log("currentY:", scrollY, "previousY:", previousYRef);
+    setPreviousYRef(scrollY);
+  }, [scrollY]);
+
+  const bgTransparent = scrollY === null || scrollY < 20;
 
   return (
-    <>
-      <header className={cn("header p-4", { header__sticky: isSticky })}>
-        <div className="grid grid-cols-3 w-full">
-          <div className="flex items-center">
-            <div className="header__mobile">
-              <MenuToggleButton
-                isMobile={isMobile}
-                onToggle={handleToggleMobileMenu}
-                aria-controls="menu-mobile"
-              />
-            </div>
-          </div>
+    <div className="  transition-all duration-300 ease-in-out">
+      <div className=" transition-all duration-300 ease-in-out">
+        <header
+          className={cn(
+            "fixed top-0 left-0 w-full overflow-hidden z-50 ",
+            headerHidden
+              ? "-translate-y-full overflow-hidden transition-all duration-300 ease-in-out"
+              : "overflow-hidden transition-all duration-300 ease-in-out"
+          )}
+        >
+          <div
+            className={cn(
+              "p-4 duration-700 ease-in-out transition-colors",
+              bgTransparent ? "bg-transparent" : " bg-black"
+            )}
+          >
+            <div className="flex flex-col w-full h-fit transition-all duration-300 ease-in-out  space-y-4">
+              <div className="grid grid-cols-3 w-full">
+                <div className="flex items-center">
+                  <div className="header__mobile">
+                    <MenuToggleButton
+                      isMobile={isMobile}
+                      onToggle={handleToggleMobileMenu}
+                      aria-controls="menu-mobile"
+                    />
+                  </div>
+                </div>
 
-          <div className="">
-            <LogoLink
-              href={LogoData.hrefLogo}
-              src={LogoData.urlLogo}
-              alt={LogoData.altLogo}
-              width={LogoData.widthLogo}
-              height={LogoData.heightLogo}
-            />
-          </div>
+                <div className="">
+                  <LogoLink
+                    href={LogoData.hrefLogo}
+                    src={LogoData.urlLogo}
+                    alt={LogoData.altLogo}
+                    scrollY={scrollY}
+                  />
+                </div>
 
-          <div className="header__nav">
-            {/* Desktop Navigation */}
-            <nav className="header__menu" aria-label="Main navigation">
-              <ul className="header__menu-list">
-                {itemsNavbar.map((item) => (
-                  <li
-                    key={item.id}
-                    className={cn(
-                      "dropdown simple-dropdown",
-                      item.children &&
-                        item.children.length > 0 &&
-                        "has-children"
-                    )}
-                  >
-                    <Link href={item.link}>{item.title}</Link>
-                    {item.children && item.children.length > 0 && (
-                      <ul className="dropdown-menu">
-                        {item.children.map((child) => (
-                          <li key={child.id}>
-                            <Link href={child.link}>{child.title}</Link>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </nav>
+                <div className="header__nav">
+                  {/* Desktop Navigation */}
+                  <nav className="header__menu" aria-label="Main navigation">
+                    <ul className="header__menu-list">
+                      {itemsNavbar.map((item) => (
+                        <li
+                          key={item.id}
+                          className={cn(
+                            "dropdown simple-dropdown",
+                            item.children &&
+                              item.children.length > 0 &&
+                              "has-children"
+                          )}
+                        >
+                          <Link href={item.link}>{item.title}</Link>
+                          {item.children && item.children.length > 0 && (
+                            <ul className="dropdown-menu">
+                              {item.children.map((child) => (
+                                <li key={child.id}>
+                                  <Link href={child.link}>{child.title}</Link>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </nav>
 
-            {/* Mobile Menu Toggle & Social Icons Wrapper */}
-            <div className="flex items-center">
-              <div className="header__social">
-                <SocialIcons socials={socialIconsData} />
+                  {/* Mobile Menu Toggle & Social Icons Wrapper */}
+                  <div className="flex items-center">
+                    <div className="">
+                      <SocialIcons socials={socialIconsData} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className={cn(
+                  " w-fit mx-auto flex space-x-2 transition-all duration-1000 ease-in-out overflow-hidden",
+                  !isMobile ? " h-0 -translate-y-full opacity-0" : "h-fit opacity-100"
+                )}
+              >
+                <div className="flex items-center space-x-2">
+                  <span>Home</span>
+                  <Separator orientation="vertical" className="h-6" />
+                </div>
+                <div className="flex items-center space-x-2">
+                  <span>About</span>
+                  <Separator orientation="vertical" className="h-6" />
+                </div>{" "}
+                <div className="flex items-center space-x-2">
+                  <span>Menu</span>
+                  <Separator orientation="vertical" className="h-6" />
+                </div>{" "}
+                <div className="flex items-center space-x-2">
+                  <span>Events</span>
+                  <Separator orientation="vertical" className="h-6" />
+                </div>{" "}
+                <div className="flex items-center space-x-2">
+                  <span>Contact</span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </header>
-      <MenuMobile
-        id="menu-mobile"
-        isMobile={isMobile}
-        setIsMobile={setIsMobile}
-      />
-    </>
+        </header>
+        {/* <MenuMobile
+          id="menu-mobile"
+          isMobile={isMobile}
+          setIsMobile={setIsMobile}
+        /> */}
+      </div>
+    </div>
   );
 };
 
