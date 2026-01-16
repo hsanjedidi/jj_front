@@ -61,6 +61,7 @@ const Header2: React.FC = () => {
     else if (scrollY && previousYRef < scrollY) {
       // Scrolling down
       setHeaderHidden(true);
+      if (isMobile) setIsMobile(false);
     } else {
       // Scrolling up
       setHeaderHidden(false);
@@ -89,7 +90,7 @@ const Header2: React.FC = () => {
               bgTransparent ? "bg-transparent" : " bg-black"
             )}
           >
-            <div className="flex flex-col w-full h-fit transition-all duration-300 ease-in-out  space-y-4">
+            <div className="flex flex-col w-full h-fit transition-all duration-300 ease-in-out">
               <div className="grid grid-cols-3 w-full">
                 <div className="flex items-center">
                   <div className="header__mobile">
@@ -150,28 +151,42 @@ const Header2: React.FC = () => {
 
               <div
                 className={cn(
-                  " w-fit mx-auto flex space-x-2 transition-all duration-1000 ease-in-out overflow-hidden",
-                  !isMobile ? " h-0 -translate-y-full opacity-0" : "h-fit opacity-100"
+                  "overflow-hidden transition-all duration-300 ease-in-out ",
+                  isMobile
+                    ? "max-h-40 opacity-100 pt-6"
+                    : "max-h-0 opacity-0 pt-0"
                 )}
               >
-                <div className="flex items-center space-x-2">
-                  <span>Home</span>
-                  <Separator orientation="vertical" className="h-6" />
-                </div>
-                <div className="flex items-center space-x-2">
-                  <span>About</span>
-                  <Separator orientation="vertical" className="h-6" />
-                </div>{" "}
-                <div className="flex items-center space-x-2">
-                  <span>Menu</span>
-                  <Separator orientation="vertical" className="h-6" />
-                </div>{" "}
-                <div className="flex items-center space-x-2">
-                  <span>Events</span>
-                  <Separator orientation="vertical" className="h-6" />
-                </div>{" "}
-                <div className="flex items-center space-x-2">
-                  <span>Contact</span>
+                <div
+                  className=" flex w-full justify-start space-x-2 overflow-x-scroll scroll-m-4 pb-4 "
+                  style={{
+                    scrollbarColor: "-moz-initial",
+                    scrollbarWidth: "thin",
+                  }}
+                >
+                  <div className="flex items-center space-x-2">
+                    <span>Home</span>
+                    <Separator orientation="vertical" className="h-6" />
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <span>About</span>
+                    <Separator orientation="vertical" className="h-6" />
+                  </div>
+                  <Link href="/menu2" className="flex items-center space-x-2">
+                    <span>Menu</span>
+                    <Separator orientation="vertical" className="h-6" />
+                  </Link>
+                  <div className="flex items-center space-x-2">
+                    <span>Events</span>
+                    <Separator orientation="vertical" className="h-6" />
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <span>Gallery</span>
+                    <Separator orientation="vertical" className="h-6" />
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <span>Contact</span>
+                  </div>
                 </div>
               </div>
             </div>
