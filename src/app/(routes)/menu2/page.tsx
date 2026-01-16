@@ -1,10 +1,13 @@
 import { HeroCreativeSliderBlock } from "@/app/blocks/hero";
 import { sliderHeroData } from "@/app/hooks/data-hero";
 
-export function Menu2() {
+const  Menu2 = () => {
   return (
     <>
-      <HeroCreativeSliderBlock {...sliderHeroData} />
+      <HeroCreativeSliderBlock {...sliderHeroData} />   
+
     </>
   );
 }
+
+export default Menu2;

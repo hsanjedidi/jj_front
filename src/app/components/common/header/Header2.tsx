@@ -180,10 +180,10 @@ const Header2: React.FC = () => {
                     <span>Events</span>
                     <Separator orientation="vertical" className="h-6" />
                   </div>
-                  <div className="flex items-center space-x-2">
+                  <Link href="/gallery" className="flex items-center space-x-2">
                     <span>Gallery</span>
                     <Separator orientation="vertical" className="h-6" />
-                  </div>
+                  </Link>
                   <div className="flex items-center space-x-2">
                     <span>Contact</span>
                   </div>
