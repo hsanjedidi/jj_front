@@ -78,10 +78,10 @@ const Header2: React.FC = () => {
       <div className=" transition-all duration-300 ease-in-out">
         <header
           className={cn(
-            "fixed top-0 left-0 w-full overflow-hidden z-50 ",
+            "fixed top-0 left-0 w-full z-50 md:overflow-visible",
             headerHidden
-              ? "-translate-y-full overflow-hidden transition-all duration-300 ease-in-out"
-              : "overflow-hidden transition-all duration-300 ease-in-out"
+              ? "-translate-y-full transition-all duration-300 ease-in-out"
+              : "transition-all duration-300 ease-in-out"
           )}
         >
           <div
@@ -164,14 +164,17 @@ const Header2: React.FC = () => {
                     scrollbarWidth: "thin",
                   }}
                 >
-                  <div className="flex items-center space-x-2">
+                  <Link
+                    href="/home-creative"
+                    className="flex items-center space-x-2"
+                  >
                     <span>Home</span>
                     <Separator orientation="vertical" className="h-6" />
-                  </div>
-                  <div className="flex items-center space-x-2">
+                  </Link>
+                  <Link href="/about2" className="flex items-center space-x-2">
                     <span>About</span>
                     <Separator orientation="vertical" className="h-6" />
-                  </div>
+                  </Link>
                   <Link href="/menu2" className="flex items-center space-x-2">
                     <span>Menu</span>
                     <Separator orientation="vertical" className="h-6" />

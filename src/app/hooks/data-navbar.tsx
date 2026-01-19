@@ -25,7 +25,7 @@ export const itemsNavbar = [
 			{
 				id: 21,
 				title: "Menu classic",
-				link: "/menu",
+				link: "/menu2",
 			},
 			{
 				id: 24,
