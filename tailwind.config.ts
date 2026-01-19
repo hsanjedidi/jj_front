@@ -30,7 +30,7 @@ const config: Config = {
 				// NOTE: Original color palettes kept for reference or specific use cases
 				calico: {
 					0: "#FBF7F3",
-					100: "#F7F0E6",
+					100: "#F7F0E6", 
 					200: "#F0E0CD",
 					300: "#E8D1B4",
 					400: "#E1C19B",
