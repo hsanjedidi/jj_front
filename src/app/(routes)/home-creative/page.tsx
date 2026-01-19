@@ -19,11 +19,15 @@ import { galleryData } from "@/app/hooks/data-gallery";
 import { teamBlockData } from "@/app/hooks/data-team";
 import { Landing } from "@/app/blocks/landing/Landing";
 import { sliderHeroData } from "@/app/hooks/data-hero";
+import { MeetStars } from "@/app/blocks/meetStars/MeetStars";
 
 const PageHomeCreative = () => {
   return (
     <>
       <Landing />
+
+      <MeetStars />
+
       {/* Slider Hero - Block */}
       <HeroCreativeSliderBlock {...sliderHeroData} />
       {/* / Slider Hero - Block */}

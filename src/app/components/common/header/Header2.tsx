@@ -55,6 +55,7 @@ const Header2: React.FC = () => {
   const handleToggleMobileMenu = () => {
     setIsMobile(!isMobile);
   };
+
   const [headerHidden, setHeaderHidden] = useState(false);
   useEffect(() => {
     if (!previousYRef) setHeaderHidden(true);
