@@ -29,7 +29,7 @@ export const sliderHeroData = {
     },
     {
       id: 3,
-      image: "/hero/hero-9.jpg",
+      image: "/hero/vegan.png",
       altText: "hero-3",
       subtitle: "Category",
       title: "Vegan",
@@ -39,7 +39,7 @@ export const sliderHeroData = {
     },
     {
       id: 4,
-      image: "/hero/hero-10.jpg",
+      image: "/hero/kids.png",
       altText: "hero-4",
       subtitle: "Category",
       title: "Kids Menu",

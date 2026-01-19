@@ -26,6 +26,7 @@ const SpecialOffersTwoBlock = ({
 	carouselAriaLabel = specialOffersData.carouselAriaLabel,
 	prevButtonAriaLabel = specialOffersData.prevButtonAriaLabel,
 	nextButtonAriaLabel = specialOffersData.nextButtonAriaLabel,
+	className,
 }: SpecialOffersBlockProps) => {
 	const [activeSlide, setActiveSlide] = useState(0);
 
@@ -39,7 +40,7 @@ const SpecialOffersTwoBlock = ({
 	}
 
 	return (
-		<section id="special-offers-two" className={`special-offers-two bg-background`}>
+		<section id="special-offers-two" className={cn(`special-offers-two bg-background`, className)}>
 			<div className="special-offers-two__container">
 				{/* Info title */}
 				<BlockTitle subtitle={subtitle} title={title ?? ''} phrase={phrase} />

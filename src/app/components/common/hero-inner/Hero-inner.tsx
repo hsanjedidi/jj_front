@@ -19,7 +19,7 @@ const HeroInnerBlock: React.FC<HeroInnerBlockProps> = ({
 			{/* Content */}
 			<div className="hero-inner__container">
 				<div className="hero-inner__content">
-					<h1 className="hero-inner__title">{title}</h1>
+					<h1 className="hero-inner__title" >{title}</h1>
 					<div className="hero-inner__breadcrumbs">
 						<Breadcrumbs items={breadcrumbs} />
 					</div>

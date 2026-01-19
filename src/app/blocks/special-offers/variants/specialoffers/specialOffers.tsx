@@ -9,6 +9,7 @@ import Link from "next/link";
 // Interface
 import { SpecialOffersBlockProps } from "@/app/types/common.types";
 import { specialOffersData } from "@/app/hooks/data-special-offers";
+import { cn } from "@/lib/utils";
 
 const SpecialOffersBlock = ({
 	items = specialOffersData.items,
@@ -17,6 +18,7 @@ const SpecialOffersBlock = ({
 	prevButtonAriaLabel = specialOffersData.prevButtonAriaLabel,
 	nextButtonAriaLabel = specialOffersData.nextButtonAriaLabel,
 	paginationBulletAriaLabel = specialOffersData.paginationBulletAriaLabel,
+	className,
 }: SpecialOffersBlockProps) => {
 	const [activeSlide, setActiveSlide] = useState(0);
 
@@ -32,7 +34,7 @@ const SpecialOffersBlock = ({
 	return (
 		<section
 			id="special-offers"
-			className={`special-offers bg-background`}
+			className={cn(`special-offers bg-background`, className)}
 		>
 			{/* Slider Special Offers */}
 			<Swiper
@@ -100,12 +102,7 @@ const SpecialOffersBlock = ({
 								<p className="special-offers__slider__secondary">
 									{item.description_secondary}
 								</p>
-								<Link
-									href={item.link}
-									className="btn btn__link"
-								>
-									{item.linkText || "add order"}
-								</Link>
+							
 							</motion.div>
 						</div>
 					</SwiperSlide>
