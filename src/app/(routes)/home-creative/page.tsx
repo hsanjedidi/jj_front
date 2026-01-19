@@ -1,3 +1,5 @@
+'use client';
+
 import { AboutClassic } from "@/app/blocks/about";
 import BadgesList from "@/app/blocks/badges/BadgesList";
 import Cta from "@/app/blocks/cta/variants/ctaOne/ctaOne";
@@ -19,7 +21,7 @@ import { galleryData } from "@/app/hooks/data-gallery";
 import { teamBlockData } from "@/app/hooks/data-team";
 import { Landing } from "@/app/blocks/landing/Landing";
 import { sliderHeroData } from "@/app/hooks/data-hero";
-import { MeetStars } from "@/app/blocks/meetStars/MeetStars";
+import MeetStars from "@/app/blocks/meetStars/MeetStars";
 
 const PageHomeCreative = () => {
   return (

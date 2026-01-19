@@ -1,8 +1,8 @@
 import { FaFacebookF, FaXTwitter, FaInstagram } from "react-icons/fa6";
 
 export const teamBlockData = {
-	subtitle: "Team of Restaurant",
-	title: "Meet Our Professionals",
+	subtitle: "JJ's Talents",
+	title: "Meet Our Resident Stars",
 	divider: true,
 	align: "center",
 	urlImage: "/other/icon-chefs.png",

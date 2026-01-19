@@ -127,7 +127,7 @@ const Card = ({
         zIndex,
       }}
       className={twMerge(
-        "drag-elements absolute w-48 bg-neutral-200 p-1 pb-4",
+        "drag-elements absolute w-48 bg-neutral-200 p-1 pb-4 transform-gpu",
         className
       )}
       src={src}

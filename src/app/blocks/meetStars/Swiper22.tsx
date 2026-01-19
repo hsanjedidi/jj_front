@@ -1,9 +1,8 @@
 "use client";
-
-import Stack from "@/app/components/ui/Stack"; 
+import Stack from "@/app/components/ui/Stack";
 import { useEffect, useState } from "react";
 
-const MeetStars = () => {
+const Swiper22 = () => {
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
@@ -23,6 +22,7 @@ const MeetStars = () => {
       <Stack
         randomRotation={false}
         sensitivity={50}
+        
         sendToBackOnClick={true}
         cards={images.map((src, i) => (
           <img
@@ -39,4 +39,4 @@ const MeetStars = () => {
   );
 };
 
-export default MeetStars;
+export default Swiper22;
