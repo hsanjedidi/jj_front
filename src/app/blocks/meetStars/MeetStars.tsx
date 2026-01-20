@@ -1,40 +1,52 @@
 "use client";
 
-import Stack from "@/app/components/ui/Stack"; 
-import { useEffect, useState } from "react";
+import BlockTitle from "@/app/components/common/block-title/block-title";
+import { teamBlockData } from "@/app/hooks/data-team";
+import AnimatedCardStack from "./AnimatedCardStack";
 
 const MeetStars = () => {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+
+
   const images = [
-    "https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?q=80&w=500&auto=format",
-    "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=500&auto=format",
-    "https://images.unsplash.com/photo-1452626212852-811d58933cae?q=80&w=500&auto=format",
-    "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=500&auto=format",
+    "/ourImages/band/resident_band_5.jpg",
+    "/ourImages/band/resident_band_4.jpg",
+    "/ourImages/band/resident_band_3.jpg",
+    "/ourImages/band/resident_band_2.jpg",
+    "/ourImages/band/resident_band_1.jpg",
   ];
 
-  if (!mounted) {
-    return <div>xnxx</div>;
-  }
+  const blockTitleProps = {
+    title: teamBlockData.title,
+    subtitle: teamBlockData.subtitle,
+    phrase: teamBlockData.description,
+    divider: teamBlockData.divider,
+  };
+
   return (
-    <div className=" h-96 w-96">
-      <Stack
-        randomRotation={false}
-        sensitivity={50}
-        sendToBackOnClick={true}
-        cards={images.map((src, i) => (
-          <img
-            key={i}
-            src={src}
-            alt={`card-${i + 1}`}
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
-          />
-        ))}
-        autoplayDelay={2000}
-        pauseOnHover={false}
-      />
+    <div className={` bg-background flex flex-col md:grid md:grid-cols-2 md:grid-rows-1 py-24 overflow-hidden  `}>
+      <div className="team-block__container">
+        <BlockTitle
+          {...blockTitleProps}
+        />
+      </div>
+
+      <div className=" w-80 h-80 sm:h-72 sm:w-72 lg:w-96 lg:h-96 -translate-x-4 md:-translate-x-0 mx-auto my-auto">
+        <AnimatedCardStack
+          randomRotation={false}
+          sensitivity={200}
+          sendToBackOnClick={true}
+          cards={images.map((src, i) => (
+            <img
+              key={i}
+              src={src}
+              alt={`card-${i + 1}`}
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
+          ))}
+          autoplayDelay={2000}
+          pauseOnHover={false}
+        />
+      </div>
     </div>
   );
 };

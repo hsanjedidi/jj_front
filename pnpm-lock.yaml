@@ -74,15 +74,9 @@ importers:
       swiper:
         specifier: ^11.1.4
         version: 11.2.6
-      tailwind-animation-delay:
-        specifier: ^1.0.0
-        version: 1.0.0
       tailwind-merge:
         specifier: ^2.5.2
         version: 2.6.0
-      tailwindcss-animate:
-        specifier: ^1.0.7
-        version: 1.0.7(tailwindcss@3.4.17)
     devDependencies:
       '@babel/cli':
         specifier: ^7.24.7
@@ -147,6 +141,9 @@ importers:
       postcss-simple-vars:
         specifier: ^7.0.1
         version: 7.0.1(postcss@8.5.3)
+      prettier:
+        specifier: ^3.8.0
+        version: 3.8.0
       tailwindcss:
         specifier: ^3.4.1
         version: 3.4.17
@@ -3026,6 +3023,11 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
+  prettier@3.8.0:
+    resolution: {integrity: sha512-yEPsovQfpxYfgWNhCfECjG5AQaO+K3dp6XERmOepyPDVqcJm+bjyCVO3pmU+nAPe0N5dDvekfGezt/EIiRe1TA==}
+    engines: {node: '>=14'}
+    hasBin: true
+
   prop-types@15.8.1:
     resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}
 
@@ -3355,16 +3357,8 @@ packages:
     resolution: {integrity: sha512-8aXpYKtjy3DjcbzZfz+/OX/GhcU5h+looA6PbAzHMZT6ESSycSp9nAjPCenczgJyslV+rUGse64LMGpWE3PX9Q==}
     engines: {node: '>= 4.7.0'}
 
-  tailwind-animation-delay@1.0.0:
-    resolution: {integrity: sha512-hTalsMto34MQCgxW1DG5Yht7G3Xsie66dtLt4RDYd+lw+OG4YNkYcN2UJipHO0CF8zKuiKdwtVKuToGvdP9guQ==}
-
   tailwind-merge@2.6.0:
     resolution: {integrity: sha512-P+Vu1qXfzediirmHOC3xKGAYeZtPcV9g76X+xg2FD4tYgR71ewMA35Y3sCz3zhiN/dwefRpJX0yBcgwi1fXNQA==}
-
-  tailwindcss-animate@1.0.7:
-    resolution: {integrity: sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==}
-    peerDependencies:
-      tailwindcss: '>=3.0.0 || insiders'
 
   tailwindcss@3.4.17:
     resolution: {integrity: sha512-w33E2aCvSDP0tW9RZuNXadXlkHXqFzSkQew/aIa2i/Sj8fThxwovwlXHSPXTbAHwEIhBFXAedUhP2tueAKP8Og==}
@@ -6753,6 +6747,8 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
+  prettier@3.8.0: {}
+
   prop-types@15.8.1:
     dependencies:
       loose-envify: 1.4.0
@@ -7125,13 +7121,7 @@ snapshots:
 
   swiper@11.2.6: {}
 
-  tailwind-animation-delay@1.0.0: {}
-
   tailwind-merge@2.6.0: {}
-
-  tailwindcss-animate@1.0.7(tailwindcss@3.4.17):
-    dependencies:
-      tailwindcss: 3.4.17
 
   tailwindcss@3.4.17:
     dependencies:
