@@ -6,10 +6,10 @@ const menuItems = {
       {
         id: 1,
         tag: "Specialty",
-        title: "Four cheese garlic bread",
+        title: "Brazen Head Mussels with cider sauce",
         price: "$32.00",
         image: "/ourImages/food/food2.jpg",
-        altText: "Four cheese garlic bread",
+        altText: "Brazen Head Mussels with cider sauce",
         description_primary:
           "Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.",
         description_secondary:
@@ -20,10 +20,10 @@ const menuItems = {
       {
         id: 2,
         tag: "Specialty",
-        title: "Nduja Pork Chicken Terrine",
+        title: "Nachos",
         price: "$41.00",
         image: "/ourImages/food/food3.jpg",
-        altText: "Nduja Pork Chicken Terrine",
+        altText: "Nachos",
         description_primary:
           "Nam nec tellus a odio tincidunt auctor aornare odio. Sed non mauris vitae eratconsequat auctor eu in elit.",
         description_secondary:
@@ -81,10 +81,10 @@ const menuItems = {
       {
         id: 2,
         tag: "Specialty",
-        title: "Four cheese garlic bread",
+        title: "BEER",
         price: "$32.00",
-        image: "/ourImages/drink/drink2.png",
-        altText: "Four cheese garlic bread",
+        image: "/ourImages/drink/beer.jpg",
+        altText: "BEER",
         description_primary:
           "Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.",
         description_secondary:
@@ -95,10 +95,10 @@ const menuItems = {
       {
         id: 3,
         tag: "Specialty",
-        title: "Four cheese garlic bread",
+        title: "COCKTAILS",
         price: "$32.00",
-        image: "/ourImages/drink/drink3.png",
-        altText: "Four cheese garlic bread",
+        image: "/ourImages/drink/cocktail.jpg",
+        altText: "COCKTAILS",
         description_primary:
           "Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.",
         description_secondary:
@@ -109,10 +109,10 @@ const menuItems = {
       {
         id: 4,
         tag: "Specialty",
-        title: "Four cheese garlic bread",
+        title: "WINE",
         price: "$32.00",
-        image: "/ourImages/drink/drink5.jpg",
-        altText: "Four cheese garlic bread",
+        image: "/ourImages/drink/wine.jpg",
+        altText: "WINE",
         description_primary:
           "Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.",
         description_secondary:
@@ -123,10 +123,10 @@ const menuItems = {
       {
         id: 5,
         tag: "Specialty",
-        title: "Four cheese garlic bread",
+        title: "WHISKY",
         price: "$32.00",
-        image: "/ourImages/drink/drink7.jpg",
-        altText: "Four cheese garlic bread",
+        image: "/ourImages/drink/whisky.jpg",
+        altText: "WHISKY",
         description_primary:
           "Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.",
         description_secondary:
@@ -156,10 +156,10 @@ const menuItems = {
       {
         id: 1,
         tag: "Specialty",
-        title: "Four cheese garlic bread",
+        title: "Butter Milk Chicken Burger",
         price: "$32.00",
         image: "/ourImages/food/kid1.jpg",
-        altText: "Four cheese garlic bread",
+        altText: "Butter Milk Chicken Burger",
         description_primary:
           "Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.",
         description_secondary:
@@ -170,10 +170,10 @@ const menuItems = {
       {
         id: 2,
         tag: "Specialty",
-        title: "Four cheese garlic bread",
+        title: "Cheese Steak Sandwich",
         price: "$32.00",
         image: "/ourImages/food/kid2.jpg",
-        altText: "Four cheese garlic bread",
+        altText: "Cheese Steak Sandwich",
         description_primary:
           "Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.",
         description_secondary:
@@ -217,10 +217,10 @@ const menuItems = {
       {
         id: 3,
         tag: "Specialty",
-        title: "Four cheese garlic bread",
+        title: "Nik's Lamb Curry",
         price: "$32.00",
         image: "/ourImages/food/vegan3.jpg",
-        altText: "Four cheese garlic bread",
+        altText: "Nik's Lamb Curry",
         description_primary:
           "Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.",
         description_secondary:
@@ -231,10 +231,24 @@ const menuItems = {
       {
         id: 4,
         tag: "Specialty",
-        title: "Four cheese garlic bread",
+        title: "Smoked Salmon Salad",
         price: "$32.00",
         image: "/ourImages/food/vegan4.jpg",
-        altText: "Four cheese garlic bread",
+        altText: "Smoked Salmon Salad",
+        description_primary:
+          "Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.",
+        description_secondary:
+          "Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.",
+        link: "/",
+        linkText: "add order",
+      },
+      {
+        id: 5,
+        tag: "Specialty",
+        title: "Chiken & Snowpeas Salad",
+        price: "$32.00",
+        image: "/ourImages/food/food10.jpg",
+        altText: "Chiken & Snowpeas Salad",
         description_primary:
           "Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.",
         description_secondary:

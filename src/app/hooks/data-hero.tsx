@@ -19,7 +19,7 @@ export const sliderHeroData = {
     },
     {
       id: 2,
-      image: "/hero/hero-8.jpg",
+      image: "/hero/drink.jpg",
       altText: "hero-2",
       subtitle: "Category",
       title: "Cocktails & Drinks",
@@ -29,7 +29,7 @@ export const sliderHeroData = {
     },
     {
       id: 3,
-      image: "/hero/vegan.png",
+      image: "/ourImages/food/food14.jpeg",
       altText: "hero-3",
       subtitle: "Category",
       title: "Vegan",
