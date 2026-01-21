@@ -1,4 +1,4 @@
-import PageTemplate from "./(routes)/intro/page";
+import HomePage from "./(routes)/home/page";
 
-export default PageTemplate;
+export default HomePage;
 

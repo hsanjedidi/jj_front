@@ -118,7 +118,7 @@ const Header2: React.FC = () => {
                     <ul className="header__menu-list">
                       {itemsNavbar.map((item) => (
                         <li
-                          key={item.id}
+                          key={item.title}
                           className={cn(
                             "dropdown simple-dropdown",
                             item.children &&

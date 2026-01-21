@@ -1,53 +1,24 @@
 // Extract history data into an array
 export const itemsNavbar = [
+  // {
+  //   id: 1,
+  //   title: "Home",
+  //   link: "/",
+  // },
   {
-    id: 1,
-    title: "Home",
-    link: "/",
-    children: [
-      {
-        id: 11,
-        title: "Creative",
-        link: "/home-creative",
-      },
-      {
-        id: 12,
-        title: "Classic",
-        link: "/home-classic",
-      },
-    ],
+    id: 3,
+    title: "About",
+    link: "/about-us",
   },
   {
     id: 2,
     title: "Menu",
-    link: "/menu",
-    children: [
-      {
-        id: 21,
-        title: "Menu classic",
-        link: "/menu2",
-      },
-      {
-        id: 24,
-        title: "Full Width",
-        link: "/menu-full-width",
-      },
-      {
-        id: 22,
-        title: "Menu Tabs",
-        link: "/menu-tabs",
-      },
-      {
-        id: 23,
-        title: "Menu Sidebar",
-        link: "/menu-sidebar",
-      },
-    ],
+    link: "/menu2",
   },
   {
-    id: 3,
-    title: "Pages",
-    link: "/",
+    id: 4,
+    title: "Events",
+    link: "/events",
     children: [
       {
         id: 31,
@@ -72,19 +43,20 @@ export const itemsNavbar = [
     ],
   },
   {
-    id: 6,
-    title: "Contact",
-    link: "/contact-us",
-  },
-  {
-    id: 6,
-    title: "History2",
-    link: "/history2",
+    id: 4,
+    title: "Gallery",
+    link: "/gallery",
   },
   {
     id: 7,
-    title: "Others",
-    link: "/",
+    title: "History2",
+    link: "/history2",
+  },
+
+  {
+    id: 8,
+    title: "Contact",
+    link: "/contact-us",
     children: [
       {
         id: 71,

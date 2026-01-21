@@ -8,7 +8,7 @@ export function TimelineDemo() {
       title: "2025",
       content: (
         <div className=" space-y-4">
-          <h2>JJ's best pub in Bahrain</h2>
+          <h2>JJ&apos;s best pub in Bahrain</h2>
           <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
             🎉 Guess who’s Bahrain’s Favourite Pub? We are! 🏆🍻 Big love and a
             huge shoutout to everyone who voted for JJ’s at the Fact Dining
@@ -30,7 +30,7 @@ export function TimelineDemo() {
       title: "2025",
       content: (
         <div className=" space-y-4">
-          <h2>JJ's KARAOKE IS 20 YEARS STRONG</h2>
+          <h2>JJ&apos;s KARAOKE IS 20 YEARS STRONG</h2>
           <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
             🎉 Celebrating 20 incredible years of JJ’s! 🥳 From our humble
             beginnings in 2005 to becoming Bahrain’s favourite pub, it’s been an
@@ -66,7 +66,14 @@ export function TimelineDemo() {
             of young athletes by supporting structured training, discipline, and
             community-driven sports initiatives.
           </p>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 grid-rows-2 gap-4">
+            <Image
+              src="/ourImages/awards/amateur_football_league_0.jpg"
+              alt="startup template"
+              width={500}
+              height={500}
+              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+            />
             <Image
               src="/ourImages/awards/amateur_football_league_1.jpg"
               alt="startup template"
