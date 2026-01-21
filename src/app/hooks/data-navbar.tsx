@@ -21,6 +21,11 @@ export const itemsNavbar = [
     link: "/events",
     children: [
       {
+        id: 9,
+        title: "One Event",
+        link: "/events/one",
+      },
+      {
         id: 31,
         title: "About Us",
         link: "/about-us",

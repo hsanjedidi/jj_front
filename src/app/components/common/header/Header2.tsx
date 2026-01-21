@@ -11,6 +11,8 @@ import { cn } from "@/lib/utils";
 import throttle from "lodash.throttle";
 import { useWindowScroll } from "@uidotdev/usehooks";
 import { Separator } from "@/components/ui/separator";
+import MenuMobileChips from "./MenuMobileChips";
+import MobileHeader from "./MobileHeader";
 
 const STICKY_THRESHOLD = 100; // Define scroll threshold (adjust as needed)
 const SCROLL_THROTTLE_LIMIT = 200; // Throttle limit in ms
@@ -23,7 +25,7 @@ const SCROLL_THROTTLE_LIMIT = 200; // Throttle limit in ms
  */
 const Header2: React.FC = () => {
   const [isSticky, setIsSticky] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMenuVisible, setMenuVisibility] = useState(false);
   const [{ x, y: scrollY }, scrollTo] = useWindowScroll();
   const [previousYRef, setPreviousYRef] = useState(scrollY);
   /**
@@ -38,7 +40,7 @@ const Header2: React.FC = () => {
 
     const throttledScrollHandler = throttle(
       handleScroll,
-      SCROLL_THROTTLE_LIMIT
+      SCROLL_THROTTLE_LIMIT,
     );
 
     window.addEventListener("scroll", throttledScrollHandler);
@@ -53,7 +55,7 @@ const Header2: React.FC = () => {
    * Toggles the visibility of the mobile menu.
    */
   const handleToggleMobileMenu = () => {
-    setIsMobile(!isMobile);
+    setMenuVisibility(!isMenuVisible);
   };
 
   const [headerHidden, setHeaderHidden] = useState(false);
@@ -62,7 +64,7 @@ const Header2: React.FC = () => {
     else if (scrollY && previousYRef < scrollY) {
       // Scrolling down
       setHeaderHidden(true);
-      if (isMobile) setIsMobile(false);
+      if (isMenuVisible) setMenuVisibility(false);
     } else {
       // Scrolling up
       setHeaderHidden(false);
@@ -74,6 +76,9 @@ const Header2: React.FC = () => {
 
   const bgTransparent = scrollY === null || scrollY < 20;
 
+  const handleLinkClick = ()=>{
+    setHeaderHidden(true);
+  }
   return (
     <div className="  transition-all duration-300 ease-in-out">
       <div className=" transition-all duration-300 ease-in-out">
@@ -82,13 +87,13 @@ const Header2: React.FC = () => {
             "fixed top-0 left-0 w-full z-50 md:overflow-visible",
             headerHidden
               ? "-translate-y-full transition-all duration-300 ease-in-out"
-              : "transition-all duration-300 ease-in-out"
+              : "transition-all duration-300 ease-in-out",
           )}
         >
           <div
             className={cn(
               "p-4 duration-700 ease-in-out transition-colors",
-              bgTransparent ? "bg-transparent" : " bg-black"
+              bgTransparent ? "bg-transparent" : " bg-black",
             )}
           >
             <div className="flex flex-col w-full h-fit transition-all duration-300 ease-in-out">
@@ -96,7 +101,7 @@ const Header2: React.FC = () => {
                 <div className="flex items-center">
                   <div className="header__mobile">
                     <MenuToggleButton
-                      isMobile={isMobile}
+                      isMobile={isMenuVisible}
                       onToggle={handleToggleMobileMenu}
                       aria-controls="menu-mobile"
                     />
@@ -123,7 +128,7 @@ const Header2: React.FC = () => {
                             "dropdown simple-dropdown",
                             item.children &&
                               item.children.length > 0 &&
-                              "has-children"
+                              "has-children",
                           )}
                         >
                           <Link href={item.link}>{item.title}</Link>
@@ -153,9 +158,9 @@ const Header2: React.FC = () => {
               <div
                 className={cn(
                   "overflow-hidden transition-all duration-300 ease-in-out ",
-                  isMobile
+                  isMenuVisible
                     ? "max-h-40 opacity-100 pt-6"
-                    : "max-h-0 opacity-0 pt-0"
+                    : "max-h-0 opacity-0 pt-0",
                 )}
               >
                 <div
@@ -165,32 +170,7 @@ const Header2: React.FC = () => {
                     scrollbarWidth: "thin",
                   }}
                 >
-                  <Link
-                    href="/home-creative"
-                    className="flex items-center space-x-2"
-                  >
-                    <span>Home</span>
-                    <Separator orientation="vertical" className="h-6" />
-                  </Link>
-                  <Link href="/about2" className="flex items-center space-x-2">
-                    <span>About</span>
-                    <Separator orientation="vertical" className="h-6" />
-                  </Link>
-                  <Link href="/menu2" className="flex items-center space-x-2">
-                    <span>Menu</span>
-                    <Separator orientation="vertical" className="h-6" />
-                  </Link>
-                  <div className="flex items-center space-x-2">
-                    <span>Events</span>
-                    <Separator orientation="vertical" className="h-6" />
-                  </div>
-                  <Link href="/gallery" className="flex items-center space-x-2">
-                    <span>Gallery</span>
-                    <Separator orientation="vertical" className="h-6" />
-                  </Link>
-                  <div className="flex items-center space-x-2">
-                    <span>Contact</span>
-                  </div>
+                  <MobileHeader handleLinkClick={handleToggleMobileMenu} />
                 </div>
               </div>
             </div>
