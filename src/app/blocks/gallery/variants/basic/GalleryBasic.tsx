@@ -63,13 +63,7 @@ const GalleryBasic: React.FC<GalleryBasicProps> = ({
 		[items, handleItemClick]
 	);
 
-	const getGridClass = () => {
-		if (typeof window !== "undefined") {
-			if (window.innerWidth < 640) return "grid-cols-1";
-			if (window.innerWidth < 1024) return "grid-cols-2";
-		}
-		return "grid-cols-4";
-	};
+
 
 	if (state.error) {
 		return (
@@ -90,6 +84,8 @@ const GalleryBasic: React.FC<GalleryBasicProps> = ({
 		);
 	}
 
+	
+
 	return (
 		<div
 			className={cn("gallery-block", className)}
@@ -109,7 +105,7 @@ const GalleryBasic: React.FC<GalleryBasicProps> = ({
 
 				{/* Gallery list */}
 				<div
-					className={cn("gallery-block__list", listClassName, getGridClass())}
+					className={cn("gallery-block__list", listClassName, "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4")}
 					role="list"
 					aria-label="Gallery items"
 				>

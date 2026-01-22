@@ -22,7 +22,7 @@ const MenuMobileChips = ({
         href={link}
         onClick={() => onClick(link)}
         className={cn(
-          "flex items-center space-x-2 transition-[color,transform] ease-in-out duration-500",
+          "flex items-center space-x-2 transition-all ease-in-out duration-500 text-white",
           clover && "text-primary",
         )}
       >

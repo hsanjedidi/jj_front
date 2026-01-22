@@ -9,7 +9,7 @@ import MenuMobile from "@/app/components/common/menuMobile/menuMobile";
 import MenuToggleButton from "./MenuToggleButton";
 import { cn } from "@/lib/utils";
 import throttle from "lodash.throttle";
-import { useWindowScroll } from "@uidotdev/usehooks";
+import { useClickAway, useWindowScroll } from "@uidotdev/usehooks";
 import { Separator } from "@/components/ui/separator";
 import MenuMobileChips from "./MenuMobileChips";
 import MobileHeader from "./MobileHeader";
@@ -55,7 +55,7 @@ const Header2: React.FC = () => {
    * Toggles the visibility of the mobile menu.
    */
   const handleToggleMobileMenu = () => {
-    setMenuVisibility(!isMenuVisible);
+    setMenuVisibility(isMenuVisible ? isMenuVisible : (prev) => !prev);
   };
 
   const [headerHidden, setHeaderHidden] = useState(false);
@@ -76,11 +76,16 @@ const Header2: React.FC = () => {
 
   const bgTransparent = scrollY === null || scrollY < 20;
 
-  const handleLinkClick = ()=>{
-    setHeaderHidden(true);
-  }
+  const closeFuckingMobileMenu = () => {
+    setMenuVisibility(false);
+  };
+
+  const ref = useClickAway<HTMLDivElement>(() => {
+    closeFuckingMobileMenu();
+  });
+
   return (
-    <div className="  transition-all duration-300 ease-in-out">
+    <div className="  transition-all duration-300 ease-in-out" ref={ref}>
       <div className=" transition-all duration-300 ease-in-out">
         <header
           className={cn(
@@ -99,7 +104,7 @@ const Header2: React.FC = () => {
             <div className="flex flex-col w-full h-fit transition-all duration-300 ease-in-out">
               <div className="grid grid-cols-3 w-full">
                 <div className="flex items-center">
-                  <div className="header__mobile">
+                  <div className="header__mobile" ref={null}>
                     <MenuToggleButton
                       isMobile={isMenuVisible}
                       onToggle={handleToggleMobileMenu}
@@ -159,19 +164,11 @@ const Header2: React.FC = () => {
                 className={cn(
                   "overflow-hidden transition-all duration-300 ease-in-out ",
                   isMenuVisible
-                    ? "max-h-40 opacity-100 pt-6"
+                    ? "max-h-40 opacity-100 pt-6 md:max-h-0 md:opacity-0"
                     : "max-h-0 opacity-0 pt-0",
                 )}
               >
-                <div
-                  className=" flex w-full justify-start space-x-2 overflow-x-scroll scroll-m-4 pb-4 "
-                  style={{
-                    scrollbarColor: "-moz-initial",
-                    scrollbarWidth: "thin",
-                  }}
-                >
-                  <MobileHeader handleLinkClick={handleToggleMobileMenu} />
-                </div>
+                <MobileHeader handleLinkClick={closeFuckingMobileMenu} />
               </div>
             </div>
           </div>

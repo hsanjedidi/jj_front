@@ -12,7 +12,13 @@ const MobileHeader = ({ handleLinkClick }: { handleLinkClick: () => void }) => {
     handleLinkClick();
   };
   return (
-    <>
+    <div
+      className=" flex w-full justify-start space-x-2 overflow-x-scroll scroll-m-4 pb-4 "
+      style={{
+        scrollbarColor: "-moz-initial",
+        scrollbarWidth: "thin",
+      }}
+    >
       {itemsNavbar.map((item, index) => (
         <MenuMobileChips
           key={item.title}
@@ -23,7 +29,7 @@ const MobileHeader = ({ handleLinkClick }: { handleLinkClick: () => void }) => {
           clover={item.link === currentPage}
         />
       ))}
-    </>
+    </div>
   );
 };
 export default MobileHeader;
