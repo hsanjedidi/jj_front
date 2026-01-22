@@ -131,7 +131,7 @@ export const HeroInnerAboutData = {
 			link: "",
 		},
 	],
-	image: "/bg/bg-cta.jpg",
+	image: "/hero/gallery-14a.jpg",
 	altText: "About Us",
 };
 

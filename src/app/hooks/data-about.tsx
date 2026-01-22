@@ -30,7 +30,6 @@ export const aboutData = {
 	descriptionParagraphs: [
 		"Our restaurant is a celebration of nature-inspired cuisine, where every dish tells a story. Through a vibrant blend of textures, colors, and seasonal ingredients, we create an environment that feels both elegant and alive.",
 		"We believe in the art of culinary innovation. Our chefs experiment daily, crafting bold flavors and unforgettable experiences that surprise and delight every guest who walks through our doors.",
-		"Warm hospitality is at the heart of everything we do. From the first greeting to the last bite, we strive to make every guest feel welcome, comfortable, and truly at home.",
 	],
 	descriptionParagraphsTwo: [
 		"Beef Restourant Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words.",

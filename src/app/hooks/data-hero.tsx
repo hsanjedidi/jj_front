@@ -19,7 +19,7 @@ export const sliderHeroData = {
     },
     {
       id: 2,
-      image: "/hero/hero-8.jpg",
+      image: "/hero/drink.jpg",
       altText: "hero-2",
       subtitle: "Category",
       title: "Cocktails & Drinks",

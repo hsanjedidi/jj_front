@@ -16,7 +16,7 @@ const KidsPage = () => {
         breadcrumbs={[
           { id: 1, title: "Home", link: "/" },
           { id: 2, title: "Menu", link: "/menu2" },
-          { id: 3, title: "Food", link: "/menu2/kids" },
+          { id: 3, title: "kids", link: "/menu2/kids" },
         ]}
       />
       <SpecialOffersBlock

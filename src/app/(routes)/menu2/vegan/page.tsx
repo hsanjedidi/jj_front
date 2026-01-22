@@ -15,7 +15,7 @@ const VeganPage = () => {
         breadcrumbs={[
           { id: 1, title: "Home", link: "/" },
           { id: 2, title: "Menu", link: "/menu2" },
-          { id: 3, title: "Food", link: "/menu2/vegan" },
+          { id: 3, title: "Vegan", link: "/menu2/vegan" },
         ]}
       />
       <SpecialOffersBlock

@@ -35,7 +35,7 @@ const AboutPage = () => {
 			{/* / About Classic - Block */}
 
 			{/* About Modern - Block */}
-			<AboutTwoCols {...aboutTwoData} />
+			{/* <AboutTwoCols {...aboutTwoData} /> */}
 			{/* / About Modern - Block */}
 
 			{/* Badges Block */}

@@ -69,7 +69,7 @@ const menuItems = {
         tag: "Specialty",
         title: "Four cheese garlic bread",
         price: "$32.00",
-        image: "/ourImages/drink/drink1.png",
+        image: "/ourImages/drink/drink14.jpg",
         altText: "Four cheese garlic bread",
         description_primary:
           "Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.",
@@ -83,7 +83,7 @@ const menuItems = {
         tag: "Specialty",
         title: "Four cheese garlic bread",
         price: "$32.00",
-        image: "/ourImages/drink/drink2.png",
+        image: "/ourImages/drink/drink15.jpg",
         altText: "Four cheese garlic bread",
         description_primary:
           "Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.",
@@ -97,7 +97,7 @@ const menuItems = {
         tag: "Specialty",
         title: "Four cheese garlic bread",
         price: "$32.00",
-        image: "/ourImages/drink/drink3.png",
+        image: "/ourImages/drink/drink16.jpg",
         altText: "Four cheese garlic bread",
         description_primary:
           "Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.",

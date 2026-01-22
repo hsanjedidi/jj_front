@@ -10,7 +10,7 @@ const FoodPage = () => {
     <main>
       <HeroInnerBlock
         title={"Menu Food"}
-        image={""}
+        image={"/hero/gallery-15a.jpg"}
         altText={""}
         breadcrumbs={[
           { id: 1, title: "Home", link: "/" },
@@ -18,13 +18,15 @@ const FoodPage = () => {
           { id: 3, title: "Food", link: "/menu2/food" },
         ]}
       />
-      <SpecialOffersBlock className="block md:hidden" 
-       items={menuItems.kids.items}
-       />
-      <SpecialOffersTwoBlock className="hidden md:block"
-      title={menuItems.food.title}
+      <SpecialOffersBlock
+        className="block md:hidden"
         items={menuItems.food.items}
-         />
+      />
+      <SpecialOffersTwoBlock
+        className="hidden md:block"
+        title={menuItems.food.title}
+        items={menuItems.food.items}
+      />
     </main>
   );
 };
