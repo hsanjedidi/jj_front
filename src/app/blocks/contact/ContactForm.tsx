@@ -175,7 +175,7 @@ const ContactForm = () => {
                     htmlFor="NonVip"
                     className="text-center bg-transparent z-10"
                   >
-                    Non Vip
+                    Standard
                   </label>
                   <label
                     htmlFor="vip"
