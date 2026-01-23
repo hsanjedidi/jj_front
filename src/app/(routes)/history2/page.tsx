@@ -7,7 +7,7 @@ const TimelinePage = () => {
     <>
       <HeroInnerBlock
         title={"History"}
-        image={HeroInnerAboutData.image}
+        image={"/hero/gallery-14a.jpg"}
         altText={HeroInnerAboutData.altText}
         breadcrumbs={[
           { id: 1, title: "Home", link: "/" },

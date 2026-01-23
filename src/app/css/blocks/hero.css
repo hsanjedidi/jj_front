@@ -257,3 +257,22 @@
     transform: translateY(0);
   }
 }
+
+
+/*==================================================
+    Hero Inner 2
+==================================================*/
+.hero-inner2 {
+  @apply relative z-0 w-full  h-screen  bg-surface-dark overflow-hidden;
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

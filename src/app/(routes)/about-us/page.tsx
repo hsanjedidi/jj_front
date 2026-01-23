@@ -17,12 +17,13 @@ import { badgesListData } from "@/app/hooks/data-brands";
 import { aboutData, aboutTwoData } from "@/app/hooks/data-about";
 import { contactData } from "@/app/hooks/data-contact";
 import { galleryData } from "@/app/hooks/data-gallery";
+import HeroInnerBlock2 from "@/app/components/common/hero-inner/Hero-inner2";
 
 const AboutPage = () => {
 	return (
 		<>
 			{/* Hero Inner - Block */}
-			<HeroInnerBlock
+			<HeroInnerBlock2
 				title={HeroInnerAboutData.title}
 				image={HeroInnerAboutData.image}
 				altText={HeroInnerAboutData.altText}
@@ -46,9 +47,7 @@ const AboutPage = () => {
 			<TestimonialsBlock {...testimonialsData} />
 			{/* / Testimonials Block */}
 
-			{/* Team Two Block */}
-			<TeamTwoBlock />
-			{/* / Team Two Block */}
+			
 
 			{/* Contact Block */}
 			<ContactBlock {...contactData} />
