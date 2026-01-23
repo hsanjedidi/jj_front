@@ -1,8 +1,6 @@
 "use client";
 
-import { Switch } from "@/components/ui/switch";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
 import { z } from "zod";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
