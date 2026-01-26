@@ -1,222 +1,185 @@
 "use client";
 
-import { Switch } from "@/components/ui/switch";
+import React from "react";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
-import { z } from "zod";
-import { Controller, useForm } from "react-hook-form";
+import { Controller, useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Field,
-  FieldError,
-  FieldGroup,
-  FieldLabel,
-} from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import { PhoneInput } from "@/app/components/ui/phone-input";
+import * as z from "zod";
 
-const reservationSchema = z
-  .object({
-    firstName: z
-      .string({ error: "First Name is required" })
-      .min(2, "First Name must be at least 2 characters"),
-    lastName: z
-      .string({ error: "Last Name is required" })
-      .min(2, "Last Name must be at least 2 characters"),
-    email: z.email("Invalid email address"),
-    phoneNumber: z
-      .string({ error: "Phone number is required" })
-      .min(8, "Phone number must be at least 8 digits"),
-    nbrGuests: z.object({
-      men: z.number().min(0),
-      women: z.number().min(0),
-    }),
-    isVip: z.boolean().default(false),
-    date: z.string().refine((date) => !isNaN(Date.parse(date)), {
-      message: "Invalid date",
-    }),
-  })
-  .refine((data) => data.nbrGuests.men + data.nbrGuests.women > 0, {
-    message: "At least one guest must be selected",
-    path: ["nbrGuests"],
-  });
+const reservationSchema = z.object({
+  firstName: z.string().min(2, "Le prénom est requis"),
+  lastName: z.string().min(2, "Le nom est requis"),
+  email: z.string().email("Email invalide"),
+  phoneNumber: z.string().min(8, "Numéro trop court"),
+  isVip: z.boolean(),
+});
 
 type ReservationFormData = z.infer<typeof reservationSchema>;
+
 const ContactForm = () => {
-  const initialForm: ReservationFormData = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    phoneNumber: "",
-    nbrGuests: { men: 0, women: 0 },
-    isVip: false,
-    date: new Date().toISOString(),
-  };
-  const form = useForm({
+  const {
+    control,
+    handleSubmit,
+    setValue,
+    watch,
+    formState: { errors },
+  } = useForm<ReservationFormData>({
     resolver: zodResolver(reservationSchema),
-    defaultValues: initialForm,
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      phoneNumber: "",
+      isVip: false,
+    },
   });
 
-  const { setValue, watch } = form;
   const isVip = watch("isVip");
 
-  const menGuests = watch("nbrGuests").men;
-  const womenGuests = watch("nbrGuests").women;
-  const totalGuests = menGuests + womenGuests;
-
-  const onSubmit = (data: ReservationFormData) => {
-    console.log("Form submitted:", data);
+  const onSubmit: SubmitHandler<ReservationFormData> = (data) => {
+    console.log("Form Submitted:", data);
   };
 
   return (
-    <>
+    <div className="flex items-center justify-center min-h-screen bg-neutral-950 p-4 font-sans">
       <div
         className={cn(
-          " w-1/2 border-2  border-[#b08243] mx-auto bg-background  rounded-xl overflow-hidden transition-colors duration-500 ease-in-out ",
-          isVip && "border-white bg-primary ",
+          "w-full max-w-5xl rounded-2xl overflow-hidden transition-all duration-700 ease-in-out border shadow-2xl",
+          // INVERSION : Standard (Gold à droite, Black à gauche) | VIP (Black à droite, Gold à gauche)
+          !isVip
+            ? "bg-gradient-to-r from-black from-50% to-[#b08243] to-50% border-[#b08243]/30"
+            : "bg-gradient-to-r from-[#b08243] from-50% to-black to-50% border-white/20",
         )}
       >
-        <div className="w-full h-full flex flex-col-reverse md:grid md:grid-cols-2 ">
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <FieldGroup>
-              <div className="flex flex-col space-y-4 p-4">
-                <h2>Reservation</h2>
-                <Controller
-                  name="firstName"
-                  control={form.control}
-                  render={({ field, fieldState }) => (
-                    <Field data-invalid={fieldState.invalid}>
-                      <FieldLabel htmlFor={`firstName-input`}>
-                        First Name
-                      </FieldLabel>
-                      <Input
-                        {...field}
-                        id={`firstName-input`}
-                        aria-invalid={fieldState.invalid}
-                        placeholder="First Name"
-                      />
-                      {fieldState.invalid && (
-                        <FieldError errors={[fieldState.error]} />
-                      )}
-                    </Field>
-                  )}
-                />
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          {/* --- SECTION FORMULAIRE --- */}
+          <div className="p-8 md:p-12 transition-colors duration-700">
+            <h2
+              className={cn(
+                "text-4xl font-serif mb-8 transition-colors duration-700",
+                isVip ? "text-black" : "text-[#b08243]",
+              )}
+            >
+              Reservation
+            </h2>
 
-                <Controller
-                  name="lastName"
-                  control={form.control}
-                  render={({ field, fieldState }) => (
-                    <Field data-invalid={fieldState.invalid}>
-                      <FieldLabel htmlFor={`lastName-input`}>
-                        Last Name
-                      </FieldLabel>
-                      <Input
-                        {...field}
-                        id={`lastName-input`}
-                        aria-invalid={fieldState.invalid}
-                        placeholder="Last Name"
-                      />
-                      {fieldState.invalid && (
-                        <FieldError errors={[fieldState.error]} />
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+              <div className="space-y-4">
+                {[
+                  { name: "firstName" as const, label: "First Name" },
+                  { name: "lastName" as const, label: "Last Name" },
+                  { name: "email" as const, label: "Email", type: "email" },
+                  { name: "phoneNumber" as const, label: "Phone Number" },
+                ].map((input) => (
+                  <div key={input.name} className="flex flex-col gap-1">
+                    <label
+                      className={cn(
+                        "text-sm font-medium transition-colors duration-700",
+                        isVip ? "text-black/80" : "text-white/70",
                       )}
-                    </Field>
-                  )}
-                />
+                    >
+                      {input.label}
+                    </label>
+                    <Controller
+                      name={input.name}
+                      control={control}
+                      render={({ field }) => (
+                        <input
+                          {...field}
+                          type={input.type || "text"}
+                          className={cn(
+                            "rounded-md h-12 px-4 outline-none transition-all duration-700 border-none",
+                            // Style dynamique de l'input selon le fond
+                            isVip
+                              ? "bg-black/10 text-black placeholder:text-black/40 focus:ring-1 focus:ring-black/20"
+                              : "bg-white/5 text-white placeholder:text-white/30 focus:ring-1 focus:ring-white/20",
+                          )}
+                          placeholder={input.label}
+                        />
+                      )}
+                    />
+                    {errors[input.name] && (
+                      <span className="text-red-500 text-[10px] font-bold uppercase">
+                        {errors[input.name]?.message}
+                      </span>
+                    )}
+                  </div>
+                ))}
+              </div>
 
-                <Controller
-                  name="email"
-                  control={form.control}
-                  render={({ field, fieldState }) => (
-                    <Field data-invalid={fieldState.invalid}>
-                      <FieldLabel htmlFor={`email-input`}>Email</FieldLabel>
-                      <Input
-                        {...field}
-                        id={`email-input`}
-                        aria-invalid={fieldState.invalid}
-                        placeholder="Email"
-                      />
-                      {fieldState.invalid && (
-                        <FieldError errors={[fieldState.error]} />
-                      )}
-                    </Field>
-                  )}
-                />
-
-                <Controller
-                  name="phoneNumber"
-                  control={form.control}
-                  render={({ field, fieldState }) => (
-                    <Field data-invalid={fieldState.invalid}>
-                      <FieldLabel htmlFor={`phoneNumber-input`}>
-                        Phone Number
-                      </FieldLabel>
-                      <PhoneInput
-                        {...field}
-                        value={field.value ?? undefined}
-                        defaultCountry="BH"
-                        id={`phoneNumber-input`}
-                        aria-invalid={fieldState.invalid}
-                        placeholder="Phone Number"
-                      />
-                      {fieldState.invalid && (
-                        <FieldError errors={[fieldState.error]} />
-                      )}
-                    </Field>
-                  )}
-                />
-               
+              {/* --- TOGGLE SWITCH --- */}
+              <div className="pt-6">
                 <div
-                  className="relative gap-2 grid grid-cols-2 border w-48 py-2 px-4 cursor-pointer"
-                  onClick={() => {
-                    setValue("isVip", !isVip);
-                  }}
+                  className="relative grid grid-cols-2 w-48 p-1 rounded-full cursor-pointer bg-black/80 border border-white/10"
+                  onClick={() => setValue("isVip", !isVip)}
                 >
-                  <label
-                    htmlFor="NonVip"
-                    className="text-center bg-transparent z-10"
+                  <span
+                    className={cn(
+                      "z-10 text-[10px] uppercase tracking-widest font-black text-center py-2.5 transition-colors duration-500",
+                      !isVip ? "text-black" : "text-gray-400",
+                    )}
                   >
                     Standard
-                  </label>
-                  <label
-                    htmlFor="vip"
-                    className="text-center bg-transparent z-10"
+                  </span>
+                  <span
+                    className={cn(
+                      "z-10 text-[10px] uppercase tracking-widest font-black text-center py-2.5 transition-colors duration-500",
+                      isVip ? "text-black" : "text-gray-400",
+                    )}
                   >
-                    Vip
-                  </label>
+                    VIP
+                  </span>
                   <div
                     className={cn(
-                      " absolute h-full w-1/2 bg-black transition-all duration-300 ease-out",
-                        isVip && "translate-x-full"
+                      "absolute inset-y-1 left-1 w-[calc(50%-4px)] rounded-full bg-gradient-to-br from-[#f6e7b1] via-[#d4af37] to-[#b08243] transition-transform duration-500",
+                      isVip && "translate-x-[calc(100%+4px)]",
                     )}
                   />
                 </div>
               </div>
-            </FieldGroup>
-          </form>
 
-          <div className=" h-20 md:h-full overflow-hidden ">
-            <div className=" relative h-full w-full flex items-center justify-center ">
-              <img
-                src="/ourImages/reservation/reserved.jpg"
-                alt=""
+              <button
                 className={cn(
-                  " absolute   w-full h-full transition-transform ease-in-out duration-500 object-cover",
-                  isVip && "  -translate-x-full ",
+                  "w-full py-4 rounded-md font-bold uppercase tracking-widest text-xs transition-all duration-700 mt-4 border",
+                  isVip
+                    ? "bg-black text-[#d4af37] border-black"
+                    : "bg-white/10 text-white border-white/20 hover:bg-white/20",
                 )}
-              />
+              >
+                Confirm Reservation
+              </button>
+            </form>
+          </div>
+
+          {/* --- SECTION IMAGE (DROITE) --- */}
+          <div className="relative min-h-[500px] overflow-hidden bg-black">
+            <img
+              src="/ourImages/reservation/contact1.jpg"
+              alt="Standard"
+              className={cn(
+                "absolute inset-0 w-full h-full object-cover transition-all duration-1000",
+                isVip ? "opacity-0 scale-110" : "opacity-100 scale-100",
+              )}
+            />
+            <div
+              className={cn(
+                "absolute inset-0 transition-all duration-1000",
+                !isVip
+                  ? "opacity-0 translate-x-full"
+                  : "opacity-100 translate-x-0",
+              )}
+            >
               <img
-                src="/ourImages/reservation/vip-table.jpg"
-                alt=""
-                className={cn(
-                  " absolute   w-full h-full transition-transform ease-in-out duration-500 object-cover",
-                  !isVip && "  translate-x-full ",
-                )}
+                src="/ourImages/reservation/vip.avif"
+                alt="VIP"
+                className="w-full h-full object-cover"
               />
+              <div className="absolute inset-0 bg-black/10" />
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

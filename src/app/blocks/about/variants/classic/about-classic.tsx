@@ -45,7 +45,7 @@ const AboutClassicBlock = ({
       aria-label="About Image Info"
       aria-describedby="about-description"
     >
-      <div className="about-content max-h-screen  bg-[#303d3b]">
+      <div className="about-content min-h-screen  bg-[#303d3b]">
         <div
           className={`about-content__image `}
           onClick={onImageClick}
@@ -56,13 +56,13 @@ const AboutClassicBlock = ({
             src={imageUrl}
             alt={altText}
             width={imageWidth || 809}
-            height={imageHeight || 1011}
+            height={imageHeight || 200}
             priority={priorityImage}
             quality={imageQuality || 75}
             fill={imageFill}
             onLoad={onImageLoad}
-            className={`about-content__image-img ${imageClassName || ""}`}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+            className={` h-screen  w-full  ${imageClassName || ""}`}
+            sizes=""
           />
         </div>
         <div className={`about-content__info `} id="about-description">
@@ -73,7 +73,7 @@ const AboutClassicBlock = ({
             align={align as Alignment}
             aria-level="2"
           />
-          <div className="about-content__description">
+          <div className="about-content__description ">
             {descriptionParagraphs.map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
             ))}

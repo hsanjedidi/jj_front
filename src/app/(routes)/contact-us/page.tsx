@@ -7,16 +7,20 @@ import LocationsBlock from "@/app/blocks/locations/locations";
 import { contactData } from "@/app/hooks/data-contact";
 import { locationsData } from "@/app/hooks/data-contact";
 import ContactForm from "@/app/blocks/contact/ContactForm";
+import { HeroInnerAboutData } from "@/app/hooks/data";
 
 const ContactUsPage = () => {
   return (
     <>
       {/* Hero Inner - Block */}
       <HeroInnerBlock
-        title={HeroInnerContactData.title}
-        image={HeroInnerContactData.image}
+        title={"Contact Us"}
+        image={"/hero/gallery-14a.jpg"}
         altText={HeroInnerContactData.altText}
-        breadcrumbs={HeroInnerContactData.breadcrumbs}
+        breadcrumbs={[
+          { id: 1, title: "Home", link: "/" },
+          { id: 2, title: "Contact", link: "/contact" },
+        ]}
       />
       {/* / Hero Inner - Block */}
       <ContactForm />

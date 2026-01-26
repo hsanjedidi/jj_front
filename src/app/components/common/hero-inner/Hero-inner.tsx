@@ -13,18 +13,13 @@ const HeroInnerBlock: React.FC<HeroInnerBlockProps> = ({
     <div className="hero-inner">
       {/* Background */}
       <div className="hero-inner__background">
-        <Image
-          src={image}
-          alt={altText}
-          width={1620}
-          height={880}
-        />
+        <Image src={image} alt={altText} width={1620} height={880} />
       </div>
       {/* Background */}
       {/* Content */}
       <div className="hero-inner__container">
         <div className="hero-inner__content">
-          <h1 className="hero-inner__title">{title}</h1>
+          <h1 className="hero-inner__title  ">{title}</h1>
           <div className="hero-inner__breadcrumbs">
             <Breadcrumbs items={breadcrumbs} />
           </div>
