@@ -1,6 +1,9 @@
 "use client";
 
+import { event2 } from "@/app/hooks2/events";
 import { useComponentMounted } from "@/app/hooks2/useComponentMounted";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
