@@ -1,5 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import { DraggableCardBody, DraggableCardContainer } from "@/app/components/ui/draggable-card";
+import {
+  DraggableCardBody,
+  DraggableCardContainer,
+} from "@/app/components/ui/draggable-card";
 import React from "react";
 
 const GalleryComp = () => {
@@ -58,9 +61,8 @@ const GalleryComp = () => {
   return (
     <DraggableCardContainer className="relative flex min-h-screen w-full items-center justify-center overflow-clip h-[calc(100vh+10rem)] bg-background ">
       <p className="absolute top-1/2 mx-auto max-w-sm -translate-y-3/4 text-center text-2xl font-black text-neutral-400 md:text-4xl dark:text-neutral-800">
-        All the cards are gone...
-        are you ready to make your own?
-        Join us and make memories!
+        All the cards are gone... are you ready to make your own? Join us and
+        make memories!
       </p>
       {items.map((item) => (
         <DraggableCardBody className={item.className} key={item.title}>
@@ -76,6 +78,6 @@ const GalleryComp = () => {
       ))}
     </DraggableCardContainer>
   );
-}
+};
 
 export default GalleryComp;

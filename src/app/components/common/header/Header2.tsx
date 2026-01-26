@@ -55,7 +55,7 @@ const Header2: React.FC = () => {
    * Toggles the visibility of the mobile menu.
    */
   const handleToggleMobileMenu = () => {
-    setMenuVisibility(isMenuVisible ? isMenuVisible : (prev) => !prev);
+    setMenuVisibility((prev) => !prev);
   };
 
   const [headerHidden, setHeaderHidden] = useState(false);

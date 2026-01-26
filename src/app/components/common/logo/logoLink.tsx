@@ -7,11 +7,14 @@ interface LogoLinkProps {
   src: string;
   alt: string;
   href: string;
-  scrollY: number | null;
+  scrollY?: number | null;
+  width?: number;
+  height?: number;
 }
 
 const LogoLink: React.FC<LogoLinkProps> = ({ href, src, alt, scrollY }) => {
-  const biggerLogo = scrollY === null || scrollY < 20;
+  const biggerLogo =
+    scrollY !== undefined && (scrollY === null || scrollY < 20);
   return (
     <Link className=" mx-auto w-fit" href={href}>
       <Image
@@ -22,7 +25,7 @@ const LogoLink: React.FC<LogoLinkProps> = ({ href, src, alt, scrollY }) => {
         height={600}
         className={cn(
           "mx-auto transition-all duration-700 ease-in-out",
-          biggerLogo ? "size-20" : "size-10 md:size-20"
+          biggerLogo ? "size-20" : "size-10 md:size-20",
         )}
       />
     </Link>
