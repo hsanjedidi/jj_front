@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 type DiscoverMoreProps = {
   title?: string;
@@ -40,17 +41,14 @@ const DiscoverMore = ({
           </p>
 
           <div className="pt-4">
-            <button className="group relative inline-flex items-center gap-3 rounded-full border border-[#d4af37]/40 px-8 py-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-[#f6e7b1] transition-all duration-300 hover:bg-[#d4af37] hover:text-black">
+            <Link href="history" className="group relative inline-flex items-center gap-3 rounded-full border border-[#d4af37]/40 px-8 py-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-[#f6e7b1] transition-all duration-300 hover:bg-[#d4af37] hover:text-black">
               Our History
               <span className="block h-px w-6 bg-current transition-all duration-300 group-hover:w-10" />
-            </button>
+            </Link>
           </div>
         </div>
 
-        {/* ================= IMAGE AJUSTÉE ================= */}
-        {/* 1. On enlève h-[420px] pour éviter de compresser l'image.
-            2. On utilise 'relative w-full' pour que l'image prenne sa place naturelle.
-        */}
+
         <div className="relative w-full rounded-3xl overflow-hidden bg-neutral-900 shadow-2xl">
           <img
             src={image}

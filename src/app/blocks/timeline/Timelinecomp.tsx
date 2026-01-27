@@ -8,8 +8,8 @@ export function TimelineDemo() {
       title: "Looking Back at Our Journey",
       content: (
         <div className=" space-y-4">
-          <h2>A Timeline of JJ&apos;s Milestones</h2>
-          <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+          <h2 className=" text-white">A Timeline of JJ&apos;s Milestones</h2>
+          <p className="mb-8 text-xs font-normal md:text-sm text-neutral-200">
             Recognizing key achievements, industry acknowledgments, and
             partnerships that define our professional journey.
           </p>
@@ -29,8 +29,8 @@ export function TimelineDemo() {
       title: "2025",
       content: (
         <div className=" space-y-4">
-          <h2>JJ&apos;s best pub in Bahrain</h2>
-          <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+          <h2 className=" text-white">JJ&apos;s best pub in Bahrain</h2>
+          <p className="mb-8 text-xs font-normal md:text-sm text-neutral-200">
             🎉 Guess who’s Bahrain’s Favourite Pub? We are! 🏆🍻 Big love and a
             huge shoutout to everyone who voted for JJ’s at the Fact Dining
             Awards Bahrain 2024 – you made this win happen! ❤️💃
@@ -51,8 +51,8 @@ export function TimelineDemo() {
       title: "2025",
       content: (
         <div className=" space-y-4">
-          <h2>JJ&apos;s KARAOKE IS 20 YEARS STRONG</h2>
-          <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+          <h2 className=" text-white">JJ&apos;s KARAOKE IS 20 YEARS STRONG</h2>
+          <p className="mb-8 text-xs font-normal md:text-sm text-neutral-200">
             🎉 Celebrating 20 incredible years of JJ’s! 🥳 From our humble
             beginnings in 2005 to becoming Bahrain’s favourite pub, it’s been an
             amazing journey filled with unforgettable moments. Here’s to many
@@ -81,8 +81,8 @@ export function TimelineDemo() {
       title: "2025",
       content: (
         <div className=" space-y-4">
-          <h2>Supporting Tomorrow’s Athletes</h2>
-          <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+          <h2 className=" text-white">Supporting Tomorrow’s Athletes</h2>
+          <p className="mb-8 text-xs font-normal md:text-sm text-neutral-200">
             Proud sponsor of 24N Sports Academy, contributing to the development
             of young athletes by supporting structured training, discipline, and
             community-driven sports initiatives.
@@ -117,8 +117,8 @@ export function TimelineDemo() {
       title: "2024",
       content: (
         <div className=" space-y-4">
-          <h2>Bahrain’s Favourite Pub</h2>
-          <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+          <h2 className=" text-white">Bahrain’s Favourite Pub</h2>
+          <p className="mb-8 text-xs font-normal md:text-sm text-neutral-200">
             🎉 Guess who’s Bahrain’s Favourite Pub? We are! 🏆🍻 Big love and a
             huge shoutout to everyone who voted for JJ’s at the Fact Dining
             Awards Bahrain 2024 – you made this win happen! ❤️💃{" "}
@@ -139,8 +139,8 @@ export function TimelineDemo() {
       title: "Early 2022",
       content: (
         <div className=" space-y-4">
-          <h2>Bahrain’s Favourite Pub</h2>
-          <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+          <h2 className=" text-white">Bahrain’s Favourite Pub</h2>
+          <p className="mb-8 text-xs font-normal md:text-sm text-neutral-200">
             🎉 Guess who’s Bahrain’s Favourite Pub? We are! 🏆🍻 Big love and a
             huge shoutout to everyone who voted for JJ’s at the Fact Dining
             Awards Bahrain 2024 – you made this win happen! ❤️💃{" "}
@@ -175,8 +175,8 @@ export function TimelineDemo() {
       title: "Early 2018",
       content: (
         <div className=" space-y-4">
-          <h2>Fact Magazine Award</h2>
-          <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+          <h2 className=" text-white">Fact Magazine Award</h2>
+          <p className="mb-8 text-xs font-normal md:text-sm text-neutral-200">
             JJ’s Won Fact Magazine Awards 2018 - Favourite Pub in Bahrain !
             Congrats to All JJ’s Team! We Are Simply The Best! 👏👏 Often Copied
             Never Bettered!

@@ -32,7 +32,7 @@ const BlockTitle: React.FC<BlockTitleProps> = ({
     >
       {subtitle && <p className="block-title__subtitle">{subtitle}</p>}
       {title && <h2 className="block-title__title  ">{title}</h2>}
-      {phrase && <p className="block-title__phrase">{phrase}</p>}
+      {phrase && <p className="block-title__phrase text-white">{phrase}</p>}
       {divider && <Divider />}
     </div>
   );

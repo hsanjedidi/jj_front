@@ -34,12 +34,13 @@ const SpecialOffersBlock = ({
   }
 
   return (
-    <>
+    <div className="bg-black">
       <BlockTitle
         subtitle={"Crafted with passion"}
         title={"Chef’s Recommendations"}
         phrase={"Handpicked dishes crafted by our chef"}
         align={"align" as Alignment}
+        className=" py-8  w-full"
         divider={true}
       />
       <section
@@ -101,13 +102,13 @@ const SpecialOffersBlock = ({
                   transition={{ duration: 1 }}
                 >
                   <span className="tag">{item.tag}</span>
-                  <h3 className="special-offers__slider__title">
+                  <h3 className="special-offers__slider__title text-white">
                     {item.title} <span>{item.price}</span>
                   </h3>
-                  <p className="special-offers__slider__primary">
+                  <p className="special-offers__slider__primary text-white">
                     {item.description_primary}
                   </p>
-                  <p className="special-offers__slider__secondary">
+                  <p className="special-offers__slider__secondary text-white">
                     {item.description_secondary}
                   </p>
                 </motion.div>
@@ -117,7 +118,7 @@ const SpecialOffersBlock = ({
         </Swiper>
         {/* Slider Special Offers */}
       </section>
-    </>
+    </div>
   );
 };
 

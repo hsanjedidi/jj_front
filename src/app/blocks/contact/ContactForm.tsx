@@ -8,10 +8,10 @@ import * as z from "zod";
 
 /* -------------------- SCHEMA -------------------- */
 const reservationSchema = z.object({
-  firstName: z.string().min(2, "Le prénom est requis"),
-  lastName: z.string().min(2, "Le nom est requis"),
-  email: z.string().email("Email invalide"),
-  phoneNumber: z.string().min(8, "Numéro trop court"),
+  firstName: z.string().min(2, "First name is required"),
+  lastName: z.string().min(2, "Last name is required"),
+  email: z.string().email("Invalid email"),
+  phoneNumber: z.string().min(8, "Phone number is too short"),
   isVip: z.boolean(),
 });
 

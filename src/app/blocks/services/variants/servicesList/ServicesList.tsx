@@ -19,7 +19,7 @@ const ServicesList = ({
 		);
 	}
 	return (
-		<div className="services-ilustrations">
+		<div className="services-ilustrations bg-black">
 				<BlockTitle
 					subtitle={"What defines us"}
 					title={"BRAND VALUES"}

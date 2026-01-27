@@ -25,7 +25,7 @@ const CtaOne = ({
 
           {/* Description : On ajoute une marge haute sur mobile pour "descendre" le bloc */}
           <div className="cta__body mt-auto md:mt-0 mb-6">
-            <p className="text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl leading-relaxed max-w-2xl mx-auto text-white">
               {description}
             </p>
           </div>

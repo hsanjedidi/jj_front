@@ -159,7 +159,7 @@ const MasonryGallery: React.FC<MasonryGalleryProps> = ({
 	}
 
 	return (
-		<div className={`masonry-gallery-block w-full`}>
+		<div className={`masonry-gallery-block w-full bg-black`}>
 			<div className="masonry-gallery-block__container w-full max-w-[1920px] mx-auto px-4">
 				<BlockTitle
 					subtitle={subtitle}

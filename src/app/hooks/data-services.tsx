@@ -37,7 +37,7 @@ export const ServiceCardListData = {
       image: "/services/celtic.png",
       image_hover: "/services/celtic.png",
       description:
-        "JJ’s is more than a pub, it’s a place where people gather, celebrate, and belong.",
+        "JJ’s is more than a pub; it’s a place where people gather and celebrate.",
       link_url: "/",
       link_text: "Where connections are made",
     },

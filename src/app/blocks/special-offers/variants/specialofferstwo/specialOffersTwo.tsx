@@ -90,7 +90,7 @@ const SpecialOffersTwoBlock = ({
                   })}
                 >
                   <span className="tag">{item.tag}</span>
-                  <h3 className="special-offers-two__slider__title">
+                  <h3 className="special-offers-two__slider__title text-white">
                     {item.title} <span>{item.price}</span>
                   </h3>
 
