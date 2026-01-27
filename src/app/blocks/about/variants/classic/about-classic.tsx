@@ -61,7 +61,7 @@ const AboutClassicBlock = ({
             quality={imageQuality || 75}
             fill={imageFill}
             onLoad={onImageLoad}
-            className={` h-screen  w-full  ${imageClassName || ""}`}
+            className={`     ${imageClassName || ""}  h-screen w-full object-cover `}
             sizes=""
           />
         </div>

@@ -6,6 +6,7 @@ import { Controller, useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 
+/* -------------------- SCHEMA -------------------- */
 const reservationSchema = z.object({
   firstName: z.string().min(2, "Le prénom est requis"),
   lastName: z.string().min(2, "Le nom est requis"),
@@ -16,6 +17,7 @@ const reservationSchema = z.object({
 
 type ReservationFormData = z.infer<typeof reservationSchema>;
 
+/* -------------------- COMPONENT -------------------- */
 const ContactForm = () => {
   const {
     control,
@@ -41,26 +43,52 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-neutral-950 p-4 font-sans">
+    <div className="flex items-center justify-center min-h-[100svh] bg-neutral-950 p-4 font-sans">
       <div
         className={cn(
-          "w-full max-w-5xl rounded-2xl overflow-hidden transition-all duration-700 ease-in-out border shadow-2xl",
-          // INVERSION : Standard (Gold à droite, Black à gauche) | VIP (Black à droite, Gold à gauche)
+          "w-full max-w-5xl rounded-2xl overflow-hidden border transition-all duration-700 shadow-2xl",
           !isVip
-            ? "bg-gradient-to-r from-black from-50% to-[#b08243] to-50% border-[#b08243]/30"
-            : "bg-gradient-to-r from-[#b08243] from-50% to-black to-50% border-white/20",
+            ? "bg-neutral-900/50 border-white/10"
+            : "bg-black border-[#d4af37] shadow-[0_0_40px_rgba(212,175,55,0.15)]",
         )}
       >
-        <div className="grid grid-cols-1 md:grid-cols-2">
-          {/* --- SECTION FORMULAIRE --- */}
-          <div className="p-8 md:p-12 transition-colors duration-700">
+        <div className="flex flex-col md:grid md:grid-cols-2">
+          {/* ================= IMAGE MOBILE EN HAUT ================= */}
+          <div className="md:hidden h-40 w-full overflow-hidden relative mb-4">
+            <div className="relative h-full w-full flex items-center justify-center">
+              <img
+                src="/ourImages/reservation/contact1.jpg"
+                alt="Standard"
+                className={cn(
+                  "absolute w-full h-full object-cover transition-transform ease-in-out duration-500",
+                  isVip && "-translate-x-full",
+                )}
+              />
+              <img
+                src="/ourImages/reservation/vip1.png"
+                alt="VIP"
+                className={cn(
+                  "absolute w-full h-full object-cover transition-transform ease-in-out duration-500",
+                  !isVip && "translate-x-full",
+                )}
+              />
+            </div>
+          </div>
+
+          {/* ================= FORM SIDE ================= */}
+          <div className="p-6 sm:p-8 lg:p-12 transition-colors duration-700 order-last md:order-first">
             <h2
               className={cn(
-                "text-4xl font-serif mb-8 transition-colors duration-700",
-                isVip ? "text-black" : "text-[#b08243]",
+                "mb-2 text-3xl sm:text-4xl font-serif transition-colors duration-700 tracking-tight",
+                isVip ? "text-[#d4af37]" : "text-white",
               )}
             >
               Reservation
+              {isVip && (
+                <span className="ml-3 text-[10px] uppercase tracking-[0.3em] border border-[#d4af37] px-2 py-1 rounded align-middle">
+                  VIP
+                </span>
+              )}
             </h2>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
@@ -71,15 +99,16 @@ const ContactForm = () => {
                   { name: "email" as const, label: "Email", type: "email" },
                   { name: "phoneNumber" as const, label: "Phone Number" },
                 ].map((input) => (
-                  <div key={input.name} className="flex flex-col gap-1">
+                  <div key={input.name} className="flex flex-col gap-1.5">
                     <label
                       className={cn(
-                        "text-sm font-medium transition-colors duration-700",
-                        isVip ? "text-black/80" : "text-white/70",
+                        "text-xs font-bold uppercase tracking-widest transition-colors duration-700",
+                        isVip ? "text-[#d4af37]/70" : "text-white/50",
                       )}
                     >
                       {input.label}
                     </label>
+
                     <Controller
                       name={input.name}
                       control={control}
@@ -87,19 +116,19 @@ const ContactForm = () => {
                         <input
                           {...field}
                           type={input.type || "text"}
+                          placeholder={`Enter your ${input.label.toLowerCase()}`}
                           className={cn(
-                            "rounded-md h-12 px-4 outline-none transition-all duration-700 border-none",
-                            // Style dynamique de l'input selon le fond
+                            "h-8 md:h-12 rounded-lg px-4 outline-none transition-all duration-500 border text-sm",
                             isVip
-                              ? "bg-black/10 text-black placeholder:text-black/40 focus:ring-1 focus:ring-black/20"
-                              : "bg-white/5 text-white placeholder:text-white/30 focus:ring-1 focus:ring-white/20",
+                              ? "bg-[#d4af37]/5 text-white border-[#d4af37]/30 focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37]/20"
+                              : "bg-white/5 text-white border-white/10 focus:border-white/30",
                           )}
-                          placeholder={input.label}
                         />
                       )}
                     />
+
                     {errors[input.name] && (
-                      <span className="text-red-500 text-[10px] font-bold uppercase">
+                      <span className="text-[10px] font-bold uppercase text-red-500 mt-1">
                         {errors[input.name]?.message}
                       </span>
                     )}
@@ -107,74 +136,74 @@ const ContactForm = () => {
                 ))}
               </div>
 
-              {/* --- TOGGLE SWITCH --- */}
+              {/* ================= TOGGLE SELECTOR ================= */}
               <div className="pt-6">
                 <div
-                  className="relative grid grid-cols-2 w-48 p-1 rounded-full cursor-pointer bg-black/80 border border-white/10"
+                  className="relative grid grid-cols-2 w-full sm:w-64 p-1.5 rounded-full cursor-pointer bg-neutral-900 border border-white/10"
                   onClick={() => setValue("isVip", !isVip)}
                 >
                   <span
                     className={cn(
-                      "z-10 text-[10px] uppercase tracking-widest font-black text-center py-2.5 transition-colors duration-500",
-                      !isVip ? "text-black" : "text-gray-400",
+                      "z-10 py-2.5 text-center text-[10px] font-black uppercase tracking-[0.2em] transition-colors duration-500",
+                      !isVip ? "text-black" : "text-white/40",
                     )}
                   >
                     Standard
                   </span>
                   <span
                     className={cn(
-                      "z-10 text-[10px] uppercase tracking-widest font-black text-center py-2.5 transition-colors duration-500",
-                      isVip ? "text-black" : "text-gray-400",
+                      "z-10 py-2.5 text-center text-[10px] font-black uppercase tracking-[0.2em] transition-colors duration-500",
+                      isVip ? "text-black" : "text-white/40",
                     )}
                   >
                     VIP
                   </span>
+
                   <div
                     className={cn(
-                      "absolute inset-y-1 left-1 w-[calc(50%-4px)] rounded-full bg-gradient-to-br from-[#f6e7b1] via-[#d4af37] to-[#b08243] transition-transform duration-500",
-                      isVip && "translate-x-[calc(100%+4px)]",
+                      "absolute inset-y-1.5 left-1.5 w-[calc(50%-6px)] rounded-full transition-all duration-500 ease-out shadow-lg",
+                      isVip
+                        ? "translate-x-[calc(100%+6px)] bg-gradient-to-r from-[#f6e7b1] via-[#d4af37] to-[#b08243]"
+                        : "bg-white",
                     )}
                   />
                 </div>
               </div>
 
+              {/* ================= SUBMIT BUTTON ================= */}
               <button
+                type="submit"
                 className={cn(
-                  "w-full py-4 rounded-md font-bold uppercase tracking-widest text-xs transition-all duration-700 mt-4 border",
+                  "mt-6 w-full rounded-lg py-4 text-[10px] font-black uppercase tracking-[0.3em] transition-all duration-700 border-none",
                   isVip
-                    ? "bg-black text-[#d4af37] border-black"
-                    : "bg-white/10 text-white border-white/20 hover:bg-white/20",
+                    ? "bg-gradient-to-r from-[#f6e7b1] via-[#d4af37] to-[#b08243] text-black shadow-[0_10px_20px_rgba(212,175,55,0.3)] hover:scale-[1.02]"
+                    : "bg-white text-black hover:bg-gray-200",
                 )}
               >
-                Confirm Reservation
+                Confirm {isVip ? "VIP" : ""} Reservation
               </button>
             </form>
           </div>
 
-          {/* --- SECTION IMAGE (DROITE) --- */}
-          <div className="relative min-h-[500px] overflow-hidden bg-black">
-            <img
-              src="/ourImages/reservation/contact1.jpg"
-              alt="Standard"
-              className={cn(
-                "absolute inset-0 w-full h-full object-cover transition-all duration-1000",
-                isVip ? "opacity-0 scale-110" : "opacity-100 scale-100",
-              )}
-            />
-            <div
-              className={cn(
-                "absolute inset-0 transition-all duration-1000",
-                !isVip
-                  ? "opacity-0 translate-x-full"
-                  : "opacity-100 translate-x-0",
-              )}
-            >
+          {/* ================= IMAGE DESKTOP ================= */}
+          <div className="hidden md:block h-full overflow-hidden relative flex items-center justify-center">
+            <div className="relative h-full w-full">
               <img
-                src="/ourImages/reservation/vip.avif"
-                alt="VIP"
-                className="w-full h-full object-cover"
+                src="/ourImages/reservation/contact1.jpg"
+                alt="Standard"
+                className={cn(
+                  "absolute w-full h-full object-cover transition-transform ease-in-out duration-500",
+                  isVip && "-translate-x-full",
+                )}
               />
-              <div className="absolute inset-0 bg-black/10" />
+              <img
+                src="/ourImages/reservation/vip1.png"
+                alt="VIP"
+                className={cn(
+                  "absolute w-full h-full object-cover transition-transform ease-in-out duration-500",
+                  !isVip && "translate-x-full",
+                )}
+              />
             </div>
           </div>
         </div>

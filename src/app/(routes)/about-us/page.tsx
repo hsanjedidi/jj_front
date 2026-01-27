@@ -14,6 +14,7 @@ import { aboutData, aboutTwoData } from "@/app/hooks/data-about";
 import { contactData } from "@/app/hooks/data-contact";
 import { galleryData } from "@/app/hooks/data-gallery";
 import HeroInnerBlock2 from "@/app/components/common/hero-inner/Hero-inner2";
+import HsanBlock from "@/app/blocks/about/hsan/HsanBlock";
 
 const AboutPage = () => {
   return (
@@ -25,18 +26,14 @@ const AboutPage = () => {
         altText={HeroInnerAboutData.altText}
         breadcrumbs={HeroInnerAboutData.breadcrumbs}
       />
-      {/* / Hero Inner - Block */}
 
-      {/* About Classic - Block */}
       <AboutClassic {...aboutData} />
       {/* / About Classic - Block */}
-
-    
 
       {/* Badges Block */}
       <BadgesList {...badgesListData} />
       {/* / Badges Block */}
-  {/* About Modern - Block */}
+      {/* About Modern - Block */}
       <AboutTwoCols {...aboutTwoData} />
       {/* / About Modern - Block */}
       {/* Testimonials Block */}
@@ -50,6 +47,9 @@ const AboutPage = () => {
       {/* Masonry Gallery */}
       <MasonryGallery {...galleryData} />
       {/* / Masonry Gallery */}
+      {/* / Hero Inner - Block */}
+      <HsanBlock />
+      {/* About Classic - Block */}
     </>
   );
 };

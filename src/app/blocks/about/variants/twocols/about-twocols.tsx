@@ -1,53 +1,60 @@
 "use client";
 import React from "react";
-
-// interface
 import { AboutBlockProps } from "@/app/types/common.types";
 
 interface AboutBlockWithImagesProps extends AboutBlockProps {
   title?: string;
-  rightImages?: string[];
+  leftImage?: string;
+  smallRightImage?: string;
 }
 
 const AboutTwoCols = ({
-  title = "Volto Restaurant",
-  descriptionParagraphsTwo,
-  rightImages = ["/about/gallery-21a.webp", "/about/gallery-29a.jpg"],
+  title = "UTTERLY UNIQUE LOCATIONS",
+  descriptionParagraphsTwo = [],
+  leftImage = "/about/gallery-27a.jpg", // L'image de la ville/port
+  smallRightImage = "/about/gallery-29a.jpg", // L'image de la danseuse
 }: AboutBlockWithImagesProps) => {
   if (!descriptionParagraphsTwo || descriptionParagraphsTwo.length === 0) {
     return null;
   }
 
   return (
-    <section className="bg-white py-24" role="region" aria-label="About Volto">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20">
-        {/* LEFT — TEXT */}
-        <div className="max-w-xl">
-          <h2 className="mb-10 font-serif text-4xl tracking-wide text-[#c9a25d]">
-            {title}
-          </h2>
-
-          <div className="space-y-8 text-gray-700 leading-relaxed text-[17px]">
-            {descriptionParagraphsTwo.map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
-            ))}
-          </div>
+    <section className="bg-black text-white py-20 px-6 md:px-12">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        {/* GAUCHE : La grande image d'ambiance (7 colonnes sur 12) */}
+        <div className="lg:col-span-7 w-full h-[500px] lg:h-[700px]">
+          <img
+            src={leftImage}
+            alt="Atmospheric location"
+            className="w-full h-full object-cover"
+          />
         </div>
 
-        {/* RIGHT — IMAGES (same size) */}
-        <div className="grid grid-cols-2 gap-12 items-start">
-          {rightImages.slice(0, 2).map((src, index) => (
-            <div
-              key={index}
-              className="w-[300px] h-[420px] overflow-hidden shadow-xl"
-            >
-              <img
-                src={src}
-                alt={`About image ${index + 1}`}
-                className="w-full h-full object-cover"
-              />
+        {/* DROITE : Petite image + Texte (5 colonnes sur 12) */}
+        <div className="lg:col-span-5 flex flex-col items-start lg:pl-12">
+          {/* Petite image verticale style portrait */}
+          <div className="w-full max-w-[320px] mb-12 self-center lg:self-start">
+            <img
+              src={smallRightImage}
+              alt="Performance"
+              className="w-full h-[450px] object-cover"
+            />
+          </div>
+
+          {/* Bloc Texte */}
+          <div className="max-w-md">
+            <h2 className="text-xl md:text-5xl font-light tracking-widest uppercase mb-8 leading-tight">
+              {title}
+            </h2>
+
+            <div className="space-y-6 text-gray-300 font-light leading-relaxed text-sm tracking-wide">
+              {descriptionParagraphsTwo.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
             </div>
-          ))}
+
+            {/* Bouton style lien en bas */}
+          </div>
         </div>
       </div>
     </section>

@@ -1,7 +1,6 @@
 /*==========================
     About / Style-1 
 ===========================*/
-
 .about__image-info {
   @apply flex text-white;
 
@@ -10,16 +9,13 @@
 
     &__image {
       @apply hidden lg:block relative col-span-3 xl:col-span-6 overflow-hidden;
-      img {
-        @apply w-full h-full object-cover object-center scale-105;
-      }
     }
 
     &__info {
-      @apply relative col-span-12 lg:col-span-9 xl:col-span-6 
+      @apply relative col-span-12 lg:col-span-9 xl:col-span-6
 			px-4 sm:px-10 md:px-10
 			flex flex-wrap flex-col items-start justify-center 
-			xl:max-w-[720px] mx-auto
+		 xl:max-w-md	2xl:max-w-4xl mx-auto
 			text-white;
     }
 

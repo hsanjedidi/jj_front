@@ -1,5 +1,5 @@
 export const aboutData = {
-  imageUrl: "/about/about-61.jpg",
+  imageUrl: "/about/about-6.jpg",
   imageLeftUrl: "/about/about-left.jpg",
   imageRightUrl: "",
   altText:
@@ -48,7 +48,7 @@ export const aboutTwoData = {
   altText:
     "Elegant interior of the main restaurant dining room with set tables",
   subtitle: "About us",
-  title: "Discover Lorem From Flavors Within Wines.",
+  title: "Born in the heart of Bahrain,\nJJ’s Irish Pub & Restaurant",
   divider: true,
   align: "center" as const,
   priorityImage: false,
@@ -61,7 +61,7 @@ export const aboutTwoData = {
     "Warm hospitality is at the heart of everything we do. From the first greeting to the last bite, we strive to make every guest feel welcome, comfortable, and truly at home.",
   ],
   descriptionParagraphsTwo: [
-    "Beef Restourant Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words.",
+    " Restourant Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words.",
     "Warm hospitality is at the heart of everything we do. From the first greeting to the last bite, we strive to make every guest feel welcome, comfortable, and truly at home.",
   ],
   descriptionParagraphsThree: [

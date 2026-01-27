@@ -1,12 +1,10 @@
 "use client";
 
-import { event2 } from "@/app/hooks2/events";
 import { useComponentMounted } from "@/app/hooks2/useComponentMounted";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { FiClock, FiCalendar } from "react-icons/fi"; // icônes
 
 const EventComp = () => {
   const mounted = useComponentMounted();
@@ -15,6 +13,7 @@ const EventComp = () => {
     title: "Sample Event 2",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, velit eius voluptate, accusamus vitae fuga laboriosam aut error dolorum nemo officia praesentium aspernatur itaque soluta natus nam.",
+    date: "2026-02-01 18:30", // ← date et heure de l'événement
     thumbnail: { url: "/ourImages/events/one/event2_2.jpg" },
     video: { url: "/ourImages/events/one/event2_1.mp4" },
     media: [
@@ -29,6 +28,16 @@ const EventComp = () => {
     { id: "thumb", url: event2.thumbnail.url },
     ...event2.media,
   ];
+
+  // Formater date en français
+  const formattedDate = new Date(event2.date).toLocaleString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 
   return (
     <section
@@ -79,25 +88,31 @@ const EventComp = () => {
 
           {/* CONTENT */}
           <div className="flex flex-col justify-center p-8 lg:p-12 text-white">
-            <span className="mb-3 w-fit rounded-full bg-amber-500/10 px-4 py-1 text-sm font-medium tracking-wide text-amber-400">
+            {/* Badge ÉVÉNEMENT */}
+            <span className="mb-2 w-fit rounded-full bg-amber-500/10 px-4 py-1 text-sm font-medium tracking-wide text-amber-400">
               ÉVÉNEMENT
             </span>
 
+            {/* Date et heure */}
+            <div className="mb-4 flex items-center gap-2 text-amber-300 text-sm font-medium">
+              <FiCalendar />
+              <span>{formattedDate}</span>
+            </div>
+
+            {/* Titre */}
             <h2 className="mb-4 text-3xl lg:text-4xl font-semibold tracking-tight">
               {event2.title}
             </h2>
 
+            {/* Description */}
             <p className="text-neutral-300 leading-relaxed max-w-xl">
               {event2.description}
             </p>
 
+            {/* Bouton Réserver */}
             <div className="mt-8 flex flex-wrap gap-4">
               <button className="rounded-full bg-amber-500 px-6 py-3 text-sm font-semibold text-black transition hover:bg-amber-400">
                 Réserver
-              </button>
-
-              <button className="rounded-full border border-neutral-700 px-6 py-3 text-sm font-medium text-neutral-200 transition hover:bg-neutral-800">
-                Voir détails
               </button>
             </div>
           </div>

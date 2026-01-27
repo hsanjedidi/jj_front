@@ -18,12 +18,9 @@ const FoodPage = () => {
           { id: 3, title: "Food", link: "/menu2/food" },
         ]}
       />
-      <SpecialOffersBlock
-        className="block md:hidden"
-        items={menuItems.food.items}
-      />
+
       <SpecialOffersTwoBlock
-        className="hidden md:block"
+        className=""
         title={menuItems.food.title}
         items={menuItems.food.items}
       />
