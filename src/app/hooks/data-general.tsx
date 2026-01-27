@@ -2,7 +2,7 @@ import { FaFacebookF, FaXTwitter, FaInstagram } from "react-icons/fa6";
 import { StatusPageProps } from "@/app/types/common.types";
 
 export const InfoGeneralData = {
-  urlLogo: "/log.png",
+  urlLogo: "/favicon.png",
   urlMap: "https://www.google.com/maps",
   phone: "+1 123 456 7890",
   fax: "+1 123 456 7890",
@@ -31,7 +31,7 @@ export const InfoGeneralData = {
 };
 
 export const LogoData = {
-  urlLogo: "/log.png",
+  urlLogo: "/favicon.png",
   altLogo: "Logo",
   hrefLogo: "/",
   widthLogo: 120,
