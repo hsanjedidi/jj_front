@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { Search } from 'lucide-react';
 
 // Interface
 import { MasonryItemGalleryProps } from "@/app/types/common.types";
@@ -50,7 +51,7 @@ const MasonryItemGallery: React.FC<MasonryItemGalleryProps> = ({
 					onClick={onClick}
 					aria-label={lightboxOpenLabel}
 				>
-					<i className="fa-solid fa-plus" aria-hidden="true"></i>
+					<Search aria-hidden="true" />
 				</button>
 				{/* / Icon */}
 			</div>

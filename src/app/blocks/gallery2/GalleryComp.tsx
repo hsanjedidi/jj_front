@@ -10,52 +10,52 @@ const GalleryComp = () => {
     // {
     //   title: "...",
     //   image: "/ourImages/gallery/gallery_10.jpg",
-    //   className: "absolute top-10 left-[20%] rotate-[-5deg]",
+    //   className: "absolute top-[15%] lg:top-[20%] lg:left-[20%] rotate-[-5deg]",
     // },
     // {
     //   title: "...",
     //   image: "/ourImages/gallery/gallery_9.jpg",
-    //   className: "absolute top-40 left-[25%] rotate-[-7deg]",
+    //   className: "absolute top-[15%] lg:top-[20%] lg:left-[25%] rotate-[-7deg]",
     // },
     // {
     //   title: "...",
     //   image: "/ourImages/gallery/gallery_7.jpg",
-    //   className: "absolute top-32 left-[55%] rotate-[10deg]",
+    //   className: "absolute top-[15%] lg:top-[20%] lg:left-[55%] rotate-[10deg]",
     // },
     {
       title: "JJ's Anniversary",
       image: "/ourImages/gallery/gallery_6.jpg",
-      className: "absolute top-20 right-[35%] rotate-[2deg]",
+      className: "absolute top-[15%] lg:top-[20%] right-[35%] rotate-[2deg]",
     },
     {
       title: "NBA Finals",
       image: "/ourImages/gallery/gallery_5.jpg",
-      className: "absolute top-24 left-[45%] rotate-[-7deg]",
+      className: "absolute top-[15%] lg:top-[20%] lg:left-[45%] rotate-[-7deg]",
     },
     {
       title: "NYE 2026",
       image: "/ourImages/gallery/gallery_4.jpg",
-      className: "absolute top-8 left-[30%] rotate-[4deg]",
+      className: "absolute top-[15%] lg:top-[20%] lg:left-[30%] rotate-[4deg]",
     },
     {
       title: "Karaoke Night",
       image: "/ourImages/gallery/gallery_3.jpg",
-      className: "absolute top-8 left-[30%] rotate-[4deg]",
+      className: "absolute top-[15%] lg:top-[20%] lg:left-[30%] rotate-[4deg]",
     },
     {
       title: "Ladies Night",
       image: "/ourImages/gallery/gallery_8.jpg",
-      className: "absolute top-5 left-[40%] rotate-[8deg]",
+      className: "absolute top-[15%] lg:top-[20%] lg:left-[40%] rotate-[8deg]",
     },
     {
       title: "Guinness Competition",
       image: "/ourImages/gallery/gallery_2.jpg",
-      className: "absolute top-8 left-[30%] rotate-[4deg]",
+      className: "absolute top-[15%] lg:top-[20%] lg:left-[30%] rotate-[4deg]",
     },
     {
       title: "Our Album",
       image: "/ourImages/gallery/gallery_1.jpg",
-      className: "absolute top-8 left-[30%] rotate-[4deg]",
+      className: "absolute top-[15%] lg:top-[20%] lg:left-[40%] rotate-[4deg]",
     },
   ];
   return (

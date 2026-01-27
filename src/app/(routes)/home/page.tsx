@@ -1,6 +1,6 @@
 import { AboutClassic } from "@/app/blocks/about";
 import BadgesList from "@/app/blocks/badges/BadgesList";
-import { GalleryBasic } from "@/app/blocks/gallery";
+import { GalleryBasic, MasonryGallery } from "@/app/blocks/gallery";
 import { HeroCreativeSliderBlock } from "@/app/blocks/hero";
 import { Landing } from "@/app/blocks/landing/Landing";
 import MeetStars from "@/app/blocks/meetStars/MeetStars";
@@ -24,15 +24,16 @@ const HomePage = () => {
     <>
       <>
         <Landing />
+        <AboutClassic {...aboutData} />
+        <BadgesList {...badgesListData} />
 
         <MeetStars />
 
         {/* Slider Hero - Block */}
-        <HeroCreativeSliderBlock {...sliderHeroData} />
+        {/* <HeroCreativeSliderBlock {...sliderHeroData} /> */}
         {/* / Slider Hero - Block */}
 
         {/* About - Block */}
-        <AboutClassic {...aboutData} />
         {/* / About - Block */}
 
         {/* Special Offers - Block */}
@@ -40,7 +41,6 @@ const HomePage = () => {
         {/* / Special Offers - Block */}
 
         {/* Badges - Block */}
-        <BadgesList {...badgesListData} />
         {/* / Badges - Block */}
 
         {/* CTA - Block */}
@@ -48,7 +48,7 @@ const HomePage = () => {
         {/* / CTA - Block */}
 
         {/* Gallery */}
-        <GalleryBasic {...galleryData} />
+        <MasonryGallery {...galleryData} />
         {/* / Gallery */}
       </>
     </>

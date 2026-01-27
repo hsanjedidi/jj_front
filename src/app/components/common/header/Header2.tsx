@@ -70,7 +70,6 @@ const Header2: React.FC = () => {
       setHeaderHidden(false);
     }
 
-    console.log("currentY:", scrollY, "previousY:", previousYRef);
     setPreviousYRef(scrollY);
   }, [scrollY]);
 

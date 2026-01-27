@@ -13,7 +13,7 @@ export const itemsNavbar = [
   {
     id: 2,
     title: "Menu",
-    link: "/menu2",
+    link: "/menu",
   },
   {
     id: 4,
@@ -48,36 +48,19 @@ export const itemsNavbar = [
     ],
   },
   {
-    id: 4,
+    id: 6,
     title: "Gallery",
     link: "/gallery",
   },
   {
     id: 7,
-    title: "History2",
-    link: "/history2",
+    title: "History",
+    link: "/history",
   },
 
   {
     id: 8,
     title: "Contact",
     link: "/contact-us",
-    children: [
-      {
-        id: 71,
-        title: "Error 404",
-        link: "/404",
-      },
-      {
-        id: 72,
-        title: "Confirmation",
-        link: "/confirmation",
-      },
-      {
-        id: 73,
-        title: "Coming Soon",
-        link: "/coming-soon",
-      },
-    ],
   },
 ];

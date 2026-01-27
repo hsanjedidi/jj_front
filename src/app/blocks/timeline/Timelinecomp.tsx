@@ -202,7 +202,7 @@ export function TimelineDemo() {
     },
   ];
   return (
-    <div className="relative w-full overflow-clip pt-44">
+    <div className="relative w-full overflow-clip  ">
       <Timeline data={data} />
     </div>
   );

@@ -14,7 +14,7 @@ export const sliderHeroData = {
       subtitle: "Category",
       title: "Food",
       desc: "Experience exquisite dining with our gourmet dishes crafted from the freshest ingredients, designed to tantalize your taste buds.",
-      link: "/menu2/food",
+      link: "/menu/food",
       textLink: "See Our Menu",
     },
     {
@@ -24,7 +24,7 @@ export const sliderHeroData = {
       subtitle: "Category",
       title: "Cocktails & Drinks",
       desc: "Discover handcrafted cocktails and premium beverages expertly mixed to perfection, elevating your dining experience.",
-      link: "/menu2/drinks",
+      link: "/menu/drinks",
       textLink: "See Our Menu",
     },
     {
@@ -34,7 +34,7 @@ export const sliderHeroData = {
       subtitle: "Category",
       title: "Vegan",
       desc: "Savor our delicious vegan dishes made from fresh, plant-based ingredients that delight both the palate and the soul.",
-      link: "/menu2/vegan",
+      link: "/menu/vegan",
       textLink: "See Our Menu",
     },
     {
@@ -44,7 +44,7 @@ export const sliderHeroData = {
       subtitle: "Category",
       title: "Kids Menu",
       desc: "Delight your little ones with our specially crafted kids menu, featuring tasty and nutritious options that cater to young tastes.",
-      link: "/menu2/kids",
+      link: "/menu/kids",
       textLink: "See Our Menu",
     },
   ],

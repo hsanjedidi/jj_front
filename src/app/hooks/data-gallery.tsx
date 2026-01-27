@@ -1,5 +1,5 @@
 export const galleryData = {
-  subtitle: "Our Gallery",
+  subtitle: "Our Vibes",
   title: "Explore The New Tastee",
   phrase:
     "The first restaurant proprietor is believed to have been one A. Boulanger, a soup vendor, who opened his business in 1765.",

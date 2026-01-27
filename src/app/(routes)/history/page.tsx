@@ -1,32 +1,23 @@
+import { TimelineDemo } from "@/app/blocks/timeline/Timelinecomp";
 import HeroInnerBlock from "@/app/components/common/hero-inner/Hero-inner";
-import { HistoryBlock } from "@/app/blocks/history";
-import BadgesList from "@/app/blocks/badges/BadgesList";
+import { HeroInnerAboutData } from "@/app/hooks/data";
 
-// Data
-import { HeroInnerHistoryData } from "@/app/hooks/data";
-import { badgesListData } from "@/app/hooks/data-brands";
-import { historyData } from "@/app/hooks/data-history";
-const HistoryPage = () => {
-	return (
-		<>
-			{/* Hero Inner - Block */}
-			<HeroInnerBlock
-				title={HeroInnerHistoryData.title}
-				image={HeroInnerHistoryData.image}
-				altText={HeroInnerHistoryData.altText}
-				breadcrumbs={HeroInnerHistoryData.breadcrumbs}
-			/>
-			{/* / Hero Inner - Block */}
+const TimelinePage = () => {
+  return (
+    <>
+      <HeroInnerBlock
+        title={"History"}
+        image={"/hero/gallery-14a.jpg"}
+        altText={HeroInnerAboutData.altText}
+        breadcrumbs={[
+          { id: 1, title: "Home", link: "/" },
+          { id: 2, title: "History", link: "/history2" },
+        ]}
+      />
 
-			{/* History Block */}
-			<HistoryBlock {...historyData} />
-			{/* / History Block */}
-
-			{/* Badges Block */}
-			<BadgesList {...badgesListData} />
-			{/* / Badges Block */}
-		</>
-	);
+      <TimelineDemo />
+    </>
+  );
 };
 
-export default HistoryPage;
+export default TimelinePage;

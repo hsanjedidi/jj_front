@@ -14,7 +14,6 @@ export function Landing() {
           </div>
         </div>
       </main>
-      nos
     </div>
   );
 }
