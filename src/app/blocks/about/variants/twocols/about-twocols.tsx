@@ -43,7 +43,7 @@ const AboutTwoCols = ({
 
           {/* BLOC TEXTE - Seul élément visible sur mobile */}
           <div className="max-w-md">
-            <h2 className="text-lg md:text-xl font-light tracking-[0.3em] uppercase mb-8 leading-relaxed text-white">
+            <h2 className="text-lg md:text-xl  leading-relaxed text-white">
               {title}
             </h2>
 

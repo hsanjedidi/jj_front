@@ -7,9 +7,11 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 // Interface
-import { SpecialOffersBlockProps } from "@/app/types/common.types";
+import { Alignment, SpecialOffersBlockProps } from "@/app/types/common.types";
 import { specialOffersData } from "@/app/hooks/data-special-offers";
 import { cn } from "@/lib/utils";
+import divider from "@/app/components/common/divider/divider";
+import BlockTitle from "@/app/components/common/block-title/block-title";
 
 const SpecialOffersBlock = ({
   items = specialOffersData.items,
@@ -32,79 +34,90 @@ const SpecialOffersBlock = ({
   }
 
   return (
-    <section
-      id="special-offers"
-      className={cn(`special-offers bg-background`, className)}
-    >
-      {/* Slider Special Offers */}
-      <Swiper
-        className="special-offers__slider"
-        breakpoints={{
-          320: {
-            slidesPerView: 1,
-          },
-          768: {
-            slidesPerView: 1,
-          },
-          1024: {
-            slidesPerView: 1,
-          },
-        }}
-        freeMode={true}
-        pagination={{ clickable: true }}
-        navigation={true}
-        modules={[Navigation, Pagination, A11y]}
-        loop={true}
-        onSlideChange={(swiper) => setActiveSlide(swiper.realIndex)}
-        a11y={{
-          enabled: true,
-          prevSlideMessage: prevButtonAriaLabel,
-          nextSlideMessage: nextButtonAriaLabel,
-          paginationBulletMessage: paginationBulletAriaLabel.replace(
-            "{index}",
-            "{{index}}",
-          ),
-          containerMessage: carouselAriaLabel,
-        }}
+    <>
+      <BlockTitle
+        subtitle={"Crafted with passion"}
+        title={"Chef’s Recommendations"}
+        phrase={"Handpicked dishes crafted by our chef"}
+        align={"align" as Alignment}
+        divider={true}
+      />
+      <section
+        id="special-offers"
+        className={cn(`special-offers bg-background`, className)}
       >
-        {items.map((item, index) => (
-          <SwiperSlide key={item.id}>
-            <div className="special-offers__slider__wrapper">
-              {/* Slider item -- image */}
-              <div className="special-offers__slider__image">
-                <div className="special-offers__slider__image-overlayer"></div>
-                <Image
-                  src={item.image}
-                  alt={item.altText}
-                  width={1920}
-                  height={1080}
-                  priority={index === 0}
-                />
+        {/* Slider Special Offers */}
+        <Swiper
+          className="special-offers__slider"
+          breakpoints={{
+            320: {
+              slidesPerView: 1,
+            },
+            768: {
+              slidesPerView: 1,
+            },
+            1024: {
+              slidesPerView: 1,
+            },
+          }}
+          freeMode={true}
+          pagination={{ clickable: true }}
+          navigation={true}
+          modules={[Navigation, Pagination, A11y]}
+          loop={true}
+          onSlideChange={(swiper) => setActiveSlide(swiper.realIndex)}
+          a11y={{
+            enabled: true,
+            prevSlideMessage: prevButtonAriaLabel,
+            nextSlideMessage: nextButtonAriaLabel,
+            paginationBulletMessage: paginationBulletAriaLabel.replace(
+              "{index}",
+              "{{index}}",
+            ),
+            containerMessage: carouselAriaLabel,
+          }}
+        >
+          {items.map((item, index) => (
+            <SwiperSlide key={item.id}>
+              <div className="special-offers__slider__wrapper">
+                {/* Slider item -- image */}
+                <div className="special-offers__slider__image">
+                  <div className="special-offers__slider__image-overlayer"></div>
+                  <Image
+                    src={item.image}
+                    alt={item.altText}
+                    width={1920}
+                    height={1080}
+                    priority={index === 0}
+                  />
+                </div>
+                {/* Slider item -- info */}
+                <motion.div
+                  className={`special-offers__slider__info  bg-[#303d3b]`}
+                  initial={{ opacity: 0, scale: 1 }}
+                  animate={
+                    activeSlide === index ? { opacity: 1, scale: 1 } : {}
+                  }
+                  transition={{ duration: 1 }}
+                >
+                  <span className="tag">{item.tag}</span>
+                  <h3 className="special-offers__slider__title">
+                    {item.title} <span>{item.price}</span>
+                  </h3>
+                  <p className="special-offers__slider__primary">
+                    {item.description_primary}
+                  </p>
+                  <p className="special-offers__slider__secondary">
+                    {item.description_secondary}
+                  </p>
+                </motion.div>
               </div>
-              {/* Slider item -- info */}
-              <motion.div
-                className={`special-offers__slider__info  bg-[#303d3b]`}
-                initial={{ opacity: 0, scale: 1 }}
-                animate={activeSlide === index ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 1 }}
-              >
-                <span className="tag">{item.tag}</span>
-                <h3 className="special-offers__slider__title">
-                  {item.title} <span>{item.price}</span>
-                </h3>
-                <p className="special-offers__slider__primary">
-                  {item.description_primary}
-                </p>
-                <p className="special-offers__slider__secondary">
-                  {item.description_secondary}
-                </p>
-              </motion.div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      {/* Slider Special Offers */}
-    </section>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        {/* Slider Special Offers */}
+      </section>
+    </>
   );
 };
 

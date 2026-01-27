@@ -39,7 +39,9 @@ const HomePage = () => {
         {/* Special Offers - Block */}
         <SpecialOffersBlock {...specialOffersData} />
         {/* / Special Offers - Block */}
-
+ {/* Services - List - Block */}
+      <ServicesList {...ServiceCardListData} />
+      {/* / Services - List - Block */}
         {/* Badges - Block */}
         {/* / Badges - Block */}
 

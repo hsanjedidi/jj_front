@@ -14,7 +14,7 @@
     animation: fadeIn 0.8s ease-out;
   }
   .swiper-pagination-bullets {
-    display: flex !important;
+    display: flex !important; 
     align-items: center;
     justify-content: center;
     gap: 8px; /* espace uniforme entre les 6 bullets */

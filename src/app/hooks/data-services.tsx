@@ -1,45 +1,45 @@
 export const ServiceCardListData = {
-	emptyMessage: "No services available at the moment.",
-	items: [
-		{
-			id: 1,
-			title: "Dresh Products",
-			image: "/services/vector-1.png",
-			image_hover: "/services/vector-1-hover.png",
-			description:
-				"The restaurant is an organic space reflective of nature inspired cuisine.",
-			link_url: "/",
-			link_text: "Read More",
-		},
-		{
-			id: 2,
-			title: "Slilled Chefs",
-			image: "/services/vector-2.png",
-			image_hover: "/services/vector-2-hover.png",
-			description:
-				"The restaurant is an organic space reflective of nature inspired cuisine.",
-			link_url: "/",
-			link_text: "Read More",
-		},
-		{
-			id: 3,
-			title: "Best Bar",
-			image: "/services/vector-3.png",
-			image_hover: "/services/vector-3-hover.png",
-			description:
-				"The restaurant is an organic space reflective of nature inspired cuisine.",
-			link_url: "/",
-			link_text: "Read More",
-		},
-		{
-			id: 4,
-			title: "Vegan Cuisine",
-			image: "/services/vector-4.png",
-			image_hover: "/services/vector-4-hover.png",
-			description:
-				"The restaurant is an organic space reflective of nature inspired cuisine.",
-			link_url: "/",
-			link_text: "Read More",
-		},
-	],
+  emptyMessage: "No services available at the moment.",
+
+  items: [
+    {
+      id: 1,
+      title: "Authenticity",
+      image: "/services/celtic.png",
+      image_hover: "/services/celtic.png",
+      description:
+        "We bring a genuine Irish pub experienceto every market we serve.",
+      link_url: "/",
+      link_text: "True to our roots",
+    },
+    {
+      id: 2,
+      title: "Hospitality",
+      image: "/services/celtic.png",
+      image_hover: "/services/celtic.png",
+      description: "Guests are treated like family, with warmth and care.",
+      link_url: "/",
+      link_text: "A welcome for everyone.",
+    },
+    {
+      id: 3,
+      title: "Quality",
+      image: "/services/celtic.png",
+      image_hover: "/services/celtic.png",
+      description:
+        "From food and beverages to service, we upholdthe highest standards.",
+      link_url: "/",
+      link_text: "Excellence in every detail",
+    },
+    {
+      id: 4,
+      title: "Community",
+      image: "/services/celtic.png",
+      image_hover: "/services/celtic.png",
+      description:
+        "JJ’s is more than a pub, it’s a place where people gather, celebrate, and belong.",
+      link_url: "/",
+      link_text: "Where connections are made",
+    },
+  ],
 };

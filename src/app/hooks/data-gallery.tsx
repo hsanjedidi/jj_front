@@ -1,8 +1,7 @@
 export const galleryData = {
-  subtitle: "Our Vibes",
-  title: "Explore The New Tastee",
-  phrase:
-    "The first restaurant proprietor is believed to have been one A. Boulanger, a soup vendor, who opened his business in 1765.",
+  subtitle: "JJ’s World",
+  title: "Through the Lens of JJ’s",
+  phrase: "Where every image tells the story of JJ’s atmosphere and craft.",
   divider: true,
   align: "center",
   emptyMessage: "No gallery items available at the moment.",

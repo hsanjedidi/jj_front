@@ -93,3 +93,43 @@
         @apply bg-transparent cursor-pointer !border-b-primary text-primary;
     }
 }
+
+
+.btn__link2{
+	@apply px-4 py-1 not-italic font-normal transition duration-300 ease-in-out !text-base md:!text-button font-josefin-sans text-primary !border-transparent bg-transparent border-b !border-b-primary w-fit inline-block capitalize rounded-none mt-8 relative z-50;
+  	letter-spacing: 2px;
+  	text-decoration: none;
+	&:before,
+	&:after{
+		content: '';
+    	display: block;
+    	position: absolute;
+    	height: 1px;
+    	width: 0;
+
+	}
+	&:before{
+		transition: width 0s ease,background .4s ease;
+		left: 0;
+		right: 0;
+    	bottom: -8px;
+	}
+	&:after{
+		right: 2.2%;
+    	bottom: -8px;
+    	background: theme('colors.primary');
+		transition: width .4s ease;
+	}
+	
+
+
+    &:focus {
+        @apply outline-none ring-0 !text-primary;
+    }
+    &:disabled {
+        @apply opacity-50 cursor-not-allowed !text-primary;
+    }
+    &:active {
+        @apply bg-transparent !border-b-primary text-primary;
+    }
+}

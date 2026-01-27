@@ -1,9 +1,10 @@
 "use client";
 
+import BlockTitle from "@/app/components/common/block-title/block-title";
 import ServiceCard from "../../ServiceCard";
 
 // interface
-import { ServicesListProps } from "@/app/types/common.types";
+import { Alignment, ServicesListProps } from "@/app/types/common.types";
 
 const ServicesList = ({
 	items,
@@ -19,6 +20,13 @@ const ServicesList = ({
 	}
 	return (
 		<div className="services-ilustrations">
+				<BlockTitle
+					subtitle={"What defines us"}
+					title={"BRAND VALUES"}
+					phrase={"Core values shaping our identity, culture, and vision."}
+					align={"center" as Alignment}
+					divider={true}
+				/>
 			<div className="services-ilustrations__container">
 				<div className="services-ilustrations__content">
 						{items.map((item) => (
