@@ -10,6 +10,7 @@ interface AboutBlockWithImagesProps extends AboutBlockProps {
 
 const AboutTwoCols = ({
   title = "UTTERLY UNIQUE LOCATIONS",
+  subtitle = "Born in the heart of Bahrain",
   descriptionParagraphsTwo = [],
   leftImage = "/about/gallery-27a.jpg",
   smallRightImage = "/about/gallery-29a.jpg",
@@ -42,10 +43,28 @@ const AboutTwoCols = ({
           </div>
 
           {/* BLOC TEXTE - Seul élément visible sur mobile */}
-          <div className="max-w-md">
-            <h2 className="text-lg md:text-xl font-light tracking-[0.3em] uppercase mb-8 leading-relaxed text-white">
-              {title}
-            </h2>
+          <div className="max-w-md mx-auto">
+            <div className="grid grid-cols-[auto_1fr] gap-x-4">
+              <div className="row-span-2 text-6xl lg:text-8xl font-bold text-primary leading-none">
+                JJ’s
+              </div>
+
+              <h3 className="hidden lg:block text-lg font-light uppercase text-white">
+                Irish Pub &
+              </h3>
+
+              <h3 className="hidden lg:block text-lg font-light uppercase text-white">
+                Restaurant
+              </h3>
+
+              <h5 className="block lg:hidden text-lg font-light uppercase text-white">
+                Irish Pub &
+              </h5>
+
+              <h5 className="block lg:hidden text-lg font-light uppercase text-white">
+                Restaurant
+              </h5>
+            </div>
 
             <div className="space-y-6 text-gray-400 font-light leading-relaxed text-sm tracking-wide">
               {descriptionParagraphsTwo.map((paragraph, index) => (

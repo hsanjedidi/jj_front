@@ -34,3 +34,10 @@ type SpecialEvent = {
 };
 
 export type EventResponse = BaseEvent & (WeeklyEvent | SpecialEvent);
+
+
+export type DisplayedMedia = {
+  id: string;
+  url: string;
+  type?: "video";
+}[];

@@ -5,32 +5,74 @@ import { cn } from "@/lib/utils";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { FiClock, FiCalendar } from "react-icons/fi"; // icônes
+import { DisplayedMedia, EventResponse } from "@/app/types/EventResponse";
 
 const EventComp = () => {
   const mounted = useComponentMounted();
 
-  const event2 = {
-    title: "Sample Event 2",
+  const event: EventResponse = {
+    id: "1",
+    title: "Sample Event",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, velit eius voluptate, accusamus vitae fuga laboriosam aut error dolorum nemo officia praesentium aspernatur itaque soluta natus nam.",
-    date: "2026-03-01 18:30", // ← date et heure de l'événement
-    thumbnail: { url: "/ourImages/events/one/event2_2.jpg" },
-    video: { url: "/ourImages/events/one/event2_1.mp4" },
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum voluptatum, fuga tenetur fugiat commodi delectus mollitia et doloremque autem asperiores iure vero tempora atque laboriosam magnam deleniti recusandae voluptate illo..",
+    thumbnail: {
+      id: "thumb1",
+      url: "/ourImages/events/one/event1_1.jpg",
+    },
+    video: null,
     media: [
-      { id: "1", url: "/ourImages/events/one/event2_3.jpg" },
-      { id: "2", url: "/ourImages/events/one/event2_4.jpg" },
-      { id: "3", url: "/ourImages/events/one/event2_5.jpg" },
+      {
+        id: "media1",
+        url: "/ourImages/events/one/event1_2.jpg",
+      },
     ],
+    type: "SPECIAL",
+    startDate: "2024-07-01",
+    endDate: "2024-07-01",
+    startTime: "18:00",
+    endTime: "21:00",
   };
 
-  const displayedMedia = [
-    { id: "video", url: event2.video.url, type: "video" as const },
-    { id: "thumb", url: event2.thumbnail.url },
-    ...event2.media,
+  const event2: EventResponse = {
+    id: "2",
+    title: "Sample Event 2",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, velit eius voluptate, accusamus vitae fuga laboriosam aut error dolorum nemo officia praesentium aspernatur itaque soluta natus nam. Inventore, debitis quos!.",
+    thumbnail: {
+      id: "thumb2",
+      url: "/ourImages/events/one/event2_2.jpg",
+    },
+    video: {
+      id: "video1",
+      url: "/ourImages/events/one/event2_1.mp4",
+    },
+    media: [
+      {
+        id: "media2",
+        url: "/ourImages/events/one/event2_3.jpg",
+      },
+      {
+        id: "media3",
+        url: "/ourImages/events/one/event2_4.jpg",
+      },
+      {
+        id: "media4",
+        url: "/ourImages/events/one/event2_5.jpg",
+      },
+    ],
+    type: "WEEKLY",
+    dayOfWeek: 5,
+    startTime: "19:00",
+    endTime: "22:00",
+  };
+
+  const displayedMedia: DisplayedMedia = [
+    ...(event2.video ? [{ ...event2.video, type: "video" as const }] : []),
+    event2.thumbnail,
+    ...(event2.media ?? []),
   ];
 
-  // Formater date en français
-  const formattedDate = new Date(event2.date).toLocaleString("en-US", {
+  const formattedDate = new Date(event2.startTime).toLocaleString("en-US", {
     weekday: "long",
     year: "numeric",
     month: "long",
