@@ -36,13 +36,6 @@ const AboutPage = () => {
       {/* About Modern - Block */}
       <AboutTwoCols {...aboutTwoData} />
       {/* / About Modern - Block */}
-      {/* Testimonials Block */}
-      <TestimonialsBlock {...testimonialsData} />
-      {/* / Testimonials Block */}
-
-      {/* Contact Block */}
-      <ContactBlock {...contactData} />
-      {/* / Contact Block */}
 
       {/* Masonry Gallery */}
       <MasonryGallery {...galleryData} />

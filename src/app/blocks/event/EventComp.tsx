@@ -13,7 +13,7 @@ const EventComp = () => {
     title: "Sample Event 2",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, velit eius voluptate, accusamus vitae fuga laboriosam aut error dolorum nemo officia praesentium aspernatur itaque soluta natus nam.",
-    date: "2026-02-01 18:30", // ← date et heure de l'événement
+    date: "2026-03-01 18:30", // ← date et heure de l'événement
     thumbnail: { url: "/ourImages/events/one/event2_2.jpg" },
     video: { url: "/ourImages/events/one/event2_1.mp4" },
     media: [
@@ -97,6 +97,7 @@ const EventComp = () => {
             <div className="mb-4 flex items-center gap-2 text-amber-300 text-sm font-medium">
               <FiCalendar />
               <span>{formattedDate}</span>
+              <span>{"*In Bahrain Time"}</span>
             </div>
 
             {/* Titre */}

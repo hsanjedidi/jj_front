@@ -19,7 +19,6 @@ import WeekSpecials from "@/app/blocks/menu/menu-week-specials/menuWeekSpecials"
 import Cta from "@/app/blocks/cta/variants/ctaOne/ctaOne";
 import { TeamOneBlock as TeamBlock } from "@/app/blocks/team";
 
-
 const HomePage = () => {
   return (
     <>
@@ -44,14 +43,6 @@ const HomePage = () => {
         <BadgesList {...badgesListData} />
         {/* / Badges - Block */}
 
-        {/* Week Specials - Block */}
-        <WeekSpecials {...menuWeekData} />
-        {/* / Week Specials - Block */}
-
-        {/* Services - List - Block */}
-        <ServicesList {...ServiceCardListData} />
-        {/* / Services - List - Block */}
-
         {/* CTA - Block */}
         <Cta {...ctaData} />
         {/* / CTA - Block */}
@@ -59,10 +50,6 @@ const HomePage = () => {
         {/* Gallery */}
         <GalleryBasic {...galleryData} />
         {/* / Gallery */}
-
-        {/* Team */}
-        <TeamBlock {...teamBlockData} />
-        {/* / Team */}
       </>
     </>
   );

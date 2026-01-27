@@ -11,8 +11,8 @@ interface AboutBlockWithImagesProps extends AboutBlockProps {
 const AboutTwoCols = ({
   title = "UTTERLY UNIQUE LOCATIONS",
   descriptionParagraphsTwo = [],
-  leftImage = "/about/gallery-27a.jpg", // L'image de la ville/port
-  smallRightImage = "/about/gallery-29a.jpg", // L'image de la danseuse
+  leftImage = "/about/gallery-27a.jpg",
+  smallRightImage = "/about/gallery-29a.jpg",
 }: AboutBlockWithImagesProps) => {
   if (!descriptionParagraphsTwo || descriptionParagraphsTwo.length === 0) {
     return null;
@@ -21,8 +21,8 @@ const AboutTwoCols = ({
   return (
     <section className="bg-black text-white py-20 px-6 md:px-12">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        {/* GAUCHE : La grande image d'ambiance (7 colonnes sur 12) */}
-        <div className="lg:col-span-7 w-full h-[500px] lg:h-[700px]">
+        {/* GAUCHE : Grande image - CACHÉE SUR MOBILE */}
+        <div className=" lg:col-span-7 w-full h-[700px]">
           <img
             src={leftImage}
             alt="Atmospheric location"
@@ -30,10 +30,10 @@ const AboutTwoCols = ({
           />
         </div>
 
-        {/* DROITE : Petite image + Texte (5 colonnes sur 12) */}
+        {/* DROITE : Petite image + Texte */}
         <div className="lg:col-span-5 flex flex-col items-start lg:pl-12">
-          {/* Petite image verticale style portrait */}
-          <div className="w-full max-w-[320px] mb-12 self-center lg:self-start">
+          {/* PETITE IMAGE (gallery-29a) - MAINTENANT CACHÉE SUR MOBILE */}
+          <div className="hidden lg:block w-full max-w-[320px] mb-12 self-center lg:self-start">
             <img
               src={smallRightImage}
               alt="Performance"
@@ -41,19 +41,17 @@ const AboutTwoCols = ({
             />
           </div>
 
-          {/* Bloc Texte */}
+          {/* BLOC TEXTE - Seul élément visible sur mobile */}
           <div className="max-w-md">
-            <h2 className="text-xl md:text-5xl font-light tracking-widest uppercase mb-8 leading-tight">
+            <h2 className="text-lg md:text-xl font-light tracking-[0.3em] uppercase mb-8 leading-relaxed text-white">
               {title}
             </h2>
 
-            <div className="space-y-6 text-gray-300 font-light leading-relaxed text-sm tracking-wide">
+            <div className="space-y-6 text-gray-400 font-light leading-relaxed text-sm tracking-wide">
               {descriptionParagraphsTwo.map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
               ))}
             </div>
-
-            {/* Bouton style lien en bas */}
           </div>
         </div>
       </div>
