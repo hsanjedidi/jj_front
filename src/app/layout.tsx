@@ -4,18 +4,20 @@ import LayoutProvider from "./LayoutProvider";
 
 export const metadata: Metadata = {
   title: "JJ'S RESTAURANT ",
-  description: "Elegant Restaurant ",
-  keywords:
-    "restaurant, food, menu, reservation, booking, restaurant template, restaurant website, restaurant website template, restaurant website design, restaurant website development, restaurant website builder, restaurant website creator, restaurant website generator, restaurant website maker, restaurant website editor, restaurant website designer, restaurant website developer, restaurant website builder, restaurant website creator, restaurant website generator, restaurant website maker, restaurant website editor, restaurant website designer, restaurant website developer",
-  authors: [{ name: "JJ'S", url: "https://jrstudio.com.co" }],
-  creator: "JRTemplate",
-  publisher: "JRTemplate",
+  // description: "Elegant Restaurant ",
+  // keywords:
+  //   "restaurant, food, menu, reservation, booking, restaurant template, restaurant website, restaurant website template, restaurant website design, restaurant website development, restaurant website builder, restaurant website creator, restaurant website generator, restaurant website maker, restaurant website editor, restaurant website designer, restaurant website developer, restaurant website builder, restaurant website creator, restaurant website generator, restaurant website maker, restaurant website editor, restaurant website designer, restaurant website developer",
+  // authors: [{ name: "JJ'S", url: "https://jrstudio.com.co" }],
+  // creator: "JRTemplate",
+  // publisher: "JRTemplate",
   openGraph: {
-    title: "Beef – Elegant Restaurant Template",
-    description: "Elegant Restaurant Template",
+    title: "JJ'S Irish Pub & Restaurant",
+    description: "JJ'S Irish Pub & Restaurant",
   },
   icons: {
-    icon: "/favicon.jpg",
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+    shortcut: "/favicon.png",
   },
   themeColor: "#000000",
   viewport: {

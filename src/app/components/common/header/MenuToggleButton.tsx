@@ -27,9 +27,9 @@ const MenuToggleButton: React.FC<MenuToggleButtonProps> = ({
 			aria-controls={ariaControls}
 		>
 			{isMobile ? (
-				<CgClose className="nav-toggle__icon" />
+				<CgClose className="nav-toggle__icon text-white" />
 			) : (
-				<GiHamburgerMenu className="nav-toggle__icon" />
+				<GiHamburgerMenu className="nav-toggle__icon text-white" />
 			)}
 		</button>
 	);

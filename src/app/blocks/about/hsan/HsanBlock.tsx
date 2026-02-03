@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 type DiscoverMoreProps = {
   title?: string;
@@ -47,10 +48,7 @@ const DiscoverMore = ({
           </div>
         </div>
 
-        {/* ================= IMAGE AJUSTÉE ================= */}
-        {/* 1. On enlève h-[420px] pour éviter de compresser l'image.
-            2. On utilise 'relative w-full' pour que l'image prenne sa place naturelle.
-        */}
+
         <div className="relative w-full rounded-3xl overflow-hidden bg-neutral-900 shadow-2xl">
           <img
             src={image}
