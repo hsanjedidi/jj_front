@@ -1,38 +1,10 @@
-import { HeroInnerContactData } from "@/app/hooks/data-contact";
-import HeroInnerBlock from "@/app/components/common/hero-inner/Hero-inner";
-import ContactBlock from "@/app/blocks/contact/contact";
-import LocationsBlock from "@/app/blocks/locations/locations";
+import Contact from '@/app/blocks/contact/Contact'
+import React from 'react'
 
-// data
-import { contactData } from "@/app/hooks/data-contact";
-import { locationsData } from "@/app/hooks/data-contact";
-import ContactForm from "@/app/blocks/contact/ContactForm";
-import { HeroInnerAboutData } from "@/app/hooks/data";
-
-const ContactUsPage = () => {
+const page = () => {
   return (
-    <>
-      {/* Hero Inner - Block */}
-      <HeroInnerBlock
-        title={"Contact Us"}
-        image={"/hero/gallery-14a.jpg"}
-        altText={HeroInnerContactData.altText}
-        breadcrumbs={[
-          { id: 1, title: "Home", link: "/" },
-          { id: 2, title: "Contact", link: "/contact" },
-        ]}
-      />
-      {/* / Hero Inner - Block */}
-      <ContactForm />
-      {/* Contact Block */}
-      {/* <ContactBlock {...contactData} /> */}
-      {/* / Contact Block */}
+    <div><Contact /></div>
+  )
+}
 
-      {/* Locations Block */}
-      {/* <LocationsBlock {...locationsData} /> */}
-      {/* Locations Block */}
-    </>
-  );
-};
-
-export default ContactUsPage;
+export default page

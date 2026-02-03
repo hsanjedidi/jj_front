@@ -19,7 +19,7 @@ const config: Config = {
         // NOTE: Semantic color palette for easy theming
         primary: "#b08243", // Main accent color
         secondary: "#e7d8c3", // Secondary accent color
-        background: "#303d3b", // Main background color
+        background: "#1A3030", // Main background color
         surface: "#151A1E", // For cards, menus, etc.
         "surface-dark": "#050608", // Darker surface color
         "text-base": "#e7d8c3", // Base text color

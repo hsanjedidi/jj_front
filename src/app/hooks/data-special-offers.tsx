@@ -67,5 +67,33 @@ export const specialOffersData = {
       link: "/",
       linkText: "add order",
     },
+        {
+      id: 5,
+      tag: "Specialty",
+      title: "Crab With Curry Sources",
+      price: "$18.00",
+      image: "/ourImages/food/food11.jpeg",
+      altText: "Crab With Curry Sources",
+      description_primary:
+        "Nam nec tellus a odio tincidunt auctor aornare odio. Sed non mauris vitae eratconsequat auctor eu in elit.",
+      description_secondary:
+        "Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.",
+      link: "/",
+      linkText: "add order",
+    },
+        {
+      id: 6,
+      tag: "Specialty",
+      title: "Crab With Curry Sources",
+      price: "$18.00",
+      image: "/ourImages/food/food11.jpeg",
+      altText: "Crab With Curry Sources",
+      description_primary:
+        "Nam nec tellus a odio tincidunt auctor aornare odio. Sed non mauris vitae eratconsequat auctor eu in elit.",
+      description_secondary:
+        "Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.",
+      link: "/",
+      linkText: "add order",
+    },
   ],
 };

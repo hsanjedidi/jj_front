@@ -1,95 +1,73 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import BlockTitle from "@/app/components/common/block-title/block-title";
-import OpeningHours from "@/app/components/common/opening-hours/opening-hours";
 
-import { AboutBlockProps, Alignment } from "@/app/types/common.types";
+import { AboutBlockProps } from "@/app/types/common.types";
 
 const AboutClassicBlock = ({
   imageUrl,
   altText,
   descriptionParagraphs,
-  onImageClick,
-  imageWidth,
-  imageHeight,
-  priorityImage,
-  imageQuality,
-  imageFill,
-  onImageLoad,
-  imageClassName,
   subtitle,
   title,
-  divider,
-  align,
-  showOpeningHours,
-  openingHours,
 }: AboutBlockProps) => {
-  if (
-    !imageUrl ||
-    !altText ||
-    !descriptionParagraphs ||
-    descriptionParagraphs.length === 0
-  ) {
-    return (
-      <div className="about__image-info about__image-info--empty">
-        <p>No data available.</p>
-      </div>
-    );
-  }
+  if (!imageUrl || !altText || !descriptionParagraphs) return null;
 
   return (
-    <div
-      className="about__image-info"
-      role="region"
-      aria-label="About Image Info"
-      aria-describedby="about-description"
-    >
-      <div className="about-content min-h-screen  bg-[#303d3b]">
-        <div
-          className={`about-content__image `}
-          onClick={onImageClick}
-          role={onImageClick ? "button" : undefined}
-          tabIndex={onImageClick ? 0 : undefined}
-        >
-          <Image
-            src={imageUrl}
-            alt={altText}
-            width={imageWidth || 809}
-            height={imageHeight || 200}
-            priority={priorityImage}
-            quality={imageQuality || 75}
-            fill={imageFill}
-            onLoad={onImageLoad}
-            className={`     ${imageClassName || ""}  h-screen w-full object-cover `}
-            sizes=""
-          />
-        </div>
-        <div className={`about-content__info `} id="about-description">
-          <BlockTitle
-            subtitle={subtitle}
-            title={title || ""}
-            divider={divider}
-            align={align as Alignment}
-            aria-level="2"
-          />
-          <div className="about-content__description ">
+    <section className="bg-[#F9F3EB] py-20 px-6 md:px-12 lg:px-24 min-h-screen flex items-center overflow-hidden">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+        {/* SECTION TEXTE */}
+        <div className="order-2 lg:order-1 space-y-8 lg:pr-16">
+          <div className="flex flex-col gap-4">
+            <span className="uppercase tracking-[0.2em] text-xs font-semibold text-gray-500 flex items-center gap-2">
+              <span className="w-8 h-[1px] bg-gray-400"></span>{" "}
+              {subtitle || "OUR STORY"}
+            </span>
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif text-gray-900 leading-tight uppercase">
+              {title || "Murray's Bar & Grill"}
+            </h2>
+          </div>
+
+          {/* max-w-md assure que le texte reste compact et loin de l'image */}
+          <div className="space-y-6 text-gray-700 leading-relaxed max-w-md">
             {descriptionParagraphs.map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
+              <p key={index} className="text-base md:text-lg">
+                {paragraph}
+              </p>
             ))}
           </div>
-          {showOpeningHours && openingHours && (
-            <OpeningHours
-              title={openingHours.title}
-              schedule={openingHours.schedule}
+
+          <button className="bg-[#C14455] hover:bg-[#a33948] text-white px-8 py-3 rounded-full font-bold tracking-wider transition-colors duration-300 uppercase text-sm">
+            More About Us
+          </button>
+        </div>
+
+        {/* SECTION IMAGES */}
+        <div className="order-1 lg:order-2 relative flex justify-center lg:justify-end">
+          {/* Image Principale */}
+          <div className="relative w-[280px] h-[380px] md:w-[450px] md:h-[600px] rounded-lg overflow-hidden shadow-2xl">
+            <Image
+              src={imageUrl}
+              alt={altText}
+              fill
+              className="object-cover"
+              priority
             />
-          )}
+          </div>
+
+          {/* Image Secondaire (Cocktail) avec ajustement du retrait à gauche */}
+          <div className="absolute -bottom-10 -left-4 md:-left-16 lg:-left-12 w-[160px] h-[200px] md:w-[280px] md:h-[320px] rounded-lg overflow-hidden shadow-xl z-10 hidden sm:block border-4 border-[#F9F3EB]">
+            <Image
+              src="/ourImages/drink/drink3.png"
+              alt="Detail"
+              fill
+              className="object-cover"
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
-
-AboutClassicBlock.displayName = "AboutClassicBlock";
 
 export default AboutClassicBlock;

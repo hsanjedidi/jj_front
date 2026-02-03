@@ -25,7 +25,7 @@ const HomePage = () => {
       <>
         <Landing />
         <AboutClassic {...aboutData} />
-        <BadgesList {...badgesListData} />
+        {/*  <BadgesList {...badgesListData} />*/}
 
         <MeetStars />
 
@@ -36,13 +36,11 @@ const HomePage = () => {
         {/* About - Block */}
         {/* / About - Block */}
 
-        {/* Special Offers - Block */}
-        <SpecialOffersBlock {...specialOffersData} />
-        {/* / Special Offers - Block */}
- {/* Services - List - Block */}
-      <ServicesList {...ServiceCardListData} />
-      {/* / Services - List - Block */}
+        {/* Services - List - Block */}
+        <ServicesList {...ServiceCardListData} />
+        {/* / Services - List - Block */}
         {/* Badges - Block */}
+        <BadgesList {...badgesListData} />  
         {/* / Badges - Block */}
 
         {/* CTA - Block */}
@@ -52,6 +50,9 @@ const HomePage = () => {
         {/* Gallery */}
         <MasonryGallery {...galleryData} />
         {/* / Gallery */}
+        {/* Special Offers - Block */}
+        <SpecialOffersBlock {...specialOffersData} />
+        {/* / Special Offers - Block */}
       </>
     </>
   );

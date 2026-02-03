@@ -20,7 +20,7 @@ const AboutTwoCols = ({
   }
 
   return (
-    <section className="bg-black text-white py-20 px-6 md:px-12">
+    <section className="bg-[#1A3030] text-white py-20 px-6 md:px-12">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         {/* GAUCHE : Grande image - CACHÉE SUR MOBILE */}
         <div className=" lg:col-span-7 w-full h-[700px]">

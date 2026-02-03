@@ -38,29 +38,6 @@ export const LogoData = {
   heightLogo: 120,
 };
 
-export const menuLegalData = [
-  {
-    id: 1,
-    title: "Privacy Policy",
-    link: "/",
-  },
-  {
-    id: 2,
-    title: "Spam Policy",
-    link: "/",
-  },
-  {
-    id: 3,
-    title: "Terms & Conditions",
-    link: "/",
-  },
-  {
-    id: 4,
-    title: "Accessibility Statement",
-    link: "/",
-  },
-];
-
 export const socialIconsData = [
   {
     href: "http://www.facebook.com",

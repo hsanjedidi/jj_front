@@ -18,7 +18,7 @@ const DiscoverMore = ({
   image = "/ourImages/awards/award.jpg",
 }: DiscoverMoreProps) => {
   return (
-    <section className="relative overflow-hidden bg-neutral-950 py-20 sm:py-28">
+    <section className="relative overflow-hidden bg-[#F9F3EB] py-20 sm:py-28">
       {/* subtle background glow */}
       <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-[#d4af37]/10 blur-3xl" />
 
@@ -31,16 +31,16 @@ const DiscoverMore = ({
             </span>
           )}
 
-          <h2 className="text-4xl sm:text-5xl font-serif font-medium text-white leading-tight">
+          <h2 className="text-4xl sm:text-5xl font-serif font-medium text-black leading-tight">
             {title}
           </h2>
 
-          <p className="max-w-xl text-sm sm:text-base text-white/65 leading-relaxed">
+          <p className="max-w-xl text-sm sm:text-base text-black/65 leading-relaxed">
             {description}
           </p>
 
           <div className="pt-4">
-            <button className="group relative inline-flex items-center gap-3 rounded-full border border-[#d4af37]/40 px-8 py-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-[#f6e7b1] transition-all duration-300 hover:bg-[#d4af37] hover:text-black">
+            <button className="group relative inline-flex items-center gap-3 rounded-full border border-[#d4af37]/40 px-8 py-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-[#312806] transition-all duration-300 hover:bg-[#d4af37] hover:text-black">
               Our History
               <span className="block h-px w-6 bg-current transition-all duration-300 group-hover:w-10" />
             </button>

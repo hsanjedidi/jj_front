@@ -1,5 +1,5 @@
 import { AboutClassic, AboutModern, AboutTwoCols } from "@/app/blocks/about";
-import ContactBlock from "@/app/blocks/contact/contact";
+import ContactBlock from "@/app/blocks/Booking/contact";
 import { TeamTwoBlock } from "@/app/blocks/team";
 import { TestimonialsBlock } from "@/app/blocks/testimonials/";
 import HeroInnerBlock from "@/app/components/common/hero-inner/Hero-inner";
@@ -31,14 +31,14 @@ const AboutPage = () => {
       {/* / About Classic - Block */}
 
       {/* Badges Block */}
-      <BadgesList {...badgesListData} />
+      
       {/* / Badges Block */}
       {/* About Modern - Block */}
       <AboutTwoCols {...aboutTwoData} />
       {/* / About Modern - Block */}
 
       {/* Masonry Gallery */}
-      <MasonryGallery {...galleryData} />
+      {/*<MasonryGallery {...galleryData} />*/}
       {/* / Masonry Gallery */}
       {/* / Hero Inner - Block */}
       <HsanBlock />

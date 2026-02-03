@@ -204,6 +204,8 @@ export interface LocationsBlockProps {
 }
 
 export interface HistoryItem {
+	quote: React.JSX.Element;
+	quoteAuthor: ReactNode;
 	id: number;
 	year: string;
 	title: string;

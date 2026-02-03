@@ -23,7 +23,7 @@ const MenuPage = () => {
 			<SpecialOffersTwoBlock {...specialOffersData} />
 			<MenuImageBlock {...categoryDishesData} />
 			<CtaTwo {...ctaTwoData} />
-			<BadgesList {...badgesListData} />
+			
 			<Gallery {...galleryData} />
 		</main>
 	);

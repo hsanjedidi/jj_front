@@ -17,7 +17,7 @@ export const itemsNavbar = [
   },
   {
     id: 4,
-    title: "Events",
+    title: "Entertainment",
     link: "/events",
     children: [
       {
@@ -54,13 +54,19 @@ export const itemsNavbar = [
   },
   {
     id: 7,
-    title: "History",
-    link: "/history",
+    title: "Our Story",
+    link: "/history2",
   },
 
   {
     id: 8,
     title: "Contact",
     link: "/contact-us",
+  },
+
+  {
+    id: 9,
+    title: "Booking",
+    link: "/booking",
   },
 ];

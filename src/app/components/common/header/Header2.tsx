@@ -1,118 +1,93 @@
 "use client";
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import LogoLink from "@/app/components/common/logo/logoLink";
-import { LogoData, socialIconsData } from "@/app/hooks/data-general";
+import { LogoData } from "@/app/hooks/data-general";
 import { itemsNavbar } from "@/app/hooks/data-navbar";
-import SocialIcons from "@/app/components/common/social/SocialIcons";
-import MenuMobile from "@/app/components/common/menuMobile/menuMobile";
 import MenuToggleButton from "./MenuToggleButton";
 import { cn } from "@/lib/utils";
-import throttle from "lodash.throttle";
 import { useClickAway, useWindowScroll } from "@uidotdev/usehooks";
-import { Separator } from "@/components/ui/separator";
-import MenuMobileChips from "./MenuMobileChips";
 import MobileHeader from "./MobileHeader";
 
-const STICKY_THRESHOLD = 100; // Define scroll threshold (adjust as needed)
-const SCROLL_THROTTLE_LIMIT = 200; // Throttle limit in ms
+const STICKY_THRESHOLD = 100;
 
-/**
- * The main header component for the website.
- * It includes the logo, main navigation, social icons, and a mobile menu toggle.
- * It also handles the "sticky" behavior on scroll.
- * @returns {React.ReactElement} The rendered header component.
- */
 const Header2: React.FC = () => {
-  const [isSticky, setIsSticky] = useState(false);
   const [isMenuVisible, setMenuVisibility] = useState(false);
-  const [{ x, y: scrollY }, scrollTo] = useWindowScroll();
+  const [{ y: scrollY }] = useWindowScroll();
   const [previousYRef, setPreviousYRef] = useState(scrollY);
-  /**
-   * Effect to handle the sticky header functionality.
-   * It adds a throttled scroll event listener to track the page's scroll position
-   * and applies a sticky class to the header when the threshold is passed.
-   */
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsSticky(window.scrollY > STICKY_THRESHOLD);
-    };
-
-    const throttledScrollHandler = throttle(
-      handleScroll,
-      SCROLL_THROTTLE_LIMIT,
-    );
-
-    window.addEventListener("scroll", throttledScrollHandler);
-    handleScroll(); // Initial check
-
-    return () => {
-      window.removeEventListener("scroll", throttledScrollHandler);
-    };
-  }, []); // Empty dependency array ensures this runs only on mount and unmount
-
-  /**
-   * Toggles the visibility of the mobile menu.
-   */
-  const handleToggleMobileMenu = () => {
-    setMenuVisibility((prev) => !prev);
-  };
-
   const [headerHidden, setHeaderHidden] = useState(false);
+
+  const half = Math.ceil(itemsNavbar.length / 2);
+  const leftItems = itemsNavbar.slice(0, half);
+  const rightItems = itemsNavbar.slice(half);
+
   useEffect(() => {
-    if (!previousYRef) setHeaderHidden(true);
-    else if (scrollY && previousYRef < scrollY) {
-      // Scrolling down
+    if (
+      scrollY &&
+      previousYRef &&
+      previousYRef < scrollY &&
+      scrollY > STICKY_THRESHOLD
+    ) {
       setHeaderHidden(true);
-      if (isMenuVisible) setMenuVisibility(false);
+      setMenuVisibility(false);
     } else {
-      // Scrolling up
       setHeaderHidden(false);
     }
-
     setPreviousYRef(scrollY);
-  }, [scrollY]);
+  }, [scrollY, previousYRef]);
 
   const bgTransparent = scrollY === null || scrollY < 20;
+  const closeMobileMenu = () => setMenuVisibility(false);
+  const ref = useClickAway<HTMLDivElement>(() => closeMobileMenu());
 
-  const closeFuckingMobileMenu = () => {
-    setMenuVisibility(false);
-  };
-
-  const ref = useClickAway<HTMLDivElement>(() => {
-    closeFuckingMobileMenu();
-  });
+  // Style des liens minimisé
+  const navLinkClass =
+    "text-[#e7d8c3] hover:text-white text-[11px] lg:text-[13px] font-semibold tracking-[0.18em] uppercase transition-colors duration-300";
 
   return (
-    <div className="  transition-all duration-300 ease-in-out" ref={ref}>
-      <div className=" transition-all duration-300 ease-in-out">
-        <header
+    <div className="transition-all duration-300 ease-in-out" ref={ref}>
+      <header
+        className={cn(
+          "fixed top-0 left-0 w-full z-50 transition-transform duration-500",
+          headerHidden ? "-translate-y-full" : "translate-y-0",
+        )}
+      >
+        <div
           className={cn(
-            "fixed top-0 left-0 w-full z-50 md:overflow-visible",
-            headerHidden
-              ? "-translate-y-full transition-all duration-300 ease-in-out"
-              : "transition-all duration-300 ease-in-out",
+            "px-6 transition-all duration-700 ease-in-out",
+            // py-5 sur mobile pour donner de l'espace au logo qui descend
+            bgTransparent
+              ? "bg-transparent py-5 md:py-8"
+              : "bg-black/95 backdrop-blur-md shadow-2xl py-4 md:py-5",
           )}
         >
-          <div
-            className={cn(
-              "p-4 duration-700 ease-in-out transition-colors",
-              bgTransparent ? "bg-transparent" : " bg-black",
-            )}
-          >
-            <div className="flex flex-col w-full h-fit transition-all duration-300 ease-in-out">
-              <div className="grid grid-cols-3 w-full">
-                <div className="flex items-center">
-                  <div className="header__mobile" ref={null}>
-                    <MenuToggleButton
-                      isMobile={isMenuVisible}
-                      onToggle={handleToggleMobileMenu}
-                      aria-controls="menu-mobile"
-                    />
-                  </div>
-                </div>
+          <div className="max-w-[1600px] mx-auto">
+            <div className="relative flex items-center justify-between min-h-[50px] md:min-h-[80px]">
+              {/* --- MOBILE : Bouton Menu --- */}
+              <div className="md:hidden z-30">
+                <MenuToggleButton
+                  isMobile={isMenuVisible}
+                  onToggle={() => setMenuVisibility(!isMenuVisible)}
+                />
+              </div>
 
-                <div className="">
+              {/* --- DESKTOP : Menu Gauche --- */}
+              <nav className="hidden md:flex flex-1 justify-end pr-12 lg:pr-20">
+                <ul className="flex items-center gap-6 lg:gap-10">
+                  {leftItems.map((item) => (
+                    <li key={item.title}>
+                      <Link href={item.link} className={navLinkClass}>
+                        {item.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+
+              {/* --- LOGO CENTRAL --- */}
+              {/* Le wrapper ici permet de descendre le logo sans casser le centrage absolu */}
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 transition-transform duration-300">
+                <div className="transform translate-y-2 md:translate-y-0">
                   <LogoLink
                     href={LogoData.hrefLogo}
                     src={LogoData.urlLogo}
@@ -120,64 +95,39 @@ const Header2: React.FC = () => {
                     scrollY={scrollY}
                   />
                 </div>
-
-                <div className="header__nav">
-                  {/* Desktop Navigation */}
-                  <nav className="header__menu" aria-label="Main navigation">
-                    <ul className="header__menu-list">
-                      {itemsNavbar.map((item) => (
-                        <li
-                          key={item.title}
-                          className={cn(
-                            "dropdown simple-dropdown",
-                            item.children &&
-                              item.children.length > 0 &&
-                              "has-children",
-                          )}
-                        >
-                          <Link href={item.link}>{item.title}</Link>
-                          {item.children && item.children.length > 0 && (
-                            <ul className="dropdown-menu">
-                              {item.children.map((child) => (
-                                <li key={child.id}>
-                                  <Link href={child.link}>{child.title}</Link>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-                        </li>
-                      ))}
-                    </ul>
-                  </nav>
-
-                  {/* Mobile Menu Toggle & Social Icons Wrapper */}
-                  <div className="flex items-center">
-                    <div className="">
-                      <SocialIcons socials={socialIconsData} />
-                    </div>
-                  </div>
-                </div>
               </div>
 
-              <div
-                className={cn(
-                  "overflow-hidden transition-all duration-300 ease-in-out ",
-                  isMenuVisible
-                    ? "max-h-40 opacity-100 pt-6 md:max-h-0 md:opacity-0"
-                    : "max-h-0 opacity-0 pt-0",
-                )}
-              >
-                <MobileHeader handleLinkClick={closeFuckingMobileMenu} />
-              </div>
+              {/* --- DESKTOP : Menu Droite --- */}
+              <nav className="hidden md:flex flex-1 justify-start pl-12 lg:pl-20">
+                <ul className="flex items-center gap-6 lg:gap-10">
+                  {rightItems.map((item) => (
+                    <li key={item.title}>
+                      <Link href={item.link} className={navLinkClass}>
+                        {item.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+
+              {/* --- MOBILE : Spacer --- */}
+              <div className="md:hidden w-10"></div>
+            </div>
+
+            {/* --- MENU MOBILE DROPDOWN --- */}
+            <div
+              className={cn(
+                "overflow-hidden transition-all duration-500 ease-in-out md:hidden",
+                isMenuVisible
+                  ? "max-h-screen opacity-100 pt-8"
+                  : "max-h-0 opacity-0",
+              )}
+            >
+              <MobileHeader handleLinkClick={closeMobileMenu} />
             </div>
           </div>
-        </header>
-        {/* <MenuMobile
-          id="menu-mobile"
-          isMobile={isMobile}
-          setIsMobile={setIsMobile}
-        /> */}
-      </div>
+        </div>
+      </header>
     </div>
   );
 };

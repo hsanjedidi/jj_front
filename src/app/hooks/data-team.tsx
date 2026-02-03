@@ -2,7 +2,7 @@ import { FaFacebookF, FaXTwitter, FaInstagram } from "react-icons/fa6";
 
 export const teamBlockData = {
   subtitle: "JJ's Talents",
-  title: "Meet Our Resident Stars",
+  title: "Explore Our Spaces",
   divider: true,
   align: "center",
   urlImage: "/other/icon-band.png",

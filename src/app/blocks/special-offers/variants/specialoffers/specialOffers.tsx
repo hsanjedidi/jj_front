@@ -1,123 +1,109 @@
 "use client";
-import { useState } from "react";
+
+import { useState, useRef } from "react";
 import Image from "next/image";
-import { Navigation, Pagination, A11y } from "swiper/modules";
+import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { ChevronLeft, ChevronRight, UtensilsCrossed } from "lucide-react";
 
-// Interface
-import { Alignment, SpecialOffersBlockProps } from "@/app/types/common.types";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+import { SpecialOffersBlockProps } from "@/app/types/common.types";
 import { specialOffersData } from "@/app/hooks/data-special-offers";
 import { cn } from "@/lib/utils";
-import divider from "@/app/components/common/divider/divider";
-import BlockTitle from "@/app/components/common/block-title/block-title";
 
 const SpecialOffersBlock = ({
   items = specialOffersData.items,
   emptyMessage = specialOffersData.emptyMessage,
-  carouselAriaLabel = specialOffersData.carouselAriaLabel,
-  prevButtonAriaLabel = specialOffersData.prevButtonAriaLabel,
-  nextButtonAriaLabel = specialOffersData.nextButtonAriaLabel,
-  paginationBulletAriaLabel = specialOffersData.paginationBulletAriaLabel,
   className,
 }: SpecialOffersBlockProps) => {
-  const [activeSlide, setActiveSlide] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const prevRef = useRef<HTMLButtonElement>(null);
+  const nextRef = useRef<HTMLButtonElement>(null);
 
-  // Improved data validation check
   if (!items || items.length === 0) {
-    return (
-      <div className="special-offers special-offers--empty">
-        <p>{emptyMessage}</p>
-      </div>
-    );
+    return <div className="p-10 text-center bg-[#F9F3EB]">{emptyMessage}</div>;
   }
 
   return (
-    <>
-      <BlockTitle
-        subtitle={"Crafted with passion"}
-        title={"Chef’s Recommendations"}
-        phrase={"Handpicked dishes crafted by our chef"}
-        align={"align" as Alignment}
-        divider={true}
-      />
-      <section
-        id="special-offers"
-        className={cn(`special-offers bg-background`, className)}
-      >
-        {/* Slider Special Offers */}
-        <Swiper
-          className="special-offers__slider"
-          breakpoints={{
-            320: {
-              slidesPerView: 1,
-            },
-            768: {
-              slidesPerView: 1,
-            },
-            1024: {
-              slidesPerView: 1,
-            },
-          }}
-          freeMode={true}
-          pagination={{ clickable: true }}
-          navigation={true}
-          modules={[Navigation, Pagination, A11y]}
-          loop={true}
-          onSlideChange={(swiper) => setActiveSlide(swiper.realIndex)}
-          a11y={{
-            enabled: true,
-            prevSlideMessage: prevButtonAriaLabel,
-            nextSlideMessage: nextButtonAriaLabel,
-            paginationBulletMessage: paginationBulletAriaLabel.replace(
-              "{index}",
-              "{{index}}",
-            ),
-            containerMessage: carouselAriaLabel,
-          }}
+    <div
+      className={cn(
+        "bg-[#F9F3EB] py-20 text-black min-h-[70vh] flex flex-col justify-center overflow-hidden",
+        className,
+      )}
+    >
+      {/* --- HEADER --- */}
+      <div className="container mx-auto px-4 mb-12 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
         >
-          {items.map((item, index) => (
-            <SwiperSlide key={item.id}>
-              <div className="special-offers__slider__wrapper">
-                {/* Slider item -- image */}
-                <div className="special-offers__slider__image">
-                  <div className="special-offers__slider__image-overlayer"></div>
+          <h2 className="text-3xl md:text-5xl font-serif italic mb-4 text-neutral-800">
+            Our Special Selection
+          </h2>
+          <div className="w-20 h-1 bg-[#c24156] mx-auto opacity-50 mb-8"></div>
+
+          {/* Bouton Voir Menu Principal */}
+          <button className="px-8 py-3 bg-neutral-900 text-white rounded-full text-xs font-bold tracking-widest uppercase hover:bg-[#c24156] transition-colors shadow-lg">
+            View Full Menu
+          </button>
+        </motion.div>
+      </div>
+
+      {/* --- SLIDER SECTION --- */}
+      <section className="relative w-full">
+        <Swiper
+          modules={[Navigation, Pagination, A11y, Autoplay]}
+          spaceBetween={10}
+          slidesPerView={1.2}
+          centeredSlides={true}
+          loop={true}
+          speed={1000}
+          onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+          navigation={{
+            prevEl: prevRef.current,
+            nextEl: nextRef.current,
+          }}
+          breakpoints={{
+            768: { slidesPerView: 1.5, spaceBetween: 20 },
+            1280: { slidesPerView: 1.8, spaceBetween: 30 },
+          }}
+          className="w-full !pb-16"
+        >
+          {items.map((item) => (
+            <SwiperSlide key={item.id} className="flex items-center">
+              {({ isActive }) => (
+                <motion.div
+                  className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl shadow-2xl bg-neutral-800"
+                  animate={{
+                    scale: isActive ? 1.05 : 0.85,
+                    opacity: isActive ? 1 : 0.7,
+                  }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                >
                   <Image
                     src={item.image}
-                    alt={item.altText}
-                    width={1920}
-                    height={1080}
-                    priority={index === 0}
+                    alt={item.title}
+                    fill
+                    className="object-cover"
+                    quality={100}
+                    priority
                   />
-                </div>
-                {/* Slider item -- info */}
-                <motion.div
-                  className={`special-offers__slider__info  bg-[#303d3b]`}
-                  initial={{ opacity: 0, scale: 1 }}
-                  animate={
-                    activeSlide === index ? { opacity: 1, scale: 1 } : {}
-                  }
-                  transition={{ duration: 1 }}
-                >
-                  <span className="tag">{item.tag}</span>
-                  <h3 className="special-offers__slider__title">
-                    {item.title} <span>{item.price}</span>
-                  </h3>
-                  <p className="special-offers__slider__primary">
-                    {item.description_primary}
-                  </p>
-                  <p className="special-offers__slider__secondary">
-                    {item.description_secondary}
-                  </p>
+
+                  {/* Overlay dégradé */}
                 </motion.div>
-              </div>
+              )}
             </SwiperSlide>
           ))}
         </Swiper>
-        {/* Slider Special Offers */}
+
+        {/* --- NAVIGATION CONTROLS --- */}
       </section>
-    </>
+    </div>
   );
 };
 
