@@ -1,6 +1,5 @@
 import HeroInnerBlock from "@/app/components/common/hero-inner/Hero-inner";
 import { HistoryBlock } from "@/app/blocks/history";
-import BadgesList from "@/app/blocks/badges/BadgesList";
 
 // Data
 import { HeroInnerHistoryData } from "@/app/hooks/data";

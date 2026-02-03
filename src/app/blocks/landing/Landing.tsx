@@ -27,7 +27,7 @@ export function Landing() {
                 Welcome to
               </span>
               <span className="block bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent">
-                JJ's Irish Pub
+                JJ&apos;s Irish Pub
               </span>
               <span className="block text-3xl md:text-5xl lg:text-6xl mt-2 font-light">
                 & Restaurant

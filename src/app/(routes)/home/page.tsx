@@ -1,5 +1,4 @@
 import { AboutClassic } from "@/app/blocks/about";
-import BadgesList from "@/app/blocks/badges/BadgesList";
 import { GalleryBasic, MasonryGallery } from "@/app/blocks/gallery";
 import { HeroCreativeSliderBlock } from "@/app/blocks/hero";
 import { Landing } from "@/app/blocks/landing/Landing";
@@ -18,41 +17,34 @@ import { teamBlockData } from "@/app/hooks/data-team";
 import WeekSpecials from "@/app/blocks/menu/menu-week-specials/menuWeekSpecials";
 import Cta from "@/app/blocks/cta/variants/ctaOne/ctaOne";
 import { TeamOneBlock as TeamBlock } from "@/app/blocks/team";
+import Entertainment from "@/app/blocks/badges/BadgesList";
 
 const HomePage = () => {
   return (
     <>
       <>
         <Landing />
+        {/* Dirrab l about t3 home */}
         <AboutClassic {...aboutData} />
-        {/*  <BadgesList {...badgesListData} />*/}
 
+        {/* Dirrab explore sapces */}
         <MeetStars />
 
-        {/* Slider Hero - Block */}
-        {/* <HeroCreativeSliderBlock {...sliderHeroData} /> */}
-        {/* / Slider Hero - Block */}
-
-        {/* About - Block */}
-        {/* / About - Block */}
-
-        {/* Services - List - Block */}
+        {/* Dirrab brand vlaues */}
         <ServicesList {...ServiceCardListData} />
-        {/* / Services - List - Block */}
-        {/* Badges - Block */}
-        <BadgesList {...badgesListData} />  
+
+        {/* Dirrab Entertainment */}
+        <Entertainment   />
         {/* / Badges - Block */}
 
-        {/* CTA - Block */}
+        {/* Dirrab menu f home */}
         <Cta {...ctaData} />
-        {/* / CTA - Block */}
 
         {/* Gallery */}
         <MasonryGallery {...galleryData} />
-        {/* / Gallery */}
+
         {/* Special Offers - Block */}
         <SpecialOffersBlock {...specialOffersData} />
-        {/* / Special Offers - Block */}
       </>
     </>
   );

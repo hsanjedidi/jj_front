@@ -36,7 +36,7 @@ const PageHomeClassic = () => {
 			{/* / Special Offers - Block */}
 
 			{/* Badges - Block */}
-			<BadgesList {...badgesListData} />
+			{/* <BadgesList {...badgesListData} /> */}
 			{/* / Badges - Block */}
 
 			{/* Week Specials - Block */}

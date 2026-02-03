@@ -20,7 +20,7 @@ const Entertainment = () => {
                 Must See
               </span>
               <h2 className="font-serif text-5xl md:text-6xl text-[#f5f5dc] leading-[1.1] mb-8">
-                <span className="italic">Entertainment</span> at JJ'S
+                <span className="italic">Entertainment</span> at JJ&apos;S
               </h2>
               <div className="w-20 h-[1px] bg-[#d4af37]/50"></div>
             </header>
@@ -60,38 +60,39 @@ const Entertainment = () => {
             </div>
 
             {/* BOUTON : View Entertainment Schedule */}
-          <motion.div
-  initial={{ opacity: 0, y: 20 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8, delay: 0.2 }}
->
-  <a
-    href="/events" // Insérez votre URL ici
-    // Ouvre dans un nouvel onglet
-    rel="noopener noreferrer" // Sécurité pour les liens externes
-    className="inline-flex items-center group relative overflow-hidden border border-[#d4af37]/40 px-8 py-4 text-[#d4af37] uppercase tracking-[0.2em] text-[11px] font-bold transition-all duration-500 hover:text-[#0F1C1C]"
-  >
-    {/* Effet de remplissage au survol */}
-    <span className="absolute inset-0 bg-[#d4af37] translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0"></span>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <Link
+                href="/events" // Insérez votre URL ici
+                // Ouvre dans un nouvel onglet
+                rel="noopener noreferrer" // Sécurité pour les liens externes
+                className="inline-flex items-center group relative overflow-hidden border border-[#d4af37]/40 px-8 py-4 text-[#d4af37] uppercase tracking-[0.2em] text-[11px] font-bold transition-all duration-500 hover:text-[#0F1C1C]"
+              >
+                {/* Effet de remplissage au survol */}
+                <span className="absolute inset-0 bg-[#d4af37] translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0"></span>
 
-    <span className="relative z-10 flex items-center gap-3">
-      View Entertainment Schedule
-      <svg
-        className="w-4 h-4 transform transition-transform duration-500 group-hover:translate-x-1"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M17 8l4 4m0 0l-4 4m4-4H3"
-        />
-      </svg>
-    </span>
-  </a>
-</motion.div>
+                <span className="relative z-10 flex items-center gap-3">
+                  View Entertainment Schedule
+                  <svg
+                    className="w-4 h-4 transform transition-transform duration-500 group-hover:translate-x-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </span>
+              </Link>
+            </motion.div>
           </div>
 
           {/* CÔTÉ DROIT : IMAGE AVEC CADRE DÉCALÉ */}

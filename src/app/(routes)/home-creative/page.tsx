@@ -1,7 +1,6 @@
 'use client';
 
 import { AboutClassic } from "@/app/blocks/about";
-import BadgesList from "@/app/blocks/badges/BadgesList";
 import Cta from "@/app/blocks/cta/variants/ctaOne/ctaOne";
 import { GalleryBasic } from "@/app/blocks/gallery";
 import ServicesList from "@/app/blocks/services/variants/servicesList/ServicesList";
@@ -43,7 +42,6 @@ const PageHomeCreative = () => {
       {/* / Special Offers - Block */}
 
       {/* Badges - Block */}
-      <BadgesList {...badgesListData} />
       {/* / Badges - Block */}
 
       {/* Week Specials - Block */}

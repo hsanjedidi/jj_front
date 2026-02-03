@@ -2,6 +2,7 @@
 
 import BlockTitle from "@/app/components/common/block-title/block-title";
 import { teamBlockData } from "@/app/hooks/data-team";
+import Image from "next/image";
 
 const spaces = [
   {
@@ -40,12 +41,12 @@ const MeetStars = () => {
       {/* Augmentation de la largeur max pour donner plus de place aux images */}
       <div className="container max-w-7xl mx-auto">
         {/* Header */}
-        <div className="team-block__container mb-2">
+        <div className="team-block__container  ">
           <BlockTitle {...blockTitleProps} />
         </div>
 
         {/* Band Members Grid - gap réduit pour gagner de l'espace horizontal */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 max-w-6xl mx-auto">
           {spaces.map((space, index) => (
             <div
               key={space.title}
@@ -54,28 +55,27 @@ const MeetStars = () => {
             >
               {/* Image Container - Ratio 3/4 conservé mais image plus large via le container */}
               <div className="aspect-[3/4] overflow-hidden">
-                <img
+                <Image
                   src={space.image}
                   alt={space.title}
+                  width={900}
+                  height={900}
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                 />
               </div>
 
-              {/* Overlay subtil */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#1A3030] via-[#1A3030]/20 to-transparent opacity-90"></div>
 
-              {/* Content */}
-              <div className="absolute bottom-0 left-0 right-0 p-5">
-                <p className="text-gold text-[10px] tracking-[0.2em] mb-1 font-semibold uppercase opacity-90 whitespace-nowrap">
+              <div className="absolute bottom-0 left-0 right-0 p-5 flex flex-col items-start space-y-2">
+                <div className="text-primary text-[10px] tracking-[0.4em]  font-semibold uppercase whitespace-nowrap m-0">
                   {space.subtitle}
-                </p>
+                </div>
 
-                {/* TITRE : Forçage sur une seule ligne avec gestion du débordement */}
-                <h3 className="font-heading text-sm sm:text-base md:text-sm lg:text-base text-white mb-2 group-hover:text-gold transition-colors duration-300 whitespace-nowrap overflow-hidden text-ellipsis">
+                <h4 className="font-heading text-sm sm:text-base md:text-sm lg:text-base text-white  group-hover:text-primary transition-colors duration-300 whitespace-nowrap overflow-hidden text-ellipsis   tracking-wide">
                   {space.title}
-                </h3>
+                </h4>
 
-                <p className="text-white/70 text-[11px] leading-relaxed max-w-[95%] opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
+                <p className="text-white/70 text-sm  leading-tight  max-w-[95%] opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
                   {space.description}
                 </p>
               </div>
@@ -84,10 +84,10 @@ const MeetStars = () => {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-12">
+        <div className="text-center mt-12 ">
           <a
             href="#"
-            className="text-gold/80 hover:text-gold transition-all duration-300 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-medium"
+            className="  border-b hover:text-primary hover:border-primary transition-all duration-300 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-medium"
           >
             Explore Full Venue
             <svg

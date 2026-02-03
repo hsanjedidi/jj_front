@@ -1,5 +1,5 @@
 import { IconType } from "react-icons";
-import React from "react";
+import React, { ReactNode } from "react";
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 
 export interface NavItem {
@@ -204,8 +204,8 @@ export interface LocationsBlockProps {
 }
 
 export interface HistoryItem {
-	quote: React.JSX.Element;
-	quoteAuthor: ReactNode;
+	quote?: React.JSX.Element;
+	quoteAuthor?: ReactNode;
 	id: number;
 	year: string;
 	title: string;

@@ -1,4 +1,4 @@
-import BadgesList from "@/app/blocks/badges/BadgesList";
+// import BadgesList from "@/app/blocks/badges/BadgesList";
 import CtaTwo from "@/app/blocks/cta/variants/ctaTwo/ctaTwo";
 import { GalleryBasic as Gallery } from "@/app/blocks/gallery";
 import MenuImageBlock from "@/app/blocks/menu/menu-image/menuImage";
@@ -36,7 +36,7 @@ const PageMenu = () => {
             {/* / CtaTwo - Block */}
 
             {/* Badges - Block */}
-            <BadgesList {...badgesListData} />
+            {/* <BadgesList {...badgesListData} /> */}
             {/* / Badges - Block */}
 
             {/* Gallery */}

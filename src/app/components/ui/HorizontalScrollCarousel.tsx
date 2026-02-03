@@ -97,7 +97,7 @@ const LiveMusicSection = () => {
               </h4>
               <p className="text-[#F5F5DC]/60 leading-relaxed font-light italic">
                 Declan (accordion), Paddy (guitar) and Sean (whistles) bring
-                over 40 years of mastery to JJ'S, weaving the very fabric of
+                over 40 years of mastery to JJ&apos;S, weaving the very fabric of
                 Irish soul through every note.
               </p>
             </div>
