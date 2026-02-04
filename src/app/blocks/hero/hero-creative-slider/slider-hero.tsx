@@ -23,7 +23,7 @@ const HeroCreativeSliderBlock = ({
         <p>{emptyMessage}</p>
       </div>
     );
-  }
+  }	
 
   const countItems = items.length;
 

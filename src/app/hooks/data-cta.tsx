@@ -1,7 +1,7 @@
 export const ctaData = {
   title: "JJ’s – Good Food, Great Vibes",
   description:
-    "At JJ’s, every dish is made with fresh, high-quality ingredients for a truly delicious experience. JJ’s is all about the simple joy of great food.",
+    "Fresh ingredients. Great food. The JJ’s experience.",
   link: "/menu2",
   linkText: "View Our Menu",
 };

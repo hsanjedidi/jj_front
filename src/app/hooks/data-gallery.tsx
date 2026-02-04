@@ -1,6 +1,6 @@
 export const galleryData = {
   subtitle: "JJ’s World",
-  title: "Through the Lens of JJ’s",
+  title: "Life at JJ’s",
   phrase: "Where every image tells the story of JJ’s atmosphere and craft.",
   divider: true,
   align: "center",

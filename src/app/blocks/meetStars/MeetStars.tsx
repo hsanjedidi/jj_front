@@ -10,21 +10,21 @@ const spaces = [
     subtitle: "SPORTS BAR",
     description:
       "With over 25 HD screens showing sports from around the world, catch all the action live in our dedicated sports bar.",
-    image: "/ourImages/band/sport.jpg",
+    image: "/ourImages/band/sport.jfif",
   },
   {
     title: "Main Bar & Restaurant",
     subtitle: "MAIN BAR",
     description:
       "Experience one of the oldest bars in north Dublin city. Our main bar and restaurant offers casual seating and dining throughout the day.",
-    image: "/ourImages/band/pub.jpg",
+    image: "/ourImages/band/pubbar.jfif",
   },
   {
     title: "Whiskey Bar & Lounge",
     subtitle: "WHISKEY BAR",
     description:
       "Our basement whiskey bar is a unique subterranean space serving the finest whiskeys and cocktails in an intimate setting.",
-    image: "/ourImages/band/whisky.webp",
+    image: "/ourImages/band/whiskybar.jfif",
   },
 ];
 
@@ -32,7 +32,6 @@ const MeetStars = () => {
   const blockTitleProps = {
     title: teamBlockData.title,
     subtitle: teamBlockData.subtitle,
-    phrase: teamBlockData.description,
     divider: teamBlockData.divider,
   };
 
@@ -64,7 +63,7 @@ const MeetStars = () => {
                 />
               </div>
 
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1A3030] via-[#1A3030]/20 to-transparent opacity-90"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent opacity-90"></div>
 
               <div className="absolute bottom-0 left-0 right-0 p-5 flex flex-col items-start space-y-2">
                 <div className="text-primary text-[10px] tracking-[0.4em]  font-semibold uppercase whitespace-nowrap m-0">
@@ -75,7 +74,16 @@ const MeetStars = () => {
                   {space.title}
                 </h4>
 
-                <p className="text-white/70 text-sm  leading-tight  max-w-[95%] opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
+                <p
+                  className="text-white/70 text-xs sm:text-sm leading-tight max-w-[95%] 
+  /* Visible par défaut sur mobile, caché sur desktop par défaut */
+  opacity-100 sm:opacity-0 
+  /* Position normale sur mobile, décalée sur desktop */
+  translate-y-0 sm:translate-y-2 
+  /* Effets au survol pour le desktop */
+  group-hover:opacity-100 group-hover:translate-y-0 
+  transition-all duration-500"
+                >
                   {space.description}
                 </p>
               </div>

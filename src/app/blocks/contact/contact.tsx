@@ -1,11 +1,21 @@
 import HeroInnerBlock from "@/app/components/common/hero-inner/Hero-inner";
 import { HeroInnerContactData } from "@/app/hooks/data-contact";
 import React from "react";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Send,
+  Instagram,
+  Facebook,
+  Linkedin,
+  Twitter,
+} from "lucide-react";
 
 const Contact = () => {
   return (
-    <>
+    <div className="bg-black">
       <HeroInnerBlock
         title={"Contact Us"}
         image={"/hero/gallery-14a.jpg"}
@@ -15,114 +25,165 @@ const Contact = () => {
           { id: 2, title: "Contact", link: "/contact-us" },
         ]}
       />
-
-      <section className="relative bg-[#fdfbf7] overflow-hidden">
-        <div className="flex flex-col lg:flex-row min-h-[800px]">
-          {/* CÔTÉ GAUCHE : LA MAP */}
-          <div className="w-full lg:w-1/2 h-[400px] lg:h-auto relative grayscale hover:grayscale-0 transition-all duration-700 border-r border-gray-100">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9916256937595!2d2.2922926156743895!3d48.85837007928746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca979a217ef4c!2sTour%20Eiffel!5e0!3m2!1sfr!2sfr!4v1647525350000!5m2!1sfr!2sfr"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              title="Location Map"
-              className="absolute inset-0"
-            />
+      <section className="py-16 bg-[#112020]">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <p className="text-sm font-bold text-[#fbfffd] uppercase tracking-[0.3em] mb-10">
+            Follow our story
+          </p>
+          <div className="flex flex-wrap gap-6 justify-center mt-5">
+            {[
+              { icon: <Instagram size={22} />, link: "#", label: "Instagram" },
+              { icon: <Facebook size={22} />, link: "#", label: "Facebook" },
+              { icon: <Linkedin size={22} />, link: "#", label: "LinkedIn" },
+              { icon: <Twitter size={22} />, link: "#", label: "Twitter" },
+            ].map((social, index) => (
+              <a
+                key={index}
+                href={social.link}
+                aria-label={social.label}
+                className="w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-[#e7d8c3] hover:border-[#e7d8c3] transition-all duration-300 shadow-xl backdrop-blur-sm"
+              >
+                {social.icon}
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          {/* --- TOP SECTION: INFO CARDS --- */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+            {[
+              {
+                icon: <Phone className="w-6 h-6" />,
+                title: "Call Us",
+                detail: "+1 (555) 123-4567",
+                sub: "Mon-Fri from 9am to 6pm",
+              },
+              {
+                icon: <Mail className="w-6 h-6" />,
+                title: "Email Us",
+                detail: "hello@jjs.com",
+                sub: "Online support 24/7",
+              },
+              {
+                icon: <MapPin className="w-6 h-6" />,
+                title: "Visit Us",
+                detail: "123 Business Street",
+                sub: "New York, NY 10001",
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="group bg-[#e7d8c3] p-10 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 text-center"
+              >
+                <div className="w-14 h-14 bg-[#c24156]/5 rounded-full flex items-center justify-center text-[#b08243] mx-auto mb-6 group-hover:bg-[#b08243] group-hover:text-white transition-colors">
+                  {item.icon}
+                </div>
+                <h3 className="text-xl font-serif font-bold text-[#1A3030] mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-black font-medium mb-1">{item.detail}</p>
+                <p className="text-gray-400 text-sm">{item.sub}</p>
+              </div>
+            ))}
           </div>
 
-          {/* CÔTÉ DROIT : INFOS & FORMULAIRE */}
-          <div className="w-full lg:w-1/2 py-16 px-6 md:px-12 lg:px-20 flex flex-col justify-center bg-[#e7d8c3]/30">
-            <div className="max-w-2xl mx-auto lg:mx-0 w-full">
-              {/* Header section */}
-              <div className="mb-12">
-                <span className="text-[#c24156] font-bold tracking-widest uppercase text-xs">
-                  Get in touch
-                </span>
-                <h2 className="text-4xl font-serif font-bold text-[#1A3030] mt-3 mb-6">
-                  Let’s Start a Conversation
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-                  {[
-                    {
-                      icon: <MapPin className="w-4 h-4" />,
-                      title: "Location",
-                      content: "123 Business Street, City",
-                    },
-                    {
-                      icon: <Phone className="w-4 h-4" />,
-                      title: "Phone",
-                      content: "+1 (555) 123-4567",
-                    },
-                    {
-                      icon: <Mail className="w-4 h-4" />,
-                      title: "Email",
-                      content: "hello@jjs.com",
-                    },
-                    {
-                      icon: <Clock className="w-4 h-4" />,
-                      title: "Hours",
-                      content: "Mon-Sun: 10AM-11PM",
-                    },
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-center space-x-3">
-                      <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-[#c24156] shadow-sm">
-                        {item.icon}
-                      </div>
-                      <p className="text-sm text-gray-700 font-medium">
-                        {item.content}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
+          <div className="flex flex-col lg:flex-row gap-16 items-start">
+            {/* --- LEFT: FORM --- */}
+            <div className="w-full lg:w-5/12">
+              <span className="text-[#348056] font-bold tracking-[0.2em] uppercase text-xs">
+                Contact Form
+              </span>
+              <h2 className="text-5xl font-serif font-bold text-[#e7d8c3] mt-4 mb-8 leading-tight">
+                Send message
+              </h2>
 
-              {/* Formulaire compact et pro */}
-              <div className="bg-white rounded-3xl shadow-xl p-8 md:p-10 border border-gray-100">
-                <form className="space-y-5">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <div>
-                      <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2 block">
-                        Name
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="Full name"
-                        className="w-full bg-gray-50 border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-[#c24156] outline-none transition-all"
-                      />
-                    </div>
-                    <div>
-                      <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2 block">
-                        Email
-                      </label>
-                      <input
-                        type="email"
-                        placeholder="Email address"
-                        className="w-full bg-gray-50 border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-[#c24156] outline-none transition-all"
-                      />
-                    </div>
+              <form className="space-y-6">
+                <div className="relative">
+                  <input
+                    type="text"
+                    placeholder="Your Name"
+                    className="w-full bg-transparent border-2 border-gray-200 rounded-xl px-4 py-4 focus:border-[#e7d8c3] text-white outline-none transition-colors"
+                  />
+                </div>
+                <div className="relative">
+                  <input
+                    type="email"
+                    placeholder="Email Address"
+                    className="w-full bg-transparent border-2 border-gray-200 rounded-xl px-4 py-4 focus:border-[#b08243] text-white outline-none transition-colors"
+                  />
+                </div>
+                <div className="relative">
+                  <textarea
+                    rows={4}
+                    placeholder="How can we help you?"
+                    className="w-full bg-transparent border-2 border-gray-200 rounded-2xl px-4 py-4 focus:border-[#b08243] text-white outline-none transition-colors resize-none"
+                  ></textarea>
+                </div>
+                <button className="group flex items-center gap-3 bg-[#b08243] text-white px-8 py-4 rounded-full hover:bg-[#b08243] transition-all duration-300 transform hover:-translate-y-1">
+                  <span className="font-bold">Send Message</span>
+                  <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </form>
+            </div>
+
+            {/* --- RIGHT: MAP SECTION --- */}
+            <div className="w-full lg:w-7/12 h-[600px] relative rounded-[2rem] overflow-hidden shadow-2xl">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.47!2d-73.98!3d40.75!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ1JzAwLjAiTiA3M8KwNTgnNDguMCJX!5e0!3m2!1sen!2sus!4v123456789"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                title="Location Map"
+                className="grayscale contrast-125 hover:grayscale-0 transition-all duration-1000"
+              />
+              <div className="absolute bottom-8 left-8 bg-white p-6 rounded-2xl shadow-xl max-w-xs hidden md:block">
+                <div className="flex items-center gap-4">
+                  <div className="bg-green-100 text-green-600 p-2 rounded-full">
+                    <Clock className="w-5 h-5" />
                   </div>
                   <div>
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2 block">
-                      Message
-                    </label>
-                    <textarea
-                      rows={4}
-                      placeholder="Your message here..."
-                      className="w-full bg-gray-50 border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-[#c24156] outline-none transition-all resize-none"
-                    ></textarea>
+                    <p className="font-bold text-[#1A3030]">Open Now</p>
+                    <p className="text-sm text-gray-500">
+                      Closing today at 11:00 PM
+                    </p>
                   </div>
-                  <button className="w-full bg-[#c24156] hover:bg-[#1A3030] text-white font-bold py-4 rounded-xl transition-all duration-300 shadow-lg shadow-[#c24156]/20">
-                    Send Message
-                  </button>
-                </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-    </>
+
+      {/* --- NEW DEDICATED SOCIAL MEDIA SECTION --- */}
+      <section className="py-16 bg-[#1A3030]">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <p className="text-sm font-bold text-[#fbfffd] uppercase tracking-[0.3em] mb-10">
+            Follow our story
+          </p>
+          <div className="flex flex-wrap gap-6 justify-center mt-5">
+            {[
+              { icon: <Instagram size={22} />, link: "#", label: "Instagram" },
+              { icon: <Facebook size={22} />, link: "#", label: "Facebook" },
+              { icon: <Linkedin size={22} />, link: "#", label: "LinkedIn" },
+              { icon: <Twitter size={22} />, link: "#", label: "Twitter" },
+            ].map((social, index) => (
+              <a
+                key={index}
+                href={social.link}
+                aria-label={social.label}
+                className="w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-[#e7d8c3] hover:border-[#e7d8c3] transition-all duration-300 shadow-xl backdrop-blur-sm"
+              >
+                {social.icon}
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
 

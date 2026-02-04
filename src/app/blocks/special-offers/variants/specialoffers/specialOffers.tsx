@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, UtensilsCrossed } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -31,7 +31,7 @@ const SpecialOffersBlock = ({
   return (
     <div
       className={cn(
-        "bg-[#F9F3EB] py-20 text-black min-h-[70vh] flex flex-col justify-center overflow-hidden",
+        "bg-black py-20 text-white min-h-[70vh] flex flex-col justify-center overflow-hidden",
         className,
       )}
     >
@@ -42,66 +42,92 @@ const SpecialOffersBlock = ({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-5xl font-serif italic mb-4 text-neutral-800">
-            Our Special Selection
+          <h2 className="text-xl font-serif italic mb-4 text-[#e7d8c3]">
+            Special Selection
           </h2>
-          <div className="w-20 h-1 bg-[#c24156] mx-auto opacity-50 mb-8"></div>
+          <div className="w-20 h-1 bg-[#b08243] mx-auto opacity-50 mb-8"></div>
 
-          {/* Bouton Voir Menu Principal */}
-          <button className="px-8 py-3 bg-neutral-900 text-white rounded-full text-xs font-bold tracking-widest uppercase hover:bg-[#c24156] transition-colors shadow-lg">
+          <button className="px-8 py-3 bg-[#b08243] text-white rounded-full text-xs font-bold tracking-widest uppercase hover:bg-[#c5934f] transition-colors shadow-lg">
             View Full Menu
           </button>
         </motion.div>
       </div>
 
       {/* --- SLIDER SECTION --- */}
-      <section className="relative w-full">
+      <section className="relative w-full px-0">
         <Swiper
           modules={[Navigation, Pagination, A11y, Autoplay]}
-          spaceBetween={10}
-          slidesPerView={1.2}
           centeredSlides={true}
           loop={true}
-          speed={1000}
+          speed={800}
+          autoplay={{ delay: 5000, disableOnInteraction: false }}
           onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+          // Configuration pour voir les images précédentes/suivantes
+          spaceBetween={10}
+          slidesPerView={1.4} // Image centrale plus petite, laissant place aux côtés
+          breakpoints={{
+            640: { slidesPerView: 1.6, spaceBetween: 20 },
+            1024: { slidesPerView: 2, spaceBetween: 30 },
+            1440: { slidesPerView: 2.4, spaceBetween: 40 },
+          }}
           navigation={{
             prevEl: prevRef.current,
             nextEl: nextRef.current,
           }}
-          breakpoints={{
-            768: { slidesPerView: 1.5, spaceBetween: 20 },
-            1280: { slidesPerView: 1.8, spaceBetween: 30 },
+          onBeforeInit={(swiper) => {
+            // @ts-ignore - Liaison des refs pour la navigation personnalisée
+            swiper.params.navigation.prevEl = prevRef.current;
+            // @ts-ignore
+            swiper.params.navigation.nextEl = nextRef.current;
           }}
-          className="w-full !pb-16"
+          className="w-full !overflow-visible"
         >
-          {items.map((item) => (
-            <SwiperSlide key={item.id} className="flex items-center">
+          {items.map((item, index) => (
+            <SwiperSlide key={item.id || index} className="flex items-center">
               {({ isActive }) => (
                 <motion.div
-                  className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl shadow-2xl bg-neutral-800"
+                  className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl shadow-2xl bg-neutral-900"
                   animate={{
-                    scale: isActive ? 1.05 : 0.85,
-                    opacity: isActive ? 1 : 0.7,
+                    // L'image active est légèrement réduite (0.95)
+                    // Les images de côté sont bien plus petites (0.75)
+                    scale: isActive ? 0.95 : 0.75,
+                    opacity: isActive ? 1 : 0.4,
+                    filter: isActive ? "grayscale(0%)" : "grayscale(40%)",
                   }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
                 >
                   <Image
                     src={item.image}
-                    alt={item.title}
+                    alt={item.title || "Special Offer"}
                     fill
                     className="object-cover"
-                    quality={100}
-                    priority
+                    quality={90}
+                    sizes="(max-width: 768px) 80vw, 50vw"
                   />
 
-                  {/* Overlay dégradé */}
+                  {/* Overlay subtil uniquement sur l'image active */}
                 </motion.div>
               )}
             </SwiperSlide>
           ))}
         </Swiper>
 
-        {/* --- NAVIGATION CONTROLS --- */}
+        {/* --- CUSTOM NAVIGATION ARROWS --- */}
+        {/* --- CUSTOM NAVIGATION ARROWS (Visible uniquement sur Mobile) --- */}
+        <div className="flex md:hidden justify-center items-center gap-6 mt-10">
+          <button
+            ref={prevRef}
+            className="p-3 border border-[#b08243]/40 rounded-full text-[#e7d8c3] hover:bg-[#b08243] hover:text-white transition-all disabled:opacity-30"
+          >
+            <ChevronLeft size={24} />
+          </button>
+          <button
+            ref={nextRef}
+            className="p-3 border border-[#b08243]/40 rounded-full text-[#e7d8c3] hover:bg-[#b08243] hover:text-white transition-all disabled:opacity-30"
+          >
+            <ChevronRight size={24} />
+          </button>
+        </div>
       </section>
     </div>
   );

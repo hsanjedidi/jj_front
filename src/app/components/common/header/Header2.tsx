@@ -62,9 +62,10 @@ const Header2: React.FC = () => {
           )}
         >
           <div className="max-w-[1600px] mx-auto">
+            {/* --- STRUCTURE DU HEADER --- */}
             <div className="relative flex items-center justify-between min-h-[50px] md:min-h-[80px]">
-              {/* --- MOBILE : Bouton Menu --- */}
-              <div className="md:hidden z-30">
+              {/* --- MOBILE : Bouton Menu (Largeur fixée à w-12 pour équilibrer) --- */}
+              <div className="md:hidden z-30 w-12">
                 <MenuToggleButton
                   isMobile={isMenuVisible}
                   onToggle={() => setMenuVisibility(!isMenuVisible)}
@@ -84,10 +85,9 @@ const Header2: React.FC = () => {
                 </ul>
               </nav>
 
-              {/* --- LOGO CENTRAL --- */}
-              {/* Le wrapper ici permet de descendre le logo sans casser le centrage absolu */}
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 transition-transform duration-300">
-                <div className="transform translate-y-2 md:translate-y-0">
+              {/* --- LOGO CENTRAL (Parfaitement au milieu) --- */}
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+                <div className="transform scale-90 md:scale-100 transition-transform">
                   <LogoLink
                     href={LogoData.hrefLogo}
                     src={LogoData.urlLogo}
@@ -110,8 +110,8 @@ const Header2: React.FC = () => {
                 </ul>
               </nav>
 
-              {/* --- MOBILE : Spacer --- */}
-              <div className="md:hidden w-10"></div>
+              {/* --- MOBILE : Spacer Droite (Largeur identique au bouton menu : w-12) --- */}
+              <div className="md:hidden w-12"></div>
             </div>
 
             {/* --- MENU MOBILE DROPDOWN --- */}

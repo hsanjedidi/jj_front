@@ -20,11 +20,10 @@ const ServicesList = ({
     );
   }
   return (
-    <div className="services-ilustrations bg-[#F9F3EB]">
+    <div className="services-ilustrations bg-black">
       <BlockTitle2
         subtitle={"What defines us"}
         title={"BRAND VALUES"}
-        phrase={"Core values shaping our identity, culture, and vision."}
         align={"center" as Alignment}
         divider={true}
       />

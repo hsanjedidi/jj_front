@@ -8,15 +8,15 @@ import * as z from "zod";
 
 /* -------------------- CONFIGURATION DES LIEUX -------------------- */
 const PLACES_DATA = {
-  terrasse: { label: "Live Sports Bar", image: "/ourImages/band/sport.jpg" },
+  terrasse: { label: "Live Sports Bar", image: "/ourImages/band/sport.jfif" },
 
   piscine: {
     label: "Whiskey Bar",
-    image: "/ourImages/band/whisky.webp",
+    image: "/ourImages/band/whiskybar.jfif",
   },
-    pub: {
+  pub: {
     label: "Main Bar & Restaurant",
-    image: "/ourImages/band/pub.jpg",
+    image: "/ourImages/band/pubbar.jfif",
   },
   vip_lounge: { label: "Salon VIP", image: "/ourImages/reservation/vip1.png" },
 };
@@ -72,7 +72,7 @@ const BookingForm = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-[#1A3030] p-4 font-sans text-white">
+    <div className="flex items-center justify-center min-h-screen bg-black p-4 font-sans text-white">
       <div
         className={cn(
           "w-full max-w-6xl rounded-3xl overflow-hidden border transition-all duration-700 shadow-2xl bg-neutral-900/80",
@@ -221,6 +221,7 @@ const BookingForm = () => {
                 type="submit"
                 className={cn(
                   "w-full py-4 rounded-xl font-bold uppercase tracking-[0.2em] transition-all",
+                  "text-[10px] sm:text-xs md:text-sm", // Texte très petit sur mobile, s'agrandit progressivement
                   isVip
                     ? "bg-[#d4af37] text-black hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]"
                     : "bg-white text-black hover:bg-neutral-200",

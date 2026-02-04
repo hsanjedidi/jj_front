@@ -24,8 +24,8 @@ const AboutClassicBlock = ({
               <span className="w-8 h-[1px] bg-primary"></span>{" "}
               {subtitle || "OUR STORY"}
             </span>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif text-white leading-tight uppercase">
-              {title || "Murray's Bar & Grill"}
+            <h2 className="text-[10px] sm:text-4xl md:text-6xl lg:text-7xl font-serif text-white   whitespace-nowrap">
+              {title || "MISSION & VISION"}
             </h2>
           </div>
 
@@ -38,9 +38,14 @@ const AboutClassicBlock = ({
             ))}
           </div>
 
-          <Link href="#" className="bg-primary text-white px-8 py-3 rounded-full font-bold tracking-wider transition-colors duration-300 uppercase text-sm">
-            More About Us
-          </Link>
+       <div className="pt-6"> {/* Un conteneur optionnel pour plus de contrôle */}
+  <Link
+    href="#"
+    className="mt-4 inline-block bg-primary text-white px-8 py-5 rounded-full font-bold tracking-wider transition-colors duration-300 uppercase text-sm"
+  >
+    More About Us
+  </Link>
+</div>
         </div>
 
         {/* SECTION IMAGES */}

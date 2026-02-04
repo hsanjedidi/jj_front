@@ -12,7 +12,7 @@ const IllustrationsCard = ({
   link_text,
 }: ServiceItem) => {
   return (
-    <div className="services-ilustrations__card hover:bg-secondary group">
+    <div className="services-ilustrations__card hover:bg-[#e7d8c3] group">
       {image && image_hover && (
         <div className="services-ilustrations__card-ilustration">
           <Image src={image} alt={title} width="120" height="120" />

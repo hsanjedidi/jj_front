@@ -18,15 +18,15 @@ const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto flex flex-col items-center">
         
         {/* SECTION 1: LOGO & BRAND */}
-        <div className="mb-10 transform transition-transform hover:scale-105">
-          <LogoLink
-            href={LogoData.hrefLogo}
-            src={LogoData.urlLogo}
-            alt={LogoData.altLogo}
-            width={LogoData.widthLogo}
-            height={LogoData.heightLogo}
-          />
-        </div>
+       <div className="mb-10 transform transition-transform scale-150 hover:scale-135 origin-center">
+  <LogoLink
+    href={LogoData.hrefLogo}
+    src={LogoData.urlLogo}
+    alt={LogoData.altLogo}
+    width={LogoData.widthLogo}
+    height={LogoData.heightLogo}
+  />
+</div>
 
         {/* SECTION 2: INFOS & CONTACT */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 w-full text-center items-start mb-12">

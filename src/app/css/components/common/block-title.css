@@ -22,7 +22,7 @@
     position: relative;
   }
   &__title2 {
-    @apply text-black !text-title-3 sm:!text-title-2 md:!text-title-1 mb-5 w-full font-barlow-condensed font-normal capitalize;
+    @apply text-[#e7d8c3] !text-title-3 sm:!text-title-2 md:!text-title-1 mb-5 w-full font-barlow-condensed font-normal capitalize;
     letter-spacing: 0.5px;
     line-height: 1.2;
     position: relative;
