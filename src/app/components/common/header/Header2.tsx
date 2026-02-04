@@ -110,11 +110,9 @@ const Header2: React.FC = () => {
                 </ul>
               </nav>
 
-              {/* --- MOBILE : Spacer Droite (Largeur identique au bouton menu : w-12) --- */}
               <div className="md:hidden w-12"></div>
             </div>
 
-            {/* --- MENU MOBILE DROPDOWN --- */}
             <div
               className={cn(
                 "overflow-hidden transition-all duration-500 ease-in-out md:hidden",

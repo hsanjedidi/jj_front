@@ -2,7 +2,7 @@ export const ctaData = {
   title: "JJ’s – Good Food, Great Vibes",
   description:
     "Fresh ingredients. Great food. The JJ’s experience.",
-  link: "/menu2",
+  link: "/menu",
   linkText: "View Our Menu",
 };
 

@@ -15,6 +15,17 @@ export const itemsNavbar = [
     title: "Menu",
     link: "/menu",
   },
+
+  {
+    id: 6,
+    title: "Gallery",
+    link: "/gallery",
+  },
+  {
+    id: 7,
+    title: "Our Story",
+    link: "/history2",
+  },
   {
     id: 4,
     title: "Entertainment",
@@ -46,16 +57,6 @@ export const itemsNavbar = [
         link: "/services",
       },
     ],
-  },
-  {
-    id: 6,
-    title: "Gallery",
-    link: "/gallery",
-  },
-  {
-    id: 7,
-    title: "Our Story",
-    link: "/history2",
   },
 
   {

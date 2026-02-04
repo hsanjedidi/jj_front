@@ -1,10 +1,12 @@
+import Link from "next/link";
+
 export function Landing() {
   return (
     <div>
       <main className="min-h-screen w-full relative overflow-hidden">
         {/* Dégradé amélioré en background */}
         <div
-          className="absolute top-0 left-0 w-full h-full"
+          className="absolute top-0 left-0 w-full h-full translate-y-12 translate-x-2 md:translate-y-0 md:translate-x-0 "
           style={{
             backgroundColor: "#0F1B1B",
             backgroundImage: `url('/ourImages/landing/bg5.png')`,
@@ -21,7 +23,7 @@ export function Landing() {
         {/* Contenu principal */}
         <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-center text-white px-6 py-20">
           {/* Titre principal avec effet subtil */}
-          <div className="flex items-center gap-x-6 md:gap-x-8">
+          <div className="flex items-center gap-x-2 md:gap-x-8">
             {/* Le logo JJ's - On retire row-span et on laisse le flex gérer l'alignement */}
             <div className="text-7xl lg:text-9xl font-bold text-primary leading-none">
               JJ’s
@@ -59,7 +61,7 @@ export function Landing() {
           </div>
 
           {/* Description avec meilleure typographie */}
-          <p className="max-w-2xl text-base md:text-lg lg:text-xl text-gray-300 font-light leading-relaxed mb-12 px-4">
+          <p className="max-w-2xl text-base md:text-lg lg:text-xl text-white/60 font-light leading-relaxed mb-12 px-4">
             Born in the heart of Bahrain, we bring the warmth, charm, and
             authentic spirit of Ireland to the region. Experience genuine
             hospitality in an atmosphere that feels like home.
@@ -70,14 +72,14 @@ export function Landing() {
           <div className="mt-8 w-full max-w-2xl mx-auto px-4">
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               {/* Bouton Principal : Make a Booking */}
-              <button className="w-full sm:w-auto min-w-[200px] bg-gradient-to-r from-[#b08243] to-[#c6975a] hover:from-[#c6975a] hover:to-[#d4a569] text-white px-8 py-4 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 font-bold uppercase tracking-[0.2em] text-xs transform hover:scale-[1.05] active:scale-[0.98]">
+              <Link href="/booking" className="w-full sm:w-auto min-w-[200px] bg-gradient-to-r from-[#b08243] to-[#c6975a] hover:from-[#c6975a] hover:to-[#d4a569] text-white hover:text-white px-8 py-4 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 font-bold uppercase tracking-[0.2em] text-xs transform hover:scale-[1.05] active:scale-[0.98]">
                 Make a Booking
-              </button>
+              </Link>
 
               {/* Bouton Secondaire : More about us */}
-              <button className="w-full sm:w-auto min-w-[200px] bg-transparent border border-[#b08243]/50 hover:border-[#b08243] text-[#F5F5DC] hover:bg-[#b08243]/10 px-8 py-4 rounded-xl transition-all duration-300 font-bold uppercase tracking-[0.2em] text-xs backdrop-blur-sm">
+              <Link href="/about-us" className="w-full sm:w-auto min-w-[200px] bg-transparent border border-[#b08243]/50 hover:border-[#b08243] text-[#F5F5DC] hover:bg-[#b08243]/10 px-8 py-4 rounded-xl transition-all duration-300 font-bold uppercase tracking-[0.2em] text-xs backdrop-blur-sm">
                 More about us
-              </button>
+              </Link>
             </div>
 
             {/* Petit texte de rassurance sous les boutons */}

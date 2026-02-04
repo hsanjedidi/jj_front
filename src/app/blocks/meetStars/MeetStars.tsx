@@ -76,13 +76,13 @@ const MeetStars = () => {
 
                 <p
                   className="text-white/70 text-xs sm:text-sm leading-tight max-w-[95%] 
-  /* Visible par défaut sur mobile, caché sur desktop par défaut */
-  opacity-100 sm:opacity-0 
-  /* Position normale sur mobile, décalée sur desktop */
-  translate-y-0 sm:translate-y-2 
-  /* Effets au survol pour le desktop */
-  group-hover:opacity-100 group-hover:translate-y-0 
-  transition-all duration-500"
+                    /* Visible par défaut sur mobile, caché sur desktop par défaut */
+                    opacity-100 sm:opacity-0 
+                    /* Position normale sur mobile, décalée sur desktop */
+                    translate-y-0 sm:translate-y-2 
+                    /* Effets au survol pour le desktop */
+                    group-hover:opacity-100 group-hover:translate-y-0 
+                    transition-all duration-500"
                 >
                   {space.description}
                 </p>

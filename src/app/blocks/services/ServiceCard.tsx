@@ -30,7 +30,7 @@ const IllustrationsCard = ({
         <p className=" group-hover:text-black transition-colors ">{description}</p>
         {/* Link */}
         {link_url && link_text && (
-          <div className="btn btn__link2 hover:text-black">
+          <div className="btn btn__link2 ">
             {link_text}
           </div>
         )}

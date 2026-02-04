@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
 
           {/* Contact Rapide */}
           <div className="flex flex-col gap-2">
-            <h4 className="text-[#b08243] uppercase tracking-[0.2em] text-sm font-bold mb-2">Réservations</h4>
+            <h4 className="text-[#b08243] uppercase tracking-[0.2em] text-sm font-bold mb-2">Reservations</h4>
             <Link href={`mailto:${InfoGeneralData.emailReservations}`} className="hover:text-[#b08243] transition-colors duration-300">
               {InfoGeneralData.emailReservations}
             </Link>

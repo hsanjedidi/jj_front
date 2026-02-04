@@ -243,7 +243,7 @@ const BookingForm = () => {
             <div className="absolute inset-0 bg-black/20" />
             <div className="absolute bottom-10 left-10 right-10 p-6 backdrop-blur-md bg-black/40 border border-white/10 rounded-2xl">
               <p className="text-[10px] uppercase tracking-widest opacity-60">
-                Emplacement choisi
+                You are booking for:
               </p>
               <h3 className="text-2xl font-serif text-[#d4af37]">
                 {PLACES_DATA[selectedPlace as keyof typeof PLACES_DATA]?.label}

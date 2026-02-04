@@ -14,7 +14,7 @@ const Divider: React.FC<DividerProps> = ({ className }) => {
   return (
     <div
       className={cn(
-        "flex items-center justify-center w-full my-12 gap-2 md:gap-4",
+        "flex items-center justify-center w-full my-8 gap-2 md:gap-4",
         className,
       )}
     >

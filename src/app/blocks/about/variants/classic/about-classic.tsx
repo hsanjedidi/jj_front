@@ -38,14 +38,14 @@ const AboutClassicBlock = ({
             ))}
           </div>
 
-       <div className="pt-6"> {/* Un conteneur optionnel pour plus de contrôle */}
-  <Link
-    href="#"
-    className="mt-4 inline-block bg-primary text-white px-8 py-5 rounded-full font-bold tracking-wider transition-colors duration-300 uppercase text-sm"
-  >
-    More About Us
-  </Link>
-</div>
+          <div className="pt-6">
+            <Link
+              href="/history2"
+              className="mt-4 inline-block bg-primary hover:bg-primary/90 text-white hover:text-white px-8 py-5 rounded-full font-bold tracking-wider transition-colors duration-300 uppercase text-sm"
+            >
+              More About Us
+            </Link>
+          </div>
         </div>
 
         {/* SECTION IMAGES */}

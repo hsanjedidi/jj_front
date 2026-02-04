@@ -14,6 +14,7 @@ import "swiper/css/pagination";
 import { SpecialOffersBlockProps } from "@/app/types/common.types";
 import { specialOffersData } from "@/app/hooks/data-special-offers";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 const SpecialOffersBlock = ({
   items = specialOffersData.items,
@@ -47,9 +48,9 @@ const SpecialOffersBlock = ({
           </h2>
           <div className="w-20 h-1 bg-[#b08243] mx-auto opacity-50 mb-8"></div>
 
-          <button className="px-8 py-3 bg-[#b08243] text-white rounded-full text-xs font-bold tracking-widest uppercase hover:bg-[#c5934f] transition-colors shadow-lg">
+          <Link href="/menu" className="px-8 py-3 bg-[#b08243] text-white rounded-full text-xs font-bold tracking-widest uppercase hover:bg-[#c5934f] transition-colors shadow-lg">
             View Full Menu
-          </button>
+          </Link>
         </motion.div>
       </div>
 
