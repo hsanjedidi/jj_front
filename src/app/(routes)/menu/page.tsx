@@ -6,7 +6,6 @@ const Menu2 = () => {
   return (
     <>
       <MenuComp />
-      <HeroCreativeSliderBlock {...sliderHeroData} />
     </>
   );
 };

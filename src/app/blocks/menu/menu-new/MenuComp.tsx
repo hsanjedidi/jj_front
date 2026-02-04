@@ -1,9 +1,11 @@
-  "use client";
+"use client";
 import React, { useState } from "react";
 import Image from "next/image";
 
 const MenuComp = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isZoomed, setIsZoomed] = useState(false); // État pour le zoom mobile
+  const [touchStart, setTouchStart] = useState<number | null>(null);
 
   const menuItems = [
     {
@@ -30,12 +32,40 @@ const MenuComp = () => {
     },
   ];
 
+  // --- LOGIQUE DE SWIPE ---
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!touchStart) return;
+    const touchEnd = e.changedTouches[0].clientX;
+    const distance = touchStart - touchEnd;
+
+    // Swipe vers la gauche (Suivant)
+    if (distance > 50 && currentIndex < menuItems.length) {
+      setCurrentIndex((c) => c + 1);
+    }
+    // Swipe vers la droite (Précédent)
+    if (distance < -50 && currentIndex > 0) {
+      setCurrentIndex((c) => c - 1);
+    }
+    setTouchStart(null);
+  };
+
+  const toggleZoom = () => {
+    // On n'active le zoom que si on est sur un petit écran (mobile)
+    if (window.innerWidth <= 768) {
+      setIsZoomed(!isZoomed);
+    }
+  };
+
   const renderPageContent = (item: any, index: number) => {
     if (!item) return <div className="empty-page" />;
 
     if (item.type === "cover" || item.type === "back-cover") {
       return (
-        <div className="full-page-layout">
+        <div className="full-page-layout ">
           <Image
             src={item.image}
             alt={item.title}
@@ -64,11 +94,7 @@ const MenuComp = () => {
         </div>
         <div className="magazine-text">
           <h3 className="item-title-magazine">{item.name}</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In cursus
-            mollis nibh, non convallis ex convallis eu. Suspendisse potenti.
-            Aenean vitae pellentesque erat.
-          </p>
+        
         </div>
         <footer className="page-footer">{index + 1}</footer>
       </div>
@@ -76,14 +102,19 @@ const MenuComp = () => {
   };
 
   return (
-    <div className="book-scene">
-      <div className="book-container">
-        {/* Reliure centrale (Spine) */}
+    <div
+      className={`book-scene ${isZoomed ? "zoomed-mode" : ""}`}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
+      <div
+        className={`book-container ${isZoomed ? "zoomed" : ""}`}
+        onClick={toggleZoom}
+      >
         <div className="book-spine"></div>
 
         {menuItems.map((item, index) => {
           const isFlipped = index < currentIndex;
-          // Gestion du Z-index pour que les pages s'empilent correctement
           const zIndex = isFlipped ? index : menuItems.length - index;
 
           return (
@@ -92,22 +123,21 @@ const MenuComp = () => {
               className={`book-page ${isFlipped ? "flipped" : ""}`}
               style={{ zIndex }}
             >
-              {/* FACE AVANT (Côté droit du livre) */}
               <div className="page-face front">
                 {renderPageContent(item, index)}
                 <div className="inner-shadow-right"></div>
               </div>
 
-              {/* FACE ARRIÈRE (Côté gauche quand on tourne) */}
               <div className="page-face back">
                 <div className="back-content">
-<div className="page-header">
-  <img
-    src="/logo1.png"
-    alt="Le Gourmet"
-    className="mx-auto"
-  />
-</div>
+                  <div className="page-header">
+                    <img
+                      src="/logo1.png"
+                      alt=""
+                      className="mx-auto"
+                      style={{ maxWidth: "400px" }}
+                    />
+                  </div>
                   <div className="logo-watermark">LG</div>
                 </div>
                 <div className="inner-shadow-left"></div>
@@ -117,16 +147,17 @@ const MenuComp = () => {
         })}
       </div>
 
-      <div className="book-controls">
+      {/* Les boutons ne s'affichent que sur le Web (Desktop) */}
+      <div className="book-controls no-mobile">
         <button
           onClick={() => setCurrentIndex((c) => Math.max(0, c - 1))}
           disabled={currentIndex === 0}
           className="btn"
         >
-          Previous page
+          Previous
         </button>
         <span className="page-indicator">
-          [{currentIndex} of {menuItems.length}]
+          {currentIndex} / {menuItems.length}
         </span>
         <button
           onClick={() =>
@@ -135,37 +166,79 @@ const MenuComp = () => {
           disabled={currentIndex === menuItems.length}
           className="btn"
         >
-          Next page
+          Next
         </button>
       </div>
 
       <style jsx>{`
         .book-scene {
+          /* Centrage absolu dans le viewport */
           min-height: 100vh;
-          background: #f0f0f0;
+          width: 100%;
+background-image: url('/services/bg.png');
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;          margin-top:7%;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
+
           perspective: 2500px;
+          overflow: hidden;
+          padding: 20px;
+          transition: background 0.5s ease;
         }
 
+        /* Quand on zoom sur mobile, le fond devient encore plus sombre */
+    .zoomed-mode {
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+    url('/services/bg.png');
+  background-size: cover;
+  background-position: center;
+}
+
         .book-container {
-          width: 450px; /* Largeur d'une seule page */
-          height: 600px;
+          /* Largeur adaptative */
+          width: clamp(280px, 40vw, 450px);
+          aspect-ratio: 3 / 4;
           position: relative;
           transform-style: preserve-3d;
-          /* On décale vers la droite pour que le livre ouvert soit centré */
-          transform: translateX(50%);
+
+          /* Centré par défaut sur Web */
+          transform: translateX(0);
+          transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* --- ZOOM MOBILE --- */
+        .book-container.zoomed {
+          transform: scale(1.3) translateX(0) !important;
+          z-index: 1000;
+        }
+
+        @media (max-width: 768px) {
+          .book-container {
+            width: 80vw;
+            transform: translateX(0);
+          }
+
+          .no-mobile {
+            display: none !important;
+          }
+
+          .book-scene {
+            perspective: 1500px;
+          }
         }
 
         .book-spine {
           position: absolute;
           left: 0;
           top: 0;
-          width: 2px;
+          width: 3px;
           height: 100%;
-          background: rgba(0, 0, 0, 0.2);
+          background: rgba(0, 0, 0, 0.3);
           z-index: 100;
         }
 
@@ -191,8 +264,9 @@ const MenuComp = () => {
           height: 100%;
           backface-visibility: hidden;
           background: #fdfaf7;
-          box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
-          padding: 20px;
+          box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+          padding: clamp(10px, 3vw, 25px);
+          overflow: hidden;
         }
 
         .page-face.front {
@@ -205,7 +279,7 @@ const MenuComp = () => {
           background: #f5f0eb;
         }
 
-        /* Styles Magazine (Comme votre image) */
+        /* Styles Magazine */
         .magazine-page {
           height: 100%;
           display: flex;
@@ -216,51 +290,47 @@ const MenuComp = () => {
         .page-header {
           text-align: center;
           font-weight: bold;
-          margin-bottom: 20px;
-          font-family: sans-serif;
-          letter-spacing: 1px;
+          margin-bottom: 5%;
+          font-size: clamp(0.7rem, 1.5vw, 1rem);
         }
 
         .magazine-image-container {
           position: relative;
           width: 100%;
-          height: 250px;
-          margin-bottom: 20px;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          height: 45%;
+          margin-bottom: 5%;
         }
 
         .magazine-text {
-          font-size: 0.9rem;
-          line-height: 1.5;
-          text-align: justify;
+          font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+          line-height: 1.4;
         }
 
         .item-title-magazine {
           font-family: serif;
-          font-size: 1.2rem;
-          margin-bottom: 10px;
+          font-size: clamp(1rem, 2vw, 1.3rem);
           color: #222;
         }
 
         .page-footer {
           margin-top: auto;
           text-align: right;
-          font-size: 0.8rem;
+          font-size: 0.7rem;
         }
 
-        /* Effets d'ombre centrale */
         .inner-shadow-right {
           position: absolute;
           left: 0;
           top: 0;
           bottom: 0;
-          width: 40px;
+          width: 10%;
           background: linear-gradient(
             to right,
-            rgba(0, 0, 0, 0.1),
+            rgba(0, 0, 0, 0.12),
             transparent
           );
           pointer-events: none;
+          z-index: 2;
         }
 
         .inner-shadow-left {
@@ -268,66 +338,70 @@ const MenuComp = () => {
           right: 0;
           top: 0;
           bottom: 0;
-          width: 40px;
-          background: linear-gradient(to left, rgba(0, 0, 0, 0.1), transparent);
+          width: 10%;
+          background: linear-gradient(
+            to left,
+            rgba(0, 0, 0, 0.12),
+            transparent
+          );
           pointer-events: none;
+          z-index: 2;
         }
 
-        .logo-watermark {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          font-size: 8rem;
-          opacity: 0.03;
-          font-family: serif;
-        }
+       /* --- CONTROLS CONTAINER --- */
+.book-controls {
+  margin-top: 40px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  z-index: 10;
+  
+  /* Nouveau design du background */
+  background: rgba(255, 255, 255, 0.15); /* Fond clair transparent */
+  backdrop-filter: blur(10px);          /* Effet de flou derrière */
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
 
-        .full-page-layout {
-          position: relative;
-          height: 100%;
-          width: 100%;
-          margin: -20px;
-        }
-        .object-cover {
-          object-fit: cover;
-        }
-        .overlay {
-          position: absolute;
-          inset: 0;
-          background: rgba(0, 0, 0, 0.2);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          color: white;
-          text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-        }
+/* --- BUTTONS --- */
+.btn {
+  background: #303d3b; /* Couleur sombre de votre image */
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
 
-        .book-controls {
-          margin-top: 40px;
-          display: flex;
-          gap: 20px;
-          align-items: center;
-        }
+.btn:hover:not(:disabled) {
+  background: #966b35; /* Votre couleur or/marron au survol */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
 
-        .btn {
-          background: #2cb3c4;
-          color: white;
-          border: none;
-          padding: 8px 16px;
-          border-radius: 4px;
-          cursor: pointer;
-          font-weight: bold;
-        }
+.btn:disabled {
+  background: #555;
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
 
-        .btn:disabled {
-          background: #ccc;
-        }
-        .page-indicator {
-          font-family: sans-serif;
-          font-size: 0.9rem;
-        }
+/* --- PAGE INDICATOR --- */
+.page-indicator {
+  color: #303d3b;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+  min-width: 60px;
+  text-align: center;
+}
       `}</style>
     </div>
   );
