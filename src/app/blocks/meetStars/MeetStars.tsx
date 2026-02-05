@@ -10,21 +10,21 @@ const spaces = [
     subtitle: "SPORTS BAR",
     description:
       "With over 25 HD screens showing sports from around the world, catch all the action live in our dedicated sports bar.",
-    image: "/ourImages/band/sport.jfif",
+    image: "/ourImages/band/sport.jpg",
   },
   {
     title: "Main Bar & Restaurant",
     subtitle: "MAIN BAR",
     description:
       "Experience one of the oldest bars in north Dublin city. Our main bar and restaurant offers casual seating and dining throughout the day.",
-    image: "/ourImages/band/pubbar.jfif",
+    image: "/ourImages/band/pubbar.jpg",
   },
   {
     title: "Whiskey Bar & Lounge",
     subtitle: "WHISKEY BAR",
     description:
       "Our basement whiskey bar is a unique subterranean space serving the finest whiskeys and cocktails in an intimate setting.",
-    image: "/ourImages/band/whiskybar.jfif",
+    image: "/ourImages/band/whiskybar.jpg",
   },
 ];
 
